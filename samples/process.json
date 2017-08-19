@@ -1,0 +1,96 @@
+{
+    "process_name": "scoutdir",
+    "compent_name": "catalog",
+    "executor_name": "marathon",
+    "version": "1.2",
+    "docker_base": "blah",
+    "resources": {
+        "cpu": 1,
+        "ram": 1024,
+        "disk": 0,
+        "gpu": 0,
+        "instances": 1,
+        "dfs_storage": 0,
+        "archive_storage": 0
+    },
+    "platform_technologies_used": [
+        {
+            "technology": "dcos",
+            "version": ">=8.5"
+        },
+        {
+            "technology": "kafka",
+            "version": ">=1.0"
+        },
+        {
+            "technology": "docker",
+            "version": ">=1.13"
+        },
+    ],
+    "third_party_libraries": [
+        {
+            "library": "hibernate",
+            "version": ">=8.5"
+        },
+        {
+            "library": "djanjo",
+            "version": ">=1.0"
+        },
+        {
+            "library": "openssl",
+            "version": ">=1.0"
+        }
+    ],
+    "data_written": [
+        {
+            "type": "catalog-message",
+            "version": "1.1"
+        }
+    ],
+    "data_consumed": [
+        {
+            "data_name": "HDF5 Frame",
+            "version": "0.1"
+        },
+        {
+            "data_name": "KEY JWT",
+            "version": ">=1.0"
+        }
+    ],
+    "intents_handled": [
+        {
+            "intent_name": "search",
+            "version": "0.1"
+        }
+    ],
+    "intents_used": [
+        {
+            "intent_name": "process",
+            "version": "0.1"
+        }
+    ],
+    "service_calls": [
+        {
+            "process_name": "events_server",
+            "endpoint": "getFiletypes",
+            "version": "0.1"
+        }
+    ],
+    "service_endpoints": [
+        {
+            "endpoint": "getFiletypes"
+        },
+        {
+            "endpoint": "info"
+        },
+        {
+            "endpoint": "health"
+        },
+    ],
+    "algorithms_invoked": [
+        {
+            "alg_name": "events_server",
+            "version": "0.1"
+        }
+    ]
+}
