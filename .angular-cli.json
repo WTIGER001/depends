@@ -22,7 +22,7 @@
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/cytoscape/dist/cytoscape.js",
+        "../node_modules/cytoscape/dist/cytoscape.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
