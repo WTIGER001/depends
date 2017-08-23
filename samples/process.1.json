@@ -1,6 +1,6 @@
 {
   "processes": [{
-    "process_name": "scoutdir",
+    "process_name": "scoutdir2",
     "component_name": "catalog",
     "executor_name": "marathon",
     "version": "1.2",

@@ -1,0 +1,2893 @@
+{
+  "values": [{
+    "slug": "aether",
+    "id": 8552,
+    "name": "aether",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/aether.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/aether.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/aether/browse"
+      }]
+    }
+  }, {
+    "slug": "algorithm-bank",
+    "id": 5499,
+    "name": "Algorithm Bank",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/algorithm-bank.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/algorithm-bank.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/algorithm-bank/browse"
+      }]
+    }
+  }, {
+    "slug": "aoi-config",
+    "id": 7143,
+    "name": "Aoi-config",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/aoi-config.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/aoi-config.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/aoi-config/browse"
+      }]
+    }
+  }, {
+    "slug": "brigade",
+    "id": 5528,
+    "name": "brigade",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/brigade.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/brigade.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/brigade/browse"
+      }]
+    }
+  }, {
+    "slug": "caldera",
+    "id": 7152,
+    "name": "Caldera",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/caldera.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/caldera.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/caldera/browse"
+      }]
+    }
+  }, {
+    "slug": "cap-service",
+    "id": 5529,
+    "name": "cap-service",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/cap-service.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/cap-service.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/cap-service/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-all",
+    "id": 7217,
+    "name": "catalog-all",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-all.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-all.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-all/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-battalion",
+    "id": 5527,
+    "name": "catalog-battalion",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-battalion.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-battalion.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-battalion/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-bom",
+    "id": 5536,
+    "name": "catalog-bom",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-bom.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-bom.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-bom/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-brigade-plugin",
+    "id": 9868,
+    "name": "catalog-brigade-plugin",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-brigade-plugin.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-brigade-plugin.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-brigade-plugin/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-curator",
+    "id": 7252,
+    "name": "catalog-curator",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-curator.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-curator.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-curator/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-curator-dependencies",
+    "id": 8436,
+    "name": "catalog-curator-dependencies",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-curator-dependencies.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-curator-dependencies.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-curator-dependencies/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-marshal",
+    "id": 5530,
+    "name": "catalog-marshal",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-marshal.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-marshal.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-marshal/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-oscout-plugin-frm",
+    "id": 6904,
+    "name": "catalog-oscout-plugin-frm",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-oscout-plugin-frm.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-oscout-plugin-frm.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-oscout-plugin-frm/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-py",
+    "id": 5542,
+    "name": "catalog-py",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-py.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-py.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-py/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-quartermaster",
+    "id": 5909,
+    "name": "catalog-quartermaster",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-quartermaster.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-quartermaster.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-quartermaster/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-reference-services",
+    "id": 8858,
+    "name": "catalog-reference-services",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-reference-services.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-reference-services.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-reference-services/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-scout",
+    "id": 5531,
+    "name": "catalog-scout",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-scout.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-scout.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-scout/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-scout-oracle",
+    "id": 5908,
+    "name": "catalog-scout-oracle",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-scout-oracle.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-scout-oracle.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-scout-oracle/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-scout-s3",
+    "id": 5532,
+    "name": "catalog-scout-s3",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-scout-s3.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-scout-s3.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-scout-s3/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-service",
+    "id": 5533,
+    "name": "catalog-service",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-service.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-service.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-service/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-stockade",
+    "id": 5534,
+    "name": "catalog-stockade",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-stockade.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-stockade.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-stockade/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-types",
+    "id": 5535,
+    "name": "catalog-types",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-types.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-types.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-types/browse"
+      }]
+    }
+  }, {
+    "slug": "catalog-upload-service",
+    "id": 9236,
+    "name": "catalog-upload-service",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/catalog-upload-service.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/catalog-upload-service.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/catalog-upload-service/browse"
+      }]
+    }
+  }, {
+    "slug": "centos-marathon-lb",
+    "id": 7147,
+    "name": "Centos-marathon-lb",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/centos-marathon-lb.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/centos-marathon-lb.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/centos-marathon-lb/browse"
+      }]
+    }
+  }, {
+    "slug": "cerberus",
+    "id": 5502,
+    "name": "Cerberus",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/cerberus.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/cerberus.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/cerberus/browse"
+      }]
+    }
+  }, {
+    "slug": "chiron",
+    "id": 5501,
+    "name": "Chiron",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/chiron.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/chiron.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/chiron/browse"
+      }]
+    }
+  }, {
+    "slug": "chiron-jira",
+    "id": 6496,
+    "name": "chiron-jira",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/chiron-jira.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/chiron-jira.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/chiron-jira/browse"
+      }]
+    }
+  }, {
+    "slug": "dockerfiles",
+    "id": 7140,
+    "name": "Dockerfiles",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/dockerfiles.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/dockerfiles.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/dockerfiles/browse"
+      }]
+    }
+  }, {
+    "slug": "elastic-rbac",
+    "id": 9869,
+    "name": "elastic-rbac",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/elastic-rbac.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/elastic-rbac.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/elastic-rbac/browse"
+      }]
+    }
+  }, {
+    "slug": "fenzo",
+    "id": 10195,
+    "name": "fenzo",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fenzo.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fenzo.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fenzo/browse"
+      }]
+    }
+  }, {
+    "slug": "fury-data-generator",
+    "id": 8941,
+    "name": "fury-data-generator",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fury-data-generator.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fury-data-generator.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fury-data-generator/browse"
+      }]
+    }
+  }, {
+    "slug": "fury-feature-extractor",
+    "id": 8072,
+    "name": "fury-feature-extractor",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fury-feature-extractor.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fury-feature-extractor.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fury-feature-extractor/browse"
+      }]
+    }
+  }, {
+    "slug": "fury-go-types",
+    "id": 8922,
+    "name": "fury-go-types",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fury-go-types.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fury-go-types.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fury-go-types/browse"
+      }]
+    }
+  }, {
+    "slug": "fury-krunner",
+    "id": 8253,
+    "name": "fury-krunner",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fury-krunner.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fury-krunner.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fury-krunner/browse"
+      }]
+    }
+  }, {
+    "slug": "fury-logging",
+    "id": 9626,
+    "name": "fury-logging",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fury-logging.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fury-logging.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fury-logging/browse"
+      }]
+    }
+  }, {
+    "slug": "fury-preferences",
+    "id": 9605,
+    "name": "fury-preferences",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fury-preferences.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fury-preferences.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fury-preferences/browse"
+      }]
+    }
+  }, {
+    "slug": "fury-scout",
+    "id": 8071,
+    "name": "fury-scout",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fury-scout.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fury-scout.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fury-scout/browse"
+      }]
+    }
+  }, {
+    "slug": "fury-support",
+    "id": 8192,
+    "name": "fury-support",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fury-support.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fury-support.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fury-support/browse"
+      }]
+    }
+  }, {
+    "slug": "fury-ui",
+    "id": 7410,
+    "name": "fury-ui",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/fury-ui.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/fury-ui.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/fury-ui/browse"
+      }]
+    }
+  }, {
+    "slug": "gdal-info",
+    "id": 7346,
+    "name": "gdal-info",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/gdal-info.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/gdal-info.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/gdal-info/browse"
+      }]
+    }
+  }, {
+    "slug": "geoserver",
+    "id": 7145,
+    "name": "Geoserver",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/geoserver.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/geoserver.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/geoserver/browse"
+      }]
+    }
+  }, {
+    "slug": "geoserver-wfs-georss",
+    "id": 7142,
+    "name": "Geoserver-wfs-georss",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/geoserver-wfs-georss.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/geoserver-wfs-georss.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/geoserver-wfs-georss/browse"
+      }]
+    }
+  }, {
+    "slug": "geotiff-metadata-extractor-go",
+    "id": 7345,
+    "name": "geotiff-metadata-extractor-go",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/geotiff-metadata-extractor-go.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/geotiff-metadata-extractor-go.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/geotiff-metadata-extractor-go/browse"
+      }]
+    }
+  }, {
+    "slug": "gimsviewer",
+    "id": 7151,
+    "name": "Gimsviewer",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/gimsviewer.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/gimsviewer.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/gimsviewer/browse"
+      }]
+    }
+  }, {
+    "slug": "go-catalog-types",
+    "id": 7234,
+    "name": "go-catalog-types",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/go-catalog-types.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/go-catalog-types.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/go-catalog-types/browse"
+      }]
+    }
+  }, {
+    "slug": "go-hdf5",
+    "id": 7258,
+    "name": "go-hdf5",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/go-hdf5.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/go-hdf5.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/go-hdf5/browse"
+      }]
+    }
+  }, {
+    "slug": "go-marks",
+    "id": 7233,
+    "name": "go-marks",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/go-marks.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/go-marks.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/go-marks/browse"
+      }]
+    }
+  }, {
+    "slug": "graphics",
+    "id": 8598,
+    "name": "graphics",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/graphics.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/graphics.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/graphics/browse"
+      }]
+    }
+  }, {
+    "slug": "ifm-loader",
+    "id": 7150,
+    "name": "Ifm-loader",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/ifm-loader.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/ifm-loader.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/ifm-loader/browse"
+      }]
+    }
+  }, {
+    "slug": "ifs-demo-front-end",
+    "id": 5596,
+    "name": "ifs-demo-front-end",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/ifs-demo-front-end.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/ifs-demo-front-end.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/ifs-demo-front-end/browse"
+      }]
+    }
+  }, {
+    "slug": "intent-manager",
+    "id": 6179,
+    "name": "intent-manager",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/intent-manager.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/intent-manager.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/intent-manager/browse"
+      }]
+    }
+  }, {
+    "slug": "intents",
+    "id": 8056,
+    "name": "intents",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/intents.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/intents.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/intents/browse"
+      }]
+    }
+  }, {
+    "slug": "jolokia-plots",
+    "id": 5537,
+    "name": "jolokia-plots",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/jolokia-plots.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/jolokia-plots.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/jolokia-plots/browse"
+      }]
+    }
+  }, {
+    "slug": "kafka-common",
+    "id": 5538,
+    "name": "kafka-common",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/kafka-common.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/kafka-common.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/kafka-common/browse"
+      }]
+    }
+  }, {
+    "slug": "key-satis",
+    "id": 7131,
+    "name": "key-satis",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/key-satis.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/key-satis.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/key-satis/browse"
+      }]
+    }
+  }, {
+    "slug": "logback-more-appenders",
+    "id": 5539,
+    "name": "logback-more-appenders",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/logback-more-appenders.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/logback-more-appenders.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/logback-more-appenders/browse"
+      }]
+    }
+  }, {
+    "slug": "logging-common",
+    "id": 5540,
+    "name": "logging-common",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/logging-common.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/logging-common.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/logging-common/browse"
+      }]
+    }
+  }, {
+    "slug": "maelstrom",
+    "id": 7149,
+    "name": "Maelstrom",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/maelstrom.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/maelstrom.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/maelstrom/browse"
+      }]
+    }
+  }, {
+    "slug": "maelstrom-providers",
+    "id": 7148,
+    "name": "Maelstrom-providers",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/maelstrom-providers.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/maelstrom-providers.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/maelstrom-providers/browse"
+      }]
+    }
+  }, {
+    "slug": "marathon-deployer",
+    "id": 6178,
+    "name": "marathon-deployer",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/marathon-deployer.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/marathon-deployer.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/marathon-deployer/browse"
+      }]
+    }
+  }, {
+    "slug": "marks",
+    "id": 7232,
+    "name": "marks",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/marks.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/marks.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/marks/browse"
+      }]
+    }
+  }, {
+    "slug": "medusa",
+    "id": 5500,
+    "name": "Medusa",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/medusa.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/medusa.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/medusa/browse"
+      }]
+    }
+  }, {
+    "slug": "ng-atlas",
+    "id": 9295,
+    "name": "ng-atlas",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/ng-atlas.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/ng-atlas.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/ng-atlas/browse"
+      }]
+    }
+  }, {
+    "slug": "ng-atlas-example",
+    "id": 9874,
+    "name": "ng-atlas-example",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/ng-atlas-example.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/ng-atlas-example.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/ng-atlas-example/browse"
+      }]
+    }
+  }, {
+    "slug": "ogc-preview",
+    "id": 5595,
+    "name": "ogc-preview",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/ogc-preview.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/ogc-preview.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/ogc-preview/browse"
+      }]
+    }
+  }, {
+    "slug": "opaque-extractor",
+    "id": 9972,
+    "name": "opaque-extractor",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/opaque-extractor.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/opaque-extractor.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/opaque-extractor/browse"
+      }]
+    }
+  }, {
+    "slug": "python-geo-services",
+    "id": 7146,
+    "name": "Python-geo-services",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/python-geo-services.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/python-geo-services.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/python-geo-services/browse"
+      }]
+    }
+  }, {
+    "slug": "ras-app",
+    "id": 9842,
+    "name": "ras-app",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/ras-app.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/ras-app.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/ras-app/browse"
+      }]
+    }
+  }, {
+    "slug": "ras-ui",
+    "id": 9841,
+    "name": "ras-ui",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/ras-ui.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/ras-ui.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/ras-ui/browse"
+      }]
+    }
+  }, {
+    "slug": "resourceset-api",
+    "id": 8015,
+    "name": "resourceset-api",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/resourceset-api.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/resourceset-api.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/resourceset-api/browse"
+      }]
+    }
+  }, {
+    "slug": "resourcesets",
+    "id": 8057,
+    "name": "resourcesets",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/resourcesets.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/resourcesets.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/resourcesets/browse"
+      }]
+    }
+  }, {
+    "slug": "s3-download-test",
+    "id": 5543,
+    "name": "s3-download-test",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/s3-download-test.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/s3-download-test.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/s3-download-test/browse"
+      }]
+    }
+  }, {
+    "slug": "stamp",
+    "id": 8223,
+    "name": "stamp",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/stamp.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/stamp.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/stamp/browse"
+      }]
+    }
+  }, {
+    "slug": "standalone",
+    "id": 7672,
+    "name": "standalone",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/standalone.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/standalone.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/standalone/browse"
+      }]
+    }
+  }, {
+    "slug": "statsd-elasticsearch-docker",
+    "id": 9866,
+    "name": "statsd-elasticsearch-docker",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/statsd-elasticsearch-docker.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/statsd-elasticsearch-docker.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/statsd-elasticsearch-docker/browse"
+      }]
+    }
+  }, {
+    "slug": "target-manager",
+    "id": 6617,
+    "name": "target-manager",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/target-manager.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/target-manager.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/target-manager/browse"
+      }]
+    }
+  }, {
+    "slug": "tcfb",
+    "id": 7144,
+    "name": "Tcfb",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/tcfb.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/tcfb.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/tcfb/browse"
+      }]
+    }
+  }, {
+    "slug": "test-data",
+    "id": 10396,
+    "name": "test-data",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/test-data.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/test-data.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/test-data/browse"
+      }]
+    }
+  }, {
+    "slug": "universe",
+    "id": 6691,
+    "name": "universe",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/universe.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/universe.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/universe/browse"
+      }]
+    }
+  }, {
+    "slug": "webret",
+    "id": 6065,
+    "name": "webret",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/webret.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/webret.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/webret/browse"
+      }]
+    }
+  }, {
+    "slug": "websl-algorithms",
+    "id": 10168,
+    "name": "websl-algorithms",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/websl-algorithms.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/websl-algorithms.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/websl-algorithms/browse"
+      }]
+    }
+  }, {
+    "slug": "websl-api",
+    "id": 9104,
+    "name": "websl-api",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/websl-api.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/websl-api.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/websl-api/browse"
+      }]
+    }
+  }, {
+    "slug": "websl-ui",
+    "id": 8513,
+    "name": "websl-ui",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/websl-ui.git",
+        "name": "http"
+      }, {
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/websl-ui.git",
+        "name": "ssh"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/websl-ui/browse"
+      }]
+    }
+  }, {
+    "slug": "wfs-relative-time-filter",
+    "id": 7141,
+    "name": "Wfs-relative-time-filter",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+      "key": "PIR",
+      "id": 1745,
+      "name": "OPIR Architecture",
+      "description": "A project to contain all the development activities for Overhead Persistent InfraRed (OPIR) tools and architecture.This project represents the development being performed at NASIC. The OPIR tools that this project will include are the Information Manager",
+      "public": false,
+      "type": "NORMAL",
+      "links": {
+        "self": [{
+          "href": "https://bitbucket.di2e.net/projects/PIR"
+        }]
+      }
+    },
+    "public": false,
+    "links": {
+      "clone": [{
+        "href": "ssh://git@bitbucket.di2e.net:7999/pir/wfs-relative-time-filter.git",
+        "name": "ssh"
+      }, {
+        "href": "https://john.a.bauer@bitbucket.di2e.net/scm/pir/wfs-relative-time-filter.git",
+        "name": "http"
+      }],
+      "self": [{
+        "href": "https://bitbucket.di2e.net/projects/PIR/repos/wfs-relative-time-filter/browse"
+      }]
+    }
+  }]
+}

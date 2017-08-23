@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Process } from '../models'
 
 @Component({
   selector: 'app-process-view',
@@ -8,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class ProcessViewComponent implements OnInit {
 
   constructor() { }
-
+  @Input() selected : Process
+  
   ngOnInit() {
   }
-
 }

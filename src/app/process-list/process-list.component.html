@@ -1,3 +1,20 @@
-<p>
-  process-list works!
-</p>
+<div class="split-pane-content-secondary" style="height:100%;">
+  <div class="lower">
+    <vertical-split-pane primary-component-minsize="35" secondary-component-minsize="35" primary-component-initialratio="0.8">
+      <div class="split-pane-content-primary">
+        <div class="left">
+          <h4>Process List</h4>
+          <ng-table [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)" [rows]="rows"
+            [columns]="columns">
+          </ng-table>
+        </div>
+      </div>
+      <div class="split-pane-content-secondary">
+        <div class="right">
+          <h4>Process Details</h4>
+          <app-process-view [selected]="selected"></app-process-view>
+        </div>
+      </div>
+    </vertical-split-pane>
+  </div>
+</div>

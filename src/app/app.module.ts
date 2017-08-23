@@ -3,19 +3,30 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LocalStorageModule } from 'angular-2-local-storage';
+import { SplitPaneModule } from 'ng2-split-pane';
+import { Ng2TableModule } from 'ng2-table/ng2-table';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProcessListComponent } from './process-list/process-list.component';
 import { DependencyMatrixComponent } from './dependency-matrix/dependency-matrix.component';
 import { DependencyGraphComponent } from './dependency-graph/dependency-graph.component';
-import { ProcessViewComponent } from './process-view/process-view.component'
+import { ProcessViewComponent } from './process-view/process-view.component';
+import { DataService } from './data.service';
+import { DataManagerComponent } from './data-manager/data-manager.component';
+import { SettingsComponent } from './settings/settings.component';
+
 
 const appRoutes: Routes = [
   { path: 'home', component: ProcessListComponent },
   { path: 'process/:id', component: ProcessViewComponent },
   { path: 'matrix', component: DependencyMatrixComponent },
+  { path: 'database', component: DataManagerComponent },
+  { path: 'settings', component: SettingsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];
@@ -27,17 +38,26 @@ const appRoutes: Routes = [
     ProcessListComponent,
     ProcessViewComponent,
     DependencyMatrixComponent,
-    DependencyGraphComponent
+    DependencyGraphComponent,
+    DataManagerComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpModule,
     RouterModule.forRoot(appRoutes),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    LocalStorageModule.withConfig({
+      prefix: 'depends',
+      storageType: 'localStorage'
+    }),
+    SplitPaneModule,
+    Ng2TableModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
