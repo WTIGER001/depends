@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Database } from '../models';
 import { DataService } from '../data.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-data-manager',
@@ -31,6 +32,13 @@ export class DataManagerComponent implements OnInit {
     this.dataService.addFiles(files, () => {
 
     })
+  }
+
+  downloadFile() {
+    let data: string = JSON.stringify(this.database)
+    var blob = new Blob([data], { type: 'application/json;charset=utf-8' });
+    saveAs(blob, 'database.json');
+
   }
 
   public readProcessFile(slug: string) {

@@ -4,8 +4,8 @@
     aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse mr-auto" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/home"><i class="fa fa-list" aria-hidden="true"></i> List </a>
       </li>
@@ -13,13 +13,34 @@
         <a class="nav-link" routerLink="/matrix"><i class="fa fa-th" aria-hidden="true"></i> Matrix </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/matrix"><i class="fa fa-download" aria-hidden="true"></i> Export </a>
+        <a class="nav-link" routerLink="/matrix"><i class="fa fa-share-alt" aria-hidden="true"></i> Network </a>
       </li>
+    </ul>
+    <!--
+    <div ngbDropdown class="d-inline-block">
+      <i class="fa fa-ellipsis-v" aria-hidden="true" id="dropdownBasic1" ngbDropdownToggle></i>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" placement="top-right">
+        <button class="dropdown-item"><i class="fa fa-upload" aria-hidden="true"></i> Upload Database</button>
+        <button class="dropdown-item"><i class="fa fa-download" aria-hidden="true" ></i> Download Database</button>
+        <button class="dropdown-item"><i class="fa fa-cog" aria-hidden="true"></i> Settings</button>
+      </div>
+    </div>
+  -->
+    <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/database"><i class="fa fa-database" aria-hidden="true"></i> Data Manager </a>
+        <a class="nav-link" routerLink="/database"><i class="fa fa-database" aria-hidden="true"></i></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings </a>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home"><i class="fa fa-eraser" aria-hidden="true" placement="bottom" ngbTooltip="Clear Database"></i></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home"><i class="fa fa-upload" aria-hidden="true" placement="bottom" ngbTooltip="Upload Database"></i></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home"><i class="fa fa-download" aria-hidden="true" placement="bottom" ngbTooltip="Download Database"></i></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home"><i class="fa fa-cog" aria-hidden="true" placement="bottom" ngbTooltip="Settings"></i></a>
       </li>
     </ul>
   </div>
