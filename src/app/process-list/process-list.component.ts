@@ -44,7 +44,7 @@ export class ProcessListComponent implements OnInit {
   public length: number = 0;
 
   public config: any = {
-    paging: true,
+    paging: false,
     sorting: { columns: this.columns },
     filtering: { filterString: '' },
     className: ['table-striped', 'table-bordered']
