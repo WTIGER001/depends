@@ -18,12 +18,15 @@
     "testTsconfig": "tsconfig.spec.json",
     "prefix": "app",
     "styles": [
-      "styles.css"
+      "styles.css",
+      "../node_modules/cytoscape-panzoom/cytoscape.js-panzoom.css"
     ],
     "scripts": [
+      "../node_modules/jquery/dist/jquery.js",
       "../node_modules/jszip/dist/jszip.js",
       "../node_modules/cytoscape/dist/cytoscape.js",
-      "../node_modules/file-saver/FileSaver.js"
+      "../node_modules/file-saver/FileSaver.js",
+      "../node_modules/cytoscape-panzoom/cytoscape-panzoom.js"
     ],
     "environmentSource": "environments/environment.ts",
     "environments": {

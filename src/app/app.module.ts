@@ -25,6 +25,7 @@ const appRoutes: Routes = [
   { path: 'home', component: ProcessListComponent },
   { path: 'process/:id', component: ProcessViewComponent },
   { path: 'matrix', component: DependencyMatrixComponent },
+  { path: 'graph', component: DependencyGraphComponent },
   { path: 'database', component: DataManagerComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
