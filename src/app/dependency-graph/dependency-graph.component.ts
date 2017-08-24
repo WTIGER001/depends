@@ -73,8 +73,9 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
         rows: 1
       }
     });
-
-    pz(cytoscape)
+    if (typeof cytoscape('core', 'panzoom') !== 'function') {
+      pz(cytoscape)
+    }
     var defaults = {}
     this.cy.panzoom(defaults);
   }
