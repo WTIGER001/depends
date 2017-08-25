@@ -1,6 +1,5 @@
 <h4>Database Manager</h4>
 
-
 <div class="card">
   <div class="card-header">
     Featured
@@ -13,20 +12,3 @@
     <button class="btn btn-primary" (click)="clearDb()">Clear Database</button>
     <button class="btn btn-primary" (click)="downloadFile()">Download Database</button>
   </div>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <h4 class="card-title">Import from Bitbucket</h4>
-    <div class="card-text">
-      <div *ngFor="let repo of repos">
-        <button class="btn btn-primary" (click)="readProcessFile(repo.slug)">Read</button> {{repo.slug}}
-      </div>
-    </div>
-    <button class="btn btn-primary" (click)="getRepoList()">List Repos</button>
-    <button class="btn btn-primary" (click)="readRepos()">Read Repos</button>
-  </div>
-</div>

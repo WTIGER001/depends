@@ -7,7 +7,8 @@ import { HttpModule } from '@angular/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { SplitPaneModule } from 'ng2-split-pane';
+import { SplitPaneModule } from 'ng2-split-pane/lib/ng2-split-pane';
+
 import { Ng2TableModule } from 'ng2-table/ng2-table';
 
 import { AppComponent } from './app.component';
