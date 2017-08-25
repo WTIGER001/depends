@@ -108,5 +108,15 @@ export class Styles {
             "background-color": "#BAB6AB",
             "text-outline-color": "#BAB6AB"
         }
+    }, {
+        "selector": "node.hidden",
+        "style": {
+            "display": "none"
+        }
+    }, {
+        "selector": "node.filtered",
+        "style": {
+            "display": "none"
+        }
     }]
 }

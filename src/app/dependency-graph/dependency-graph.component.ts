@@ -20,7 +20,7 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
   cy: any;
   db: Database
   styles = new Styles()
-  layout: string = "circle"
+  layout: string = "concentric"
   layoutChoices = [
     "circle",
     "cose",
@@ -30,77 +30,86 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     "dagre"
   ]
   types = [
-    "Process", "Technology", "Library", "Data Type", "Endpoint", "Service Call", "Algorithm Invoked"
+    "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm Invoked"
   ]
   filtered = new Array<string>()
+  autoLayout = true
+  allNodes = null;
+  allEles = null;
+
   constructor(private dataSvc: DataService) {
 
+  }
 
+  public isLayout(l: string): boolean {
+    return this.layout == l
+  }
+
+  public isFiltered(l: string): boolean {
+    return _.includes(this.filtered, l)
   }
 
   public setLayout(newLayout: string) {
     this.layout = newLayout
-    let l = this.cy.layout({
+    this.update()
+  }
+
+  public update() {
+    let layoutOptions = {
       name: this.layout,
       nodeSpacing: 5,
       minNodeSpacing: 30,
       edgeLengthVal: 45,
       animate: true
-    });
-    l.run()
-    this.cy.reset()
-    this.cy.fit()
+    }
+
+    this.getActiveEles().layout(layoutOptions).run()
+    // let l: any
+    // if (this.autoLayout) {
+    //   this.cy.elements().not('.filtered').not('.hidden').layout(layoutOptions).run()
+    // } else {
+    //   this.cy.layout(layoutOptions).run()
+    // }
+
+    // this.fit()
   }
 
   public toggleFilter(t) {
+    // Toggle the filter
     let len = this.filtered.length
     let success = _.pull(this.filtered, t)
     if (success.length == len) {
       this.filtered.push(t)
     }
 
-    let keep = new Array<GraphItem>()
-    let remove = new Array<GraphItem>()
-    this.db.graph.forEach(item => {
-      if (item.group == 'nodes') {
-        if (_.includes(this.filtered, item.data.type)) {
-          remove.push(item)
-        } else {
-          keep.push(item)
+    console.log("Filters:  " + JSON.stringify(this.filtered));
+
+    this.cy.batch(() => {
+      this.cy.nodes().forEach(p => {
+        let n = p._private
+        let type = n.data['type']
+        p.removeClass('filtered')
+        if (_.includes(this.filtered, type)) {
+          console.log("Filtering " + n.data['id'])
+          p.addClass('filtered')
         }
-      } else {
-        keep.push(item)
-      }
+      });
+      this.update()
     })
 
-    console.log("Removing " + remove.length + " items");
-    remove.forEach(item => {
-      console.log("Removing " + item.data.id);
-      let a = this.cy.getElementById(item.data.id)
-      this.cy.remove(a)
-    })
+    // this.update()
+  }
 
-    console.log("Done Removing " + remove.length + " items");
+  public highlight(node) {
+    var nhood = node.closedNeighborhood();
+    var others = this.cy.elements().not(nhood);
 
-    keep.forEach(item => {
-      let a = this.cy.getElementById(item.data.id)
-      if (item.data.type == t) {
-        console.log("Checking on  " + item.data.id);
-      }
-      if (!a) {
-        if (item.data.type == t) {
-          console.log(JSON.stringify(a))
-          console.log("Adding  " + item.data.id);
-        }
-        this.cy.add(item)
-      } else {
-        if (item.data.type == t) {
-          console.log("Already There  " + item.data.id);
-        }
-        // console.log("I think it is already there  " + item.data.id);
-      }
+    this.cy.batch(() => {
+      others.addClass('hidden');
+      nhood.removeClass('hidden');
+
+      this.update()
     })
-    this.setLayout(this.layout)
   }
 
   ngAfterContentInit() {
@@ -121,55 +130,72 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
   }
 
   ngOnInit() {
-
+    // Setup Cy
     this.cy = cytoscape({
       container: this.drawingArea.nativeElement,
-      style: this.styles.styles,
-      layout: {
-        name: 'grid',
-        rows: 1
-      }
+      style: this.styles.styles
     });
-    // if (typeof cytoscape('core', 'panzoom') !== 'function') {
-    //   pz(cytoscape)
-    // }
-    var defaults = {}
-    this.cy.panzoom(defaults);
-    this.setUpSelector()
+    this.setUpExtensions()
+    this.setUpEvents()
 
+    // Add the nodes
     this.dataSvc.getDb().subscribe(db => {
       this.db = db
-
-      console.log("GRAPH" + JSON.stringify(db.graph));
       if (db.graph) {
+        // Add the nodes
         db.graph.forEach((i: GraphItem) => {
           this.cy.add(i)
-          console.log("ADDING " + i.data.id + " TYPE " + i.data.type);
         })
-        let l = this.cy.layout({
-          name: this.layout
-        });
-        l.run()
-        this.cy.reset()
-        this.cy.fit()
+
+        // Get the collections
+        this.allNodes = this.cy.nodes();
+        this.allEles = this.cy.elements();
+
+        // Layout
+        this.update()
       }
     })
   }
 
-  private setUpSelector() {
+  private setUpExtensions() {
+    // Setup Extensions
+    var defaults = {}
+    this.cy.panzoom(defaults);
+  }
+
+  private setUpEvents() {
     this.cy.on('tap', 'node', evt => {
       let _id = evt.target.id();
       let t = evt.target;
-      console.log("Selected Node " + JSON.stringify(evt.target.id()));
+      this.highlight(t);
     });
     this.cy.on('tap', 'edge', evt => {
       let _id = evt.target.id();
-      console.log("Selected Edge " + _id);
     });
     this.cy.on('taphold', 'node', evt => {
       let _id = evt.target.id();
       let t = evt.target;
-      console.log("Tap Hold Node " + JSON.stringify(evt.target.id()));
     });
+    this.cy.on('unselect', 'node', evt => {
+      this.cy.batch(() => {
+        this.cy.elements().removeClass('hidden')
+        this.update()
+      })
+    })
+  }
+
+  private debug(obj: any) {
+    let keys = Object.keys(obj)
+    keys.forEach(k => {
+      console.log(k);
+    })
+  }
+
+  public getActiveEles(): any {
+    if (this.autoLayout) {
+      return this.cy.elements().not('.filtered').not('.hidden')
+    } else {
+      return this.cy.elements()
+    }
   }
 }

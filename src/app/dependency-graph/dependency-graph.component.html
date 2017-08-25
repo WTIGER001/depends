@@ -1,7 +1,18 @@
 <h4> Network Graph</h4>
-<button class="btn btn-secondary" *ngFor="let l of layoutChoices" (click)="setLayout(l)">{{l}}</button>
+<div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons">
+  <button class="btn btn-secondary btn-sm" *ngFor="let l of layoutChoices" (click)="setLayout(l)" [ngClass]="{'active': isLayout(l)}">{{l}}</button>
+</div>
 
-<button class="btn btn-info" *ngFor="let t of types" (click)="toggleFilter(t)">{{t}}</button>
+<div class="btn-group btn-group-sm mb-1 mr-auto" role="group" data-toggle="buttons">
+  <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t)" [ngClass]="{'active': isFiltered(t)}">{{t}}</button>
+</div>
+
+<label class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" [(ngModel)]="autoLayout">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Automatic Layout</span>
+  </label>
+
 <div>
   <div class="full" #drawingArea>
   </div>
