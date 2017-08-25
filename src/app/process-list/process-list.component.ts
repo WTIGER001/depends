@@ -15,7 +15,9 @@ export class ProcessListComponent implements OnInit {
 
   constructor(private dataSvc: DataService) {
     this.dataSvc.getDb().subscribe(db => {
+      console.log("Got new Database " + db.processes.length);
       this.processes = db.processes
+      this.onChangeTable(this.config);
     })
   }
 
@@ -97,7 +99,11 @@ export class ProcessListComponent implements OnInit {
     this.columns.forEach((column: any) => {
       if (column.filtering) {
         filteredData = filteredData.filter((item: any) => {
-          return item[column.name].match(column.filtering.filterString);
+          if (item[column.name]) {
+            return item[column.name].match(column.filtering.filterString);
+          }
+          console.log("OOPS " + column.name);
+          return true;
         });
       }
     });
@@ -107,15 +113,19 @@ export class ProcessListComponent implements OnInit {
     }
 
     if (config.filtering.columnName) {
-      return filteredData.filter((item: any) =>
-        item[config.filtering.columnName].match(this.config.filtering.filterString));
+      return filteredData.filter((item: any) => {
+        if (item[config.filtering.columnName]) {
+          item[config.filtering.columnName].match(this.config.filtering.filterString)
+        }
+      }
+      );
     }
 
     let tempArray: Array<any> = [];
     filteredData.forEach((item: any) => {
       let flag = false;
       this.columns.forEach((column: any) => {
-        if (item[column.name].toString().match(this.config.filtering.filterString)) {
+        if (item[column.name] && item[column.name].toString().match(this.config.filtering.filterString)) {
           flag = true;
         }
       });
@@ -137,10 +147,12 @@ export class ProcessListComponent implements OnInit {
       Object.assign(this.config.sorting, config.sorting);
     }
 
-    let filteredData = this.changeFilter(this.processes, this.config);
-    let sortedData = this.changeSort(filteredData, this.config);
-    this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
-    this.length = sortedData.length;
+    if (this.processes) {
+      let filteredData = this.changeFilter(this.processes, this.config);
+      let sortedData = this.changeSort(filteredData, this.config);
+      this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
+      this.length = sortedData.length;
+    }
   }
 
   public onCellClick(data: any): any {

@@ -117,7 +117,7 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
   }
 
   ngOnDestroy() {
-
+    this.cy.destroy()
   }
 
   ngOnInit() {
@@ -165,6 +165,11 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     this.cy.on('tap', 'edge', evt => {
       let _id = evt.target.id();
       console.log("Selected Edge " + _id);
+    });
+    this.cy.on('taphold', 'node', evt => {
+      let _id = evt.target.id();
+      let t = evt.target;
+      console.log("Tap Hold Node " + JSON.stringify(evt.target.id()));
     });
   }
 }
