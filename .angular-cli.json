@@ -26,7 +26,9 @@
       "../node_modules/jszip/dist/jszip.js",
       "../node_modules/cytoscape/dist/cytoscape.js",
       "../node_modules/file-saver/FileSaver.js",
-      "../node_modules/cytoscape-panzoom/cytoscape-panzoom.js"
+      "../node_modules/cytoscape-panzoom/cytoscape-panzoom.js",
+      "../node_modules/dagre/dist/dagre.js",
+      "../node_modules/cytoscape-dagre/cytoscape-dagre.js"
     ],
     "environmentSource": "environments/environment.ts",
     "environments": {

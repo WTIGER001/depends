@@ -3,6 +3,7 @@ export class Database {
     public dataTypes: DataType[] = new Array()
     public networks: Network[] = new Array()
     public technologies: Technology[] = new Array()
+    public graph: GraphItem[] = new Array()
 }
 
 export class Process {
@@ -21,7 +22,7 @@ export class Process {
     public intents_used: Intent[] = new Array()
     public service_calls: ServiceCall[] = new Array()
     public service_endpoints: ServiceEndpoint[] = new Array()
-    public algorithms_invoked: Algorithm[] = new Array()
+    public algorithms_invoked: AlgInvoke[] = new Array()
 }
 
 export class Resources {
@@ -64,7 +65,7 @@ export class ServiceEndpoint {
     public endpoint: string
 }
 
-export class Aglorithm {
+export class AlgInvoke {
     public alg_name: string
     public version: string
 }
@@ -86,4 +87,27 @@ export class Network {
     public network_name: String
     public platform_technologies: Technology[] = new Array()
     public installed_processes: ProcessVersion[] = new Array()
+}
+
+
+export class GraphItem {
+    group: string = 'nodes'
+    selected: false // whether the element is selected (default false)
+    selectable: true // whether the selection state is mutable (default true)
+    locked: false // when locked a node's position is immutable (default false)
+    grabbable: true // whether the node can be grabbed and moved by the user
+    classes: string = "" // a space separated list of class names that the element has
+    data: Data = new Data()
+    type: string
+}
+
+export class Data {
+    id: string // mandatory (string or number) id for each element, assigned automatically on undefined
+    label: string //optional description
+    parent: string // indicates the compound node parent id; not defined => no parent
+    source: string // the source node id (edge comes from this node)
+    target: string  // the target node id (edge goes to this node)
+    from: string
+    to: string
+    type: string
 }

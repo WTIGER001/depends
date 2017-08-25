@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild, AfterContentInit, HostListener, OnDestroy } from '@angular/core';
-import * as cytoscape from 'cytoscape'
-import * as pz from 'cytoscape-panzoom'
+
+import { DataService } from '../data.service'
+import { Database, GraphItem } from '../models'
+import * as _ from 'lodash'
+// import * as cytoscape from 'cytoscape'
+// import * as pz from 'cytoscape-panzoom'
+
 
 @Component({
   selector: 'app-dependency-graph',
@@ -11,9 +16,85 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 
   @ViewChild('drawingArea') drawingArea
   cy: any;
+  db: Database
+  layout: string = "circle"
+  layoutChoices = [
+    "circle",
+    "cose",
+    "grid",
+    "concentric",
+    "breadthfirst",
+    "dagre"
+  ]
+  types = [
+    "Process", "Technology", "Library", "Data Type", "Endpoint", "Service Call", "Algorithm Invoked"
+  ]
+  filtered = new Array<string>()
+  constructor(private dataSvc: DataService) {
 
-  constructor() {
 
+  }
+
+  public setLayout(newLayout: string) {
+    this.layout = newLayout
+    let l = this.cy.layout({
+      name: this.layout,
+      animate: true
+    });
+    l.run()
+    this.cy.reset()
+    this.cy.fit()
+  }
+
+  public toggleFilter(t) {
+    let len = this.filtered.length
+    let success = _.pull(this.filtered, t)
+    if (success.length == len) {
+      this.filtered.push(t)
+    }
+
+    let keep = new Array<GraphItem>()
+    let remove = new Array<GraphItem>()
+    this.db.graph.forEach(item => {
+      if (item.group == 'nodes') {
+        if (_.includes(this.filtered, item.data.type)) {
+          remove.push(item)
+        } else {
+          keep.push(item)
+        }
+      } else {
+        keep.push(item)
+      }
+    })
+
+    console.log("Removing " + remove.length + " items");
+    remove.forEach(item => {
+      console.log("Removing " + item.data.id);
+      let a = this.cy.getElementById(item.data.id)
+      this.cy.remove(a)
+    })
+
+    console.log("Done Removing " + remove.length + " items");
+
+    keep.forEach(item => {
+      let a = this.cy.getElementById(item.data.id)
+      if (item.data.type == t) {
+        console.log("Checking on  " + item.data.id);
+      }
+      if (!a) {
+        if (item.data.type == t) {
+          console.log(JSON.stringify(a))
+          console.log("Adding  " + item.data.id);
+        }
+        this.cy.add(item)
+      } else {
+        if (item.data.type == t) {
+          console.log("Already There  " + item.data.id);
+        }
+        // console.log("I think it is already there  " + item.data.id);
+      }
+    })
+    this.setLayout(this.layout)
   }
 
   ngAfterContentInit() {
@@ -37,46 +118,105 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 
     this.cy = cytoscape({
       container: this.drawingArea.nativeElement,
-      elements: [ // list of graph elements to start with
-        { // node a
-          data: { id: 'a' }
-        },
-        { // node b
-          data: { id: 'b' }
-        },
-        { // edge ab
-          data: { id: 'ab', source: 'a', target: 'b' }
-        }
-      ],
       style: [ // the stylesheet for the graph
         {
           selector: 'node',
-          style: {
-            'background-color': '#666',
-            'label': 'data(id)'
+          css: {
+            shape: 'rectangle',
+            content: 'data(id)',
+            'background-color': 'red'
+          }
+        }, {
+          selector: 'edge',
+          css: {
+            content: 'data(label)',
+            'target-arrow-shape': 'triangle',
+            'curve-style': 'bezier',
+            'background-color': '#353a41'
           }
         },
-
         {
-          selector: 'edge',
-          style: {
-            'width': 3,
-            'line-color': '#ccc',
-            'target-arrow-color': '#ccc',
-            'target-arrow-shape': 'triangle'
+          selector: ':selected',
+          css: {
+            'background-color': '#57a1d2'
+          }
+        },
+        {
+          selector: 'node[type = "Library"]',
+          css: {
+            shape: 'ellipse',
+            'background-color': 'blue'
+          }
+        },
+        {
+          selector: 'node[type = "Technology"]',
+          css: {
+            shape: 'bottomroundrectangle',
+            'background-color': 'orange'
+          }
+        },
+        {
+          selector: 'node[type = "Process"]',
+          css: {
+            shape: 'cutrectangle',
+            'background-color': 'orange'
+          }
+        },
+        {
+          selector: 'node[type = "Data Type"]',
+          css: {
+            shape: 'barrel',
+            'background-color': '#CCCCCC'
+          }
+        },
+        {
+          selector: 'node[type = "Service Call"]',
+          css: {
+            shape: 'barrel',
+            'background-color': '#000000'
           }
         }
       ],
-
       layout: {
         name: 'grid',
         rows: 1
       }
     });
-    if (typeof cytoscape('core', 'panzoom') !== 'function') {
-      pz(cytoscape)
-    }
+    // if (typeof cytoscape('core', 'panzoom') !== 'function') {
+    //   pz(cytoscape)
+    // }
     var defaults = {}
     this.cy.panzoom(defaults);
+    this.setUpSelector()
+
+    this.dataSvc.getDb().subscribe(db => {
+      this.db = db
+
+      console.log("GRAPH" + JSON.stringify(db.graph));
+      if (db.graph) {
+        db.graph.forEach((i: GraphItem) => {
+          this.cy.add(i)
+          console.log("ADDING " + i.data.id + " TYPE " + i.data.type);
+        })
+        let l = this.cy.layout({
+          name: this.layout
+        });
+        l.run()
+        this.cy.reset()
+        this.cy.fit()
+      }
+    })
+  }
+
+  private setUpSelector() {
+    this.cy.on('tap', 'node', evt => {
+      let _id = evt.target.id();
+      let t = evt.target;
+      console.log("Selected Node " + JSON.stringify(evt.target.id()));
+    });
+    this.cy.on('tap', 'edge', evt => {
+      let _id = evt.target.id();
+      console.log("Selected Edge " + _id);
+    });
   }
 }

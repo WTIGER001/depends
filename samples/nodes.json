@@ -1,0 +1,323 @@
+[{
+  "group": "nodes",
+  "data": {
+    "id": "scoutdir2"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "dcos"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "dcos",
+    "id": "scoutdir2:dcos",
+    "label": ">=8.5"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "kafka"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "kafka",
+    "id": "scoutdir2:kafka",
+    "label": ">=1.0"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "docker"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "docker",
+    "id": "scoutdir2:docker",
+    "label": ">=1.13"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "hibernate"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "hibernate",
+    "id": "scoutdir2:hibernate",
+    "label": ">=8.5"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "djanjo"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "djanjo",
+    "id": "scoutdir2:djanjo",
+    "label": ">=1.0"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "openssl"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "openssl",
+    "id": "scoutdir2:openssl",
+    "label": ">=1.0"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "HDF5 Frame"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "HDF5 Frame",
+    "id": "scoutdir2:HDF5 Frame",
+    "label": "0.1"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "KEY JWT"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "KEY JWT",
+    "id": "scoutdir2:KEY JWT",
+    "label": ">=1.0"
+  }
+}, {
+  "group": "nodes",
+  "data": {}
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "process"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "process",
+    "id": "scoutdir2:process",
+    "label": "0.1"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "search"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "target": "scoutdir2",
+    "source": "search",
+    "id": "scoutdir2:search",
+    "label": "0.1"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "events_server:getFiletypes"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "events_server:getFiletypes",
+    "id": "scoutdir2:events_server:getFiletypes",
+    "label": "0.1"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "scoutdir2:getFiletypes"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "scoutdir2:getFiletypes",
+    "id": "scoutdir2:scoutdir2:getFiletypes",
+    "label": "1.2"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "scoutdir2:info"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "scoutdir2:info",
+    "id": "scoutdir2:scoutdir2:info",
+    "label": "1.2"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "scoutdir2:health"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir2",
+    "target": "scoutdir2:health",
+    "id": "scoutdir2:scoutdir2:health",
+    "label": "1.2"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "scoutdir"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "dcos",
+    "id": "scoutdir:dcos",
+    "label": ">=8.5"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "kafka",
+    "id": "scoutdir:kafka",
+    "label": ">=1.0"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "docker",
+    "id": "scoutdir:docker",
+    "label": ">=1.13"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "hibernate",
+    "id": "scoutdir:hibernate",
+    "label": ">=8.5"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "djanjo",
+    "id": "scoutdir:djanjo",
+    "label": ">=1.0"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "openssl",
+    "id": "scoutdir:openssl",
+    "label": ">=1.0"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "HDF5 Frame",
+    "id": "scoutdir:HDF5 Frame",
+    "label": "0.1"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "KEY JWT",
+    "id": "scoutdir:KEY JWT",
+    "label": ">=1.0"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "process",
+    "id": "scoutdir:process",
+    "label": "0.1"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "target": "scoutdir",
+    "source": "search",
+    "id": "scoutdir:search",
+    "label": "0.1"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "events_server:getFiletypes",
+    "id": "scoutdir:events_server:getFiletypes",
+    "label": "0.1"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "scoutdir:getFiletypes"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "scoutdir:getFiletypes",
+    "id": "scoutdir:scoutdir:getFiletypes",
+    "label": "1.2"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "scoutdir:info"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "scoutdir:info",
+    "id": "scoutdir:scoutdir:info",
+    "label": "1.2"
+  }
+}, {
+  "group": "nodes",
+  "data": {
+    "id": "scoutdir:health"
+  }
+}, {
+  "group": "edges",
+  "data": {
+    "source": "scoutdir",
+    "target": "scoutdir:health",
+    "id": "scoutdir:scoutdir:health",
+    "label": "1.2"
+  }
+}]

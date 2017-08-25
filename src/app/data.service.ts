@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptionsArgs, RequestOptions, Headers } from '@angular/http'
 import { Observable, BehaviorSubject } from 'rxjs'
 import { LocalStorageService } from 'angular-2-local-storage';
-import { Database, Process } from './models'
+import { Database, Process, GraphItem } from './models'
 import * as jzip from 'jszip';
 import * as _ from 'lodash';
 
@@ -21,13 +21,15 @@ export class DataService {
   constructor(private localStorageService: LocalStorageService, private http: Http) {
     console.log("Reading from Local Storage");
     let dbString = this.localStorageService.get<string>("database")
-    console.log("Read " + dbString);
+    // console.log("Read " + dbString);
+    var db: Database
     if (dbString) {
-      let db: Database = JSON.parse(dbString)
-      this.database = new BehaviorSubject(db)
+      db = JSON.parse(dbString)
     } else {
-      this.database = new BehaviorSubject(new Database())
+      db = new Database()
     }
+    DataService.generateGraph(db)
+    this.database = new BehaviorSubject(db)
   }
 
   public getDb(): Observable<Database> {
@@ -72,6 +74,7 @@ export class DataService {
         });
       }
       // local.remove("database")
+      DataService.generateGraph(db)
       local.set("database", JSON.stringify(db))
       console.log("Wrote to Local Storage");
 
@@ -124,6 +127,193 @@ export class DataService {
   //     });
 
   // }
+
+  public static generateGraph(db: Database) {
+    let nodes = new Map<string, GraphItem>()
+
+    db.processes.forEach(p => {
+      DataService.addTo(p, nodes)
+    })
+    let items = new Array<GraphItem>()
+    nodes.forEach((value: GraphItem, key: string) => {
+
+      if (value.data.type == undefined) {
+        console.log("Something is BAD " + JSON.stringify(value));
+      }
+
+      if ((value.group === "edges" && value.data.source && value.data.target) || value.group == 'nodes') {
+        items.push(value)
+      } else {
+        console.log("Something is BAD " + JSON.stringify(value));
+      }
+    });
+    db.graph = items
+  }
+
+  private static addTo(p: Process, nodes: Map<string, GraphItem>) {
+    //COmponent
+    // if (!nodes.has(p.component_name)) {
+    //   DataService.add(p.component_name, nodes).data.type = "Component"
+    // }
+
+    // Generate the parent node
+    if (!nodes.has(p.process_name)) {
+      let n = DataService.add(p.process_name, nodes)
+      n.data.parent = p.component_name
+      n.data.type = "Process"
+    }
+
+    // Technologies
+    p.platform_technologies_used.forEach(t => {
+      if (!nodes.has(t.technology)) {
+        DataService.add(t.technology, nodes).data.type = "Technology"
+      }
+      let e = new GraphItem()
+      e.group = 'edges'
+      e.data.source = p.process_name
+      e.data.target = t.technology
+      e.data.from = e.data.source
+      e.data.to = e.data.target
+      e.data.id = p.process_name + ":" + t.technology
+      e.data.label = t.version
+      e.data.type = "Technology"
+      // e.type = "Technology"
+      nodes.set(e.data.id, e)
+    })
+
+    // Libraries
+    p.third_party_libraries.forEach(l => {
+      if (!nodes.has(l.library)) {
+        DataService.add(l.library, nodes).data.type = "Library"
+      }
+      let e = new GraphItem()
+      e.group = 'edges'
+      e.data.source = p.process_name
+      e.data.target = l.library
+      e.data.id = p.process_name + ":" + l.library
+      e.data.label = l.version
+      e.data.type = "Library"
+      nodes.set(e.data.id, e)
+    })
+
+    // Data Written
+    p.data_consumed.forEach(d => {
+      if (!nodes.has(d.data_name)) {
+        DataService.add(d.data_name, nodes).data.type = "Data Type"
+      }
+      let e = new GraphItem()
+      e.group = 'edges'
+      e.data.source = p.process_name
+      e.data.target = d.data_name
+      e.data.id = p.process_name + ":" + d.data_name
+      e.data.label = d.version
+      e.data.type = "Data Consumed"
+      nodes.set(e.data.id, e)
+    })
+
+    // Data Consumed
+    p.data_written.forEach(d => {
+      if (!nodes.has(d.data_name)) {
+        let n = DataService.add(d.data_name, nodes)
+        n.data.type = "Data Type"
+      }
+      let e = new GraphItem()
+      e.group = 'edges'
+      e.data.target = p.process_name
+      e.data.source = d.data_name
+      e.data.id = p.process_name + ":" + d.data_name
+      e.data.label = d.version
+      e.data.type = "Data Writte"
+      nodes.set(e.data.id, e)
+    })
+
+    // Intents 
+    p.intents_used.forEach(d => {
+      if (!nodes.has(d.intent_name)) {
+        DataService.add(d.intent_name, nodes).data.type = "Intent"
+      }
+      let e = new GraphItem()
+      e.group = 'edges'
+      e.data.source = p.process_name
+      e.data.target = d.intent_name
+      e.data.id = p.process_name + ":" + d.intent_name
+      e.data.label = d.version
+      e.data.type = "Intent Used"
+      nodes.set(e.data.id, e)
+    })
+
+    // Intents
+    p.intents_handled.forEach(d => {
+      if (!nodes.has(d.intent_name)) {
+        DataService.add(d.intent_name, nodes).data.type = "Intent"
+      }
+      let e = new GraphItem()
+      e.group = 'edges'
+      e.data.target = p.process_name
+      e.data.source = d.intent_name
+      e.data.id = p.process_name + ":" + d.intent_name
+      e.data.label = d.version
+      e.data.type = "Intent Handled"
+      nodes.set(e.data.id, e)
+    })
+
+    // Service Calls 
+    p.service_calls.forEach(d => {
+      let id = d.process_name + ":" + d.endpoint
+      if (!nodes.has(id)) {
+        DataService.add(id, nodes).data.type = "Service Call"
+      }
+      let e = new GraphItem()
+      e.group = 'edges'
+      e.data.source = p.process_name
+      e.data.target = id
+      e.data.id = p.process_name + ":" + id
+      e.data.label = d.version
+      e.data.type = "Service Called"
+      nodes.set(e.data.id, e)
+    })
+
+    // Endpoints
+    p.service_endpoints.forEach(d => {
+      let id = p.process_name + ":" + d.endpoint
+      if (!nodes.has(id)) {
+        DataService.add(id, nodes).data.type = "End Point"
+      }
+      let e = new GraphItem()
+      e.group = 'edges'
+      e.data.source = p.process_name
+      e.data.target = id
+      e.data.id = p.process_name + ":" + id
+      e.data.label = p.version
+      e.data.type = "Endpoint Prrovide"
+      nodes.set(e.data.id, e)
+    })
+
+    // Algorithms
+    p.algorithms_invoked.forEach(d => {
+      if (!nodes.has(d.alg_name)) {
+        DataService.add(d.alg_name, nodes).data.type = "Algorithm"
+      }
+      let e = new GraphItem()
+      e.group = 'edges'
+      e.data.source = p.process_name
+      e.data.target = d.alg_name
+      e.data.id = p.process_name + ":" + d.alg_name
+      e.data.label = p.version
+      e.data.type = "Algorithm Invoked"
+      nodes.set(e.data.id, e)
+    })
+
+  }
+
+  private static add(id: string, nodes: Map<string, GraphItem>): GraphItem {
+    if (!nodes.has(id)) {
+      let n = new GraphItem()
+      n.data.id = id
+      nodes.set(n.data.id, n)
+      return n
+    }
+  }
 
 
   public getProcessesFile(repoName: String) {
