@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, AfterContentInit, HostListener, OnDestroy
 
 import { DataService } from '../data.service'
 import { Database, GraphItem } from '../models'
+import { Styles } from '../styles'
+
 import * as _ from 'lodash'
 // import * as cytoscape from 'cytoscape'
 // import * as pz from 'cytoscape-panzoom'
@@ -17,6 +19,7 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
   @ViewChild('drawingArea') drawingArea
   cy: any;
   db: Database
+  styles = new Styles()
   layout: string = "circle"
   layoutChoices = [
     "circle",
@@ -39,6 +42,9 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     this.layout = newLayout
     let l = this.cy.layout({
       name: this.layout,
+      nodeSpacing: 5,
+      minNodeSpacing: 30,
+      edgeLengthVal: 45,
       animate: true
     });
     l.run()
@@ -118,65 +124,7 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 
     this.cy = cytoscape({
       container: this.drawingArea.nativeElement,
-      style: [ // the stylesheet for the graph
-        {
-          selector: 'node',
-          css: {
-            shape: 'rectangle',
-            content: 'data(id)',
-            'background-color': 'red'
-          }
-        }, {
-          selector: 'edge',
-          css: {
-            content: 'data(label)',
-            'target-arrow-shape': 'triangle',
-            'curve-style': 'bezier',
-            'background-color': '#353a41'
-          }
-        },
-        {
-          selector: ':selected',
-          css: {
-            'background-color': '#57a1d2'
-          }
-        },
-        {
-          selector: 'node[type = "Library"]',
-          css: {
-            shape: 'ellipse',
-            'background-color': 'blue'
-          }
-        },
-        {
-          selector: 'node[type = "Technology"]',
-          css: {
-            shape: 'bottomroundrectangle',
-            'background-color': 'orange'
-          }
-        },
-        {
-          selector: 'node[type = "Process"]',
-          css: {
-            shape: 'cutrectangle',
-            'background-color': 'orange'
-          }
-        },
-        {
-          selector: 'node[type = "Data Type"]',
-          css: {
-            shape: 'barrel',
-            'background-color': '#CCCCCC'
-          }
-        },
-        {
-          selector: 'node[type = "Service Call"]',
-          css: {
-            shape: 'barrel',
-            'background-color': '#000000'
-          }
-        }
-      ],
+      style: this.styles.styles,
       layout: {
         name: 'grid',
         rows: 1
