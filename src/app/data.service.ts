@@ -21,12 +21,15 @@ export class DataService {
   constructor(private localStorageService: LocalStorageService, private http: Http) {
     console.log("Reading from Local Storage");
     let dbString = this.localStorageService.get<string>("database")
-    // console.log("Read " + dbString);
+
     var db: Database
     if (dbString) {
+      // console.log("Read " + dbString);
       db = JSON.parse(dbString)
+      db["source"] = "Local Storage"
     } else {
       db = new Database()
+      this.loadDefaultData()
     }
     DataService.generateGraph(db)
     this.database = new BehaviorSubject(db)
@@ -380,6 +383,17 @@ export class DataService {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
+
+  public loadDefaultData() {
+    console.log("Reading Default Database");
+    this.http.get("assets/data/database.json").subscribe(res => {
+      let db = <Database>res.json()
+      DataService.generateGraph(db)
+      db["source"] = "Default"
+      this.database.next(db)
+    })
+  }
+
 }
 
 

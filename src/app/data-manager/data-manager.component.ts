@@ -12,7 +12,6 @@ export class DataManagerComponent implements OnInit {
 
   database: Database
   repos = new Array()
-
   constructor(private dataService: DataService) {
     this.dataService.getDb().subscribe(db => {
       this.database = db

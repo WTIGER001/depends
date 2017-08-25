@@ -6,9 +6,14 @@
   </div>
   <div class="card-body">
     <h4 class="card-title">Database</h4>
-    <p class="card-text">Current database has {{database.processes.length}} Processes</p>
-
-    <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".json" multiple>
-    <button class="btn btn-primary" (click)="clearDb()">Clear Database</button>
-    <button class="btn btn-primary" (click)="downloadFile()">Download Database</button>
+    <div class="card-text">
+      <p>The current source of your database is: {{database.source}}</p>
+      <p>Current database contains </p>
+      <ul>
+        <li>{{database.processes.length}} Processes</li>
+      </ul>
+      <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".json" multiple>
+      <button class="btn btn-primary" (click)="clearDb()">Clear Database</button>
+      <button class="btn btn-primary" (click)="downloadFile()">Download Database</button>
+    </div>
   </div>
