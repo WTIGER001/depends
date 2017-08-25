@@ -26,7 +26,7 @@ export class DataService {
     if (dbString) {
       // console.log("Read " + dbString);
       db = JSON.parse(dbString)
-      db["source"] = "Local Storage"
+      db.source = "Local Storage"
     } else {
       db = new Database()
       this.loadDefaultData()
@@ -389,7 +389,7 @@ export class DataService {
     this.http.get("assets/data/database.json").subscribe(res => {
       let db = <Database>res.json()
       DataService.generateGraph(db)
-      db["source"] = "Default"
+      db.source = "Default"
       this.database.next(db)
     })
   }
