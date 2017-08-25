@@ -1,1 +1,149 @@
-{"processes":[{"process_name":"scoutdir2","component_name":"catalog","executor_name":"marathon","version":"1.2","docker_base":"blah","resources":{"cpu":1,"ram":1024,"disk":0,"gpu":0,"instances":1,"dfs_storage":0,"archive_storage":0},"platform_technologies_used":[{"technology":"dcos","version":">=8.5"},{"technology":"kafka","version":">=1.0"},{"technology":"docker","version":">=1.13"}],"third_party_libraries":[{"library":"hibernate","version":">=8.5"},{"library":"djanjo","version":">=1.0"},{"library":"openssl","version":">=1.0"}],"data_written":[{"data_name":"catalog-message","version":"1.1"}],"data_consumed":[{"data_name":"HDF5 Frame","version":"0.1"},{"data_name":"KEY JWT","version":">=1.0"}],"intents_handled":[{"intent_name":"search","version":"0.1"}],"intents_used":[{"intent_name":"process","version":"0.1"}],"service_calls":[{"process_name":"events_server","endpoint":"getFiletypes","version":"0.1"}],"service_endpoints":[{"endpoint":"getFiletypes"},{"endpoint":"info"},{"endpoint":"health"}],"algorithms_invoked":[{"alg_name":"events_server","version":"0.1"}]},{"process_name":"scoutdir","component_name":"catalog","executor_name":"marathon","version":"1.2","docker_base":"blah","resources":{"cpu":1,"ram":1024,"disk":0,"gpu":0,"instances":1,"dfs_storage":0,"archive_storage":0},"platform_technologies_used":[{"technology":"dcos","version":">=8.5"},{"technology":"kafka","version":">=1.0"},{"technology":"docker","version":">=1.13"}],"third_party_libraries":[{"library":"hibernate","version":">=8.5"},{"library":"djanjo","version":">=1.0"},{"library":"openssl","version":">=1.0"}],"data_written":[{"data_name":"catalog-message","version":"1.1"}],"data_consumed":[{"data_name":"HDF5 Frame","version":"0.1"},{"data_name":"KEY JWT","version":">=1.0"}],"intents_handled":[{"intent_name":"search","version":"0.1"}],"intents_used":[{"intent_name":"process","version":"0.1"}],"service_calls":[{"process_name":"events_server","endpoint":"getFiletypes","version":"0.1"}],"service_endpoints":[{"endpoint":"getFiletypes"},{"endpoint":"info"},{"endpoint":"health"}],"algorithms_invoked":[{"alg_name":"events_server","version":"0.1"}],"source":"process"}],"graph":[{"group":"nodes","classes":"","data":{"id":"scoutdir2","parent":"catalog","type":"Process"}},{"group":"nodes","classes":"","data":{"id":"dcos","type":"Technology"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"dcos","from":"scoutdir2","to":"dcos","id":"scoutdir2:dcos","label":">=8.5","type":"Technology"}},{"group":"nodes","classes":"","data":{"id":"kafka","type":"Technology"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"kafka","from":"scoutdir2","to":"kafka","id":"scoutdir2:kafka","label":">=1.0","type":"Technology"}},{"group":"nodes","classes":"","data":{"id":"docker","type":"Technology"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"docker","from":"scoutdir2","to":"docker","id":"scoutdir2:docker","label":">=1.13","type":"Technology"}},{"group":"nodes","classes":"","data":{"id":"hibernate","type":"Library"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"hibernate","id":"scoutdir2:hibernate","label":">=8.5","type":"Library"}},{"group":"nodes","classes":"","data":{"id":"djanjo","type":"Library"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"djanjo","id":"scoutdir2:djanjo","label":">=1.0","type":"Library"}},{"group":"nodes","classes":"","data":{"id":"openssl","type":"Library"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"openssl","id":"scoutdir2:openssl","label":">=1.0","type":"Library"}},{"group":"nodes","classes":"","data":{"id":"HDF5 Frame","type":"Data Type"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"HDF5 Frame","id":"scoutdir2:HDF5 Frame","label":"0.1","type":"Data Consumed"}},{"group":"nodes","classes":"","data":{"id":"KEY JWT","type":"Data Type"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"KEY JWT","id":"scoutdir2:KEY JWT","label":">=1.0","type":"Data Consumed"}},{"group":"nodes","classes":"","data":{"id":"catalog-message","type":"Data Type"}},{"group":"edges","classes":"","data":{"target":"scoutdir2","source":"catalog-message","id":"scoutdir2:catalog-message","label":"1.1","type":"Data Writte"}},{"group":"nodes","classes":"","data":{"id":"process","type":"Intent"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"process","id":"scoutdir2:process","label":"0.1","type":"Intent Used"}},{"group":"nodes","classes":"","data":{"id":"search","type":"Intent"}},{"group":"edges","classes":"","data":{"target":"scoutdir2","source":"search","id":"scoutdir2:search","label":"0.1","type":"Intent Handled"}},{"group":"nodes","classes":"","data":{"id":"events_server:getFiletypes","type":"Service Call"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"events_server:getFiletypes","id":"scoutdir2:events_server:getFiletypes","label":"0.1","type":"Service Called"}},{"group":"nodes","classes":"","data":{"id":"scoutdir2:getFiletypes","type":"End Point"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"scoutdir2:getFiletypes","id":"scoutdir2:scoutdir2:getFiletypes","label":"1.2","type":"Endpoint Prrovide"}},{"group":"nodes","classes":"","data":{"id":"scoutdir2:info","type":"End Point"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"scoutdir2:info","id":"scoutdir2:scoutdir2:info","label":"1.2","type":"Endpoint Prrovide"}},{"group":"nodes","classes":"","data":{"id":"scoutdir2:health","type":"End Point"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"scoutdir2:health","id":"scoutdir2:scoutdir2:health","label":"1.2","type":"Endpoint Prrovide"}},{"group":"nodes","classes":"","data":{"id":"events_server","type":"Algorithm"}},{"group":"edges","classes":"","data":{"source":"scoutdir2","target":"events_server","id":"scoutdir2:events_server","label":"1.2","type":"Algorithm Invoked"}},{"group":"nodes","classes":"","data":{"id":"scoutdir","parent":"catalog","type":"Process"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"dcos","from":"scoutdir","to":"dcos","id":"scoutdir:dcos","label":">=8.5","type":"Technology"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"kafka","from":"scoutdir","to":"kafka","id":"scoutdir:kafka","label":">=1.0","type":"Technology"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"docker","from":"scoutdir","to":"docker","id":"scoutdir:docker","label":">=1.13","type":"Technology"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"hibernate","id":"scoutdir:hibernate","label":">=8.5","type":"Library"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"djanjo","id":"scoutdir:djanjo","label":">=1.0","type":"Library"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"openssl","id":"scoutdir:openssl","label":">=1.0","type":"Library"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"HDF5 Frame","id":"scoutdir:HDF5 Frame","label":"0.1","type":"Data Consumed"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"KEY JWT","id":"scoutdir:KEY JWT","label":">=1.0","type":"Data Consumed"}},{"group":"edges","classes":"","data":{"target":"scoutdir","source":"catalog-message","id":"scoutdir:catalog-message","label":"1.1","type":"Data Writte"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"process","id":"scoutdir:process","label":"0.1","type":"Intent Used"}},{"group":"edges","classes":"","data":{"target":"scoutdir","source":"search","id":"scoutdir:search","label":"0.1","type":"Intent Handled"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"events_server:getFiletypes","id":"scoutdir:events_server:getFiletypes","label":"0.1","type":"Service Called"}},{"group":"nodes","classes":"","data":{"id":"scoutdir:getFiletypes","type":"End Point"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"scoutdir:getFiletypes","id":"scoutdir:scoutdir:getFiletypes","label":"1.2","type":"Endpoint Prrovide"}},{"group":"nodes","classes":"","data":{"id":"scoutdir:info","type":"End Point"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"scoutdir:info","id":"scoutdir:scoutdir:info","label":"1.2","type":"Endpoint Prrovide"}},{"group":"nodes","classes":"","data":{"id":"scoutdir:health","type":"End Point"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"scoutdir:health","id":"scoutdir:scoutdir:health","label":"1.2","type":"Endpoint Prrovide"}},{"group":"edges","classes":"","data":{"source":"scoutdir","target":"events_server","id":"scoutdir:events_server","label":"1.2","type":"Algorithm Invoked"}}],"source":"Default"}
+{
+  "source": "None",
+  "processes": [{
+    "process_name": "scoutdir2",
+    "component_name": "catalog",
+    "executor_name": "marathon",
+    "version": "1.2",
+    "docker_base": "blah",
+    "resources": {
+      "cpu": 1,
+      "ram": 1024,
+      "disk": 0,
+      "gpu": 0,
+      "instances": 1,
+      "dfs_storage": 0,
+      "archive_storage": 0
+    },
+    "platform_technologies_used": [{
+      "technology": "dcos",
+      "version": ">=8.5"
+    }, {
+      "technology": "kafka",
+      "version": ">=1.0"
+    }, {
+      "technology": "docker",
+      "version": ">=1.13"
+    }],
+    "third_party_libraries": [{
+      "library": "hibernate",
+      "version": ">=8.5"
+    }, {
+      "library": "djanjo",
+      "version": ">=1.0"
+    }, {
+      "library": "openssl",
+      "version": ">=1.0"
+    }],
+    "data_written": [{
+      "data_name": "catalog-message",
+      "version": "1.1"
+    }],
+    "data_consumed": [{
+      "data_name": "HDF5 Frame",
+      "version": "0.1"
+    }, {
+      "data_name": "KEY JWT",
+      "version": ">=1.0"
+    }],
+    "intents_handled": [{
+      "intent_name": "search",
+      "version": "0.1"
+    }],
+    "intents_used": [{
+      "intent_name": "process",
+      "version": "0.1"
+    }],
+    "service_calls": [{
+      "process_name": "events_server",
+      "endpoint": "getFiletypes",
+      "version": "0.1"
+    }],
+    "service_endpoints": [{
+      "endpoint": "getFiletypes"
+    }, {
+      "endpoint": "info"
+    }, {
+      "endpoint": "health"
+    }],
+    "algorithms_invoked": [{
+      "alg_name": "events_server",
+      "version": "0.1"
+    }],
+    "source": "process.1"
+  }, {
+    "process_name": "scoutdir",
+    "component_name": "catalog",
+    "executor_name": "marathon",
+    "version": "1.2",
+    "docker_base": "blah",
+    "resources": {
+      "cpu": 1,
+      "ram": 1024,
+      "disk": 0,
+      "gpu": 0,
+      "instances": 1,
+      "dfs_storage": 0,
+      "archive_storage": 0
+    },
+    "platform_technologies_used": [{
+      "technology": "dcos",
+      "version": ">=8.5"
+    }, {
+      "technology": "kafka",
+      "version": ">=1.0"
+    }, {
+      "technology": "docker",
+      "version": ">=1.13"
+    }],
+    "third_party_libraries": [{
+      "library": "hibernate",
+      "version": ">=8.5"
+    }, {
+      "library": "djanjo",
+      "version": ">=1.0"
+    }, {
+      "library": "openssl",
+      "version": ">=1.0"
+    }],
+    "data_written": [{
+      "data_name": "catalog-message",
+      "version": "1.1"
+    }],
+    "data_consumed": [{
+      "data_name": "HDF5 Frame",
+      "version": "0.1"
+    }, {
+      "data_name": "KEY JWT",
+      "version": ">=1.0"
+    }],
+    "intents_handled": [{
+      "intent_name": "search",
+      "version": "0.1"
+    }],
+    "intents_used": [{
+      "intent_name": "process",
+      "version": "0.1"
+    }],
+    "service_calls": [{
+      "process_name": "events_server",
+      "endpoint": "getFiletypes",
+      "version": "0.1"
+    }],
+    "service_endpoints": [{
+      "endpoint": "getFiletypes"
+    }, {
+      "endpoint": "info"
+    }, {
+      "endpoint": "health"
+    }],
+    "algorithms_invoked": [{
+      "alg_name": "events_server",
+      "version": "0.1"
+    }],
+    "source": "process"
+  }],
+  "dataTypes": [],
+  "networks": [],
+  "technologies": []
+}
