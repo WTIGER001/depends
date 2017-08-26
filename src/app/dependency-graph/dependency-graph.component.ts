@@ -57,6 +57,10 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 
   ngAfterContentInit() {
     this.resize()
+    setTimeout(() => {
+      this.resize()
+      this.update()
+    }, 1000);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -78,11 +82,8 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 
     let navH = 100
     let navW = navH * aspect
-
-    let r3 = this.navigator.nativeElement.getBoundingClientRect()
     this.navigator.nativeElement.style.height = (navH + 6) + "px";
     this.navigator.nativeElement.style.width = navW + "px";
-
   }
 
   public isLayout(layout: any): boolean {
@@ -110,6 +111,19 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     }
 
     this.getActiveEles().layout(layoutOptions).run()
+  }
+
+  public toggleSized() {
+    this.prefs.sized = !this.prefs.sized
+    this.updateSized()
+  }
+
+  public updateSized() {
+    if (this.prefs.sized) {
+      this.cy.nodes().addClass('sized')
+    } else {
+      this.cy.nodes().removeClass('sized')
+    }
   }
 
   public toggleAuto() {
@@ -208,6 +222,25 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
         db.graph.forEach((i: GraphItem) => {
           this.cy.add(i)
         })
+
+        // db.graph.forEach((i: GraphItem) => {
+        //   let d = this.cy.nodes().dc({ root: '#' + i.data.id }).degree
+        //   i.data.degree = d
+        // })
+
+        var max = 1
+        this.cy.nodes().forEach(p => {
+          let n = p._private
+          let id = n.data['id']
+          let l = p.connectedEdges().length
+          let d = this.cy.nodes().dc({ root: p }).degree
+          console.log("DC " + id + " = " + d + " " + l);
+          n.data.degree = l
+          max = Math.max(max, l)
+        });
+        this.styles.setMaxSize(max)
+        this.cy.style(this.styles.styles)
+        this.updateSized()
         this.updateArrows()
         this.updateVersion()
 
@@ -277,6 +310,7 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     this.updateArrows()
     this.updateVersion()
     this.updateFilters()
+    this.updateSized()
     this.update()
   }
 }
@@ -287,5 +321,6 @@ class Prefs {
   autoLayout = true
   showArrows = true
   showVersion = true
+  sized = false
   filtered: string[] = new Array<string>()
 }

@@ -1,5 +1,5 @@
 export class Styles {
-    public styles =
+    public styles: any[] =
     [{
         "selector": "node",
         "style": {
@@ -135,5 +135,26 @@ export class Styles {
         "style": {
             "display": "none"
         }
+    }, {
+        "selector": "node.sized",
+        "style": {
+            "width": "mapData(degree, 0, 50, 20, 50)",
+            "height": "mapData(degree, 0, 50, 20, 50)"
+        }
     }]
+
+
+    public setMaxSize(max: number) {
+
+        let items = this.styles.filter(v => {
+            return v.selector === "node.sized"
+        })
+        if (items.length == 1) {
+            let found = items[0]
+            let val = "mapData(degree, 0, " + max + ",20, 50)"
+            found.style.width = val
+            found.style.height = val
+        }
+
+    }
 }

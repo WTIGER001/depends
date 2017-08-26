@@ -100,6 +100,7 @@ export class GraphItem {
     classes: string = "" // a space separated list of class names that the element has
     data: Data = new Data()
     type: string
+
 }
 
 export class Data {
@@ -111,4 +112,5 @@ export class Data {
     from: string
     to: string
     type: string
+    degree: number
 }

@@ -25,6 +25,7 @@
     <button class="dropdown-item gutter" (click)="toggleNav()"><i class="fa fa-check fa-fw check" *ngIf="prefs.showNavigator"></i> Navigator</button>
     <button class="dropdown-item gutter" (click)="toggleVersion()"><i class="fa fa-check fa-fw check" *ngIf="prefs.showVersion"></i> Version Information</button>
     <button class="dropdown-item gutter" (click)="toggleArrows()"><i class="fa fa-check fa-fw check" *ngIf="prefs.showArrows"></i> Dependency Arrows</button>
+    <button class="dropdown-item gutter" (click)="toggleSized()"><i class="fa fa-check fa-fw check" *ngIf="prefs.sized"></i> Size Based on Dependencies</button>
     <div class="dropdown-divider dropdown-provider-override"></div>
     <button class="dropdown-item gutter" (click)="resetPreferences()"> Reset Preferences</button>
   </div>
