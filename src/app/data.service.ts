@@ -160,24 +160,28 @@ export class DataService {
     // }
 
     // Generate the parent node
-    if (!nodes.has(p.process_name)) {
+
+    if (!nodes.has(DataService.valid(p.process_name))) {
       let n = DataService.add(p.process_name, nodes)
-      n.data.parent = p.component_name
+      n.data.parent = DataService.valid(p.component_name)
       n.data.type = "Process"
+      n.data.version = p.version
     }
 
     // Technologies
     p.platform_technologies_used.forEach(t => {
-      if (!nodes.has(t.technology)) {
-        DataService.add(t.technology, nodes).data.type = "Technology"
+      if (!nodes.has(DataService.valid(t.technology))) {
+        let n = DataService.add(t.technology, nodes)
+        n.data.type = "Technology"
+        n.data.version = t.version
       }
       let e = new GraphItem()
       e.group = 'edges'
-      e.data.source = p.process_name
-      e.data.target = t.technology
+      e.data.source = DataService.valid(p.process_name)
+      e.data.target = DataService.valid(t.technology)
       e.data.from = e.data.source
       e.data.to = e.data.target
-      e.data.id = p.process_name + ":" + t.technology
+      e.data.id = DataService.valid(p.process_name + ":" + t.technology)
       e.data.label = t.version
       e.data.type = "Technology"
       // e.type = "Technology"
@@ -186,14 +190,18 @@ export class DataService {
 
     // Libraries
     p.third_party_libraries.forEach(l => {
-      if (!nodes.has(l.library)) {
-        DataService.add(l.library, nodes).data.type = "Library"
+      if (!nodes.has(DataService.valid(l.library))) {
+        let n = DataService.add(l.library, nodes)
+        n.data.type = "Library"
+        n.data.version = l.version
       }
       let e = new GraphItem()
       e.group = 'edges'
-      e.data.source = p.process_name
-      e.data.target = l.library
-      e.data.id = p.process_name + ":" + l.library
+      e.data.source = DataService.valid(p.process_name)
+      e.data.target = DataService.valid(l.library)
+      e.data.id = DataService.valid(p.process_name + ":" + l.library)
+      e.data.from = e.data.source
+      e.data.to = e.data.target
       e.data.label = l.version
       e.data.type = "Library"
       nodes.set(e.data.id, e)
@@ -201,14 +209,18 @@ export class DataService {
 
     // Data Written
     p.data_consumed.forEach(d => {
-      if (!nodes.has(d.data_name)) {
-        DataService.add(d.data_name, nodes).data.type = "Data Type"
+      if (!nodes.has(DataService.valid(d.data_name))) {
+        let n = DataService.add(d.data_name, nodes)
+        n.data.type = "Data Type"
+        n.data.version = d.version
       }
       let e = new GraphItem()
       e.group = 'edges'
-      e.data.source = p.process_name
-      e.data.target = d.data_name
-      e.data.id = p.process_name + ":" + d.data_name
+      e.data.source = DataService.valid(p.process_name)
+      e.data.target = DataService.valid(d.data_name)
+      e.data.id = DataService.valid(p.process_name + ":" + d.data_name)
+      e.data.from = e.data.source
+      e.data.to = e.data.target
       e.data.label = d.version
       e.data.type = "Data Consumed"
       nodes.set(e.data.id, e)
@@ -216,30 +228,37 @@ export class DataService {
 
     // Data Consumed
     p.data_written.forEach(d => {
-      if (!nodes.has(d.data_name)) {
+      if (!nodes.has(DataService.valid(d.data_name))) {
         let n = DataService.add(d.data_name, nodes)
         n.data.type = "Data Type"
+        n.data.version = d.version
       }
       let e = new GraphItem()
       e.group = 'edges'
-      e.data.target = p.process_name
-      e.data.source = d.data_name
-      e.data.id = p.process_name + ":" + d.data_name
+      e.data.target = DataService.valid(p.process_name)
+      e.data.source = DataService.valid(d.data_name)
+      e.data.from = e.data.source
+      e.data.to = e.data.target
+      e.data.id = DataService.valid(p.process_name + ":" + d.data_name)
       e.data.label = d.version
-      e.data.type = "Data Writte"
+      e.data.type = "Data Written"
       nodes.set(e.data.id, e)
     })
 
     // Intents 
     p.intents_used.forEach(d => {
-      if (!nodes.has(d.intent_name)) {
-        DataService.add(d.intent_name, nodes).data.type = "Intent"
+      if (!nodes.has(DataService.valid(d.intent_name))) {
+        let n = DataService.add(d.intent_name, nodes)
+        n.data.type = "Intent"
+        n.data.version = d.version
       }
       let e = new GraphItem()
       e.group = 'edges'
-      e.data.source = p.process_name
-      e.data.target = d.intent_name
-      e.data.id = p.process_name + ":" + d.intent_name
+      e.data.source = DataService.valid(p.process_name)
+      e.data.target = DataService.valid(d.intent_name)
+      e.data.from = e.data.source
+      e.data.to = e.data.target
+      e.data.id = DataService.valid(p.process_name + ":" + d.intent_name)
       e.data.label = d.version
       e.data.type = "Intent Used"
       nodes.set(e.data.id, e)
@@ -247,14 +266,18 @@ export class DataService {
 
     // Intents
     p.intents_handled.forEach(d => {
-      if (!nodes.has(d.intent_name)) {
-        DataService.add(d.intent_name, nodes).data.type = "Intent"
+      if (!nodes.has(DataService.valid(d.intent_name))) {
+        let n = DataService.add(d.intent_name, nodes)
+        n.data.type = "Intent"
+        n.data.version = d.version
       }
       let e = new GraphItem()
       e.group = 'edges'
-      e.data.target = p.process_name
-      e.data.source = d.intent_name
-      e.data.id = p.process_name + ":" + d.intent_name
+      e.data.target = DataService.valid(p.process_name)
+      e.data.source = DataService.valid(d.intent_name)
+      e.data.id = DataService.valid(p.process_name + ":" + d.intent_name)
+      e.data.from = e.data.source
+      e.data.to = e.data.target
       e.data.label = d.version
       e.data.type = "Intent Handled"
       nodes.set(e.data.id, e)
@@ -262,15 +285,19 @@ export class DataService {
 
     // Service Calls 
     p.service_calls.forEach(d => {
-      let id = d.process_name + ":" + d.endpoint
+      let id = DataService.valid(d.process_name + ":" + d.endpoint)
       if (!nodes.has(id)) {
-        DataService.add(id, nodes).data.type = "Service Call"
+        let n = DataService.add(id, nodes)
+        n.data.type = "Service Call"
+        n.data.version = d.version
       }
       let e = new GraphItem()
       e.group = 'edges'
-      e.data.source = p.process_name
+      e.data.source = DataService.valid(p.process_name)
       e.data.target = id
-      e.data.id = p.process_name + ":" + id
+      e.data.from = e.data.source
+      e.data.to = e.data.target
+      e.data.id = DataService.valid(p.process_name + ":" + id)
       e.data.label = d.version
       e.data.type = "Service Called"
       nodes.set(e.data.id, e)
@@ -278,15 +305,19 @@ export class DataService {
 
     // Endpoints
     p.service_endpoints.forEach(d => {
-      let id = p.process_name + ":" + d.endpoint
+      let id = DataService.valid(p.process_name + ":" + d.endpoint)
       if (!nodes.has(id)) {
-        DataService.add(id, nodes).data.type = "Endpoint"
+        let n = DataService.add(id, nodes)
+        n.data.type = "Endpoint"
+        n.data.version = p.version
       }
       let e = new GraphItem()
       e.group = 'edges'
-      e.data.source = p.process_name
+      e.data.source = DataService.valid(p.process_name)
       e.data.target = id
-      e.data.id = p.process_name + ":" + id
+      e.data.from = e.data.source
+      e.data.to = e.data.target
+      e.data.id = DataService.valid(p.process_name + ":" + id)
       e.data.label = p.version
       e.data.type = "Endpoint"
       nodes.set(e.data.id, e)
@@ -294,14 +325,18 @@ export class DataService {
 
     // Algorithms
     p.algorithms_invoked.forEach(d => {
-      if (!nodes.has(d.alg_name)) {
-        DataService.add(d.alg_name, nodes).data.type = "Algorithm"
+      if (!nodes.has(DataService.valid(d.alg_name))) {
+        let n = DataService.add(d.alg_name, nodes)
+        n.data.type = "Algorithm"
+        n.data.version = d.version
       }
       let e = new GraphItem()
       e.group = 'edges'
-      e.data.source = p.process_name
-      e.data.target = d.alg_name
-      e.data.id = p.process_name + ":" + d.alg_name
+      e.data.source = DataService.valid(p.process_name)
+      e.data.target = DataService.valid(d.alg_name)
+      e.data.from = e.data.source
+      e.data.to = e.data.target
+      e.data.id = DataService.valid(p.process_name + ":" + d.alg_name)
       e.data.label = p.version
       e.data.type = "Algorithm Invoked"
       nodes.set(e.data.id, e)
@@ -310,9 +345,11 @@ export class DataService {
   }
 
   private static add(id: string, nodes: Map<string, GraphItem>): GraphItem {
-    if (!nodes.has(id)) {
+    let realId = DataService.valid(id)
+    if (!nodes.has(realId)) {
       let n = new GraphItem()
-      n.data.id = id
+      n.data.id = realId
+      n.data.label = id
       nodes.set(n.data.id, n)
       return n
     }
@@ -394,6 +431,9 @@ export class DataService {
     })
   }
 
+  private static valid(s: string): string {
+    return s.replace(' ', '_')
+  }
 }
 
 

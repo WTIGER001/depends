@@ -99,8 +99,6 @@ export class GraphItem {
     grabbable: true // whether the node can be grabbed and moved by the user
     classes: string = "" // a space separated list of class names that the element has
     data: Data = new Data()
-    type: string
-
 }
 
 export class Data {
@@ -113,4 +111,6 @@ export class Data {
     to: string
     type: string
     degree: number
+    version: string
+
 }

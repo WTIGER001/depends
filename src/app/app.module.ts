@@ -22,6 +22,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { ReportComponent } from './report/report.component';
 
 import { DataService } from './data.service';
+import { DependencyTableComponent } from './dependency-table/dependency-table.component';
 
 
 const appRoutes: Routes = [
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     DependencyGraphComponent,
     DataManagerComponent,
     SettingsComponent,
-    ReportComponent
+    ReportComponent,
+    DependencyTableComponent
   ],
   imports: [
     BrowserModule,

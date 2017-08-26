@@ -1,9 +1,44 @@
 <h4> Dependency Report</h4>
 
+<div class="container-fluid">
+  <div class="row">
+    <span class="middle">Report Items: </span>
+    <tag-input name="items" [placeholder]="'Add'" [secondaryPlaceholder]="'Type the name of an item'" [separatorKeys]="separatorKeys"
+      [(ngModel)]="items" (onRemove)="onRemove($event)" (onAdd)="onAdd($event)" [onlyFromAutocomplete]="true">
+      <tag-input-dropdown [autocompleteItems]="choices" [showDropdownIfEmpty]="true">
+      </tag-input-dropdown>
+    </tag-input>
+  </div>
+</div>
 
-Report Items 
-<tag-input name="items"  [placeholder]="'Add'" [secondaryPlaceholder]="'Type the name of an item'" [separatorKeys]="separatorKeys" [(ngModel)]="items"
-(onRemove)="onRemoving" (onAdd)="onAdd" [onlyFromAutocomplete]="true"> 
-  <tag-input-dropdown [autocompleteItems]="['item2', 'item3']">
-  </tag-input-dropdown>
-</tag-input>
+<div class="card">
+  <div class="card-header"><i class="fa fa-chevron-up mr-auto" [ngClass]="c_1?'fa-chevron-up':'fa-chevron-down'" aria-hidden="true" (click)="c_1= !c_1"
+      [attr.aria-expanded]="!c_1" aria-controls="predecessors"></i> Predecessors (All Generations)</div>
+  <div class="card-body" id="predecessors" [ngbCollapse]="c_1">
+    <app-dependency-table [items]="strItems" [dependencyType]="'predecessors'"></app-dependency-table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header"><i class="fa fa-chevron-up mr-auto" [ngClass]="c_2?'fa-chevron-up':'fa-chevron-down'" aria-hidden="true" (click)="c_2= !c_2"
+      [attr.aria-expanded]="!c_2" aria-controls="predecessors"></i> Successors (All Generations)</div>
+  <div class="card-body" id="successors" [ngbCollapse]="c_2">
+    <app-dependency-table [items]="strItems" [dependencyType]="'successors'"></app-dependency-table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header"><i class="fa fa-chevron-up mr-auto" [ngClass]="c_3?'fa-chevron-up':'fa-chevron-down'" aria-hidden="true" (click)="c_3= !c_3"
+      [attr.aria-expanded]="!c_3" aria-controls="predecessors"></i> Incomers (1 Generation)</div>
+  <div class="card-body" id="incomers" [ngbCollapse]="c_3">
+    <app-dependency-table [items]="strItems" [dependencyType]="'incomers'"></app-dependency-table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header"><i class="fa fa-chevron-up mr-auto" [ngClass]="c_4?'fa-chevron-up':'fa-chevron-down'" aria-hidden="true" (click)="c_4= !c_4"
+      [attr.aria-expanded]="!c_4" aria-controls="predecessors"></i> Outgoers (1 Generation)</div>
+  <div class="card-body" id="outgoers" [ngbCollapse]="c_4">
+    <app-dependency-table [items]="strItems" [dependencyType]="'outgoers'"></app-dependency-table>
+  </div>
+</div>
