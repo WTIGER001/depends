@@ -8,7 +8,6 @@ import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { SplitPaneModule } from 'ng2-split-pane/lib/ng2-split-pane';
-
 import { Ng2TableModule } from 'ng2-table/ng2-table';
 
 import { AppComponent } from './app.component';
@@ -17,9 +16,10 @@ import { ProcessListComponent } from './process-list/process-list.component';
 import { DependencyMatrixComponent } from './dependency-matrix/dependency-matrix.component';
 import { DependencyGraphComponent } from './dependency-graph/dependency-graph.component';
 import { ProcessViewComponent } from './process-view/process-view.component';
-import { DataService } from './data.service';
 import { DataManagerComponent } from './data-manager/data-manager.component';
 import { SettingsComponent } from './settings/settings.component';
+
+import { DataService } from './data.service';
 
 
 const appRoutes: Routes = [
@@ -50,6 +50,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    HttpModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     LocalStorageModule.withConfig({
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     SplitPaneModule,
     Ng2TableModule
   ],
-  providers: [DataService],
+  providers: [
+    DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+.dropdown-provider-override {
+  border-top: 1px solid #d0d7de
+}
+
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
 @import"~cytoscape-panzoom/cytoscape.js-panzoom.css";

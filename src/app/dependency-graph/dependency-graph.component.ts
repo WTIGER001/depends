@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild, AfterContentInit, HostListener, OnDestroy } from '@angular/core';
 
 import { DataService } from '../data.service'
+import { LocalStorageService } from 'angular-2-local-storage'
 import { Database, GraphItem } from '../models'
 import { Styles } from '../styles'
 
-import * as _ from 'lodash'
-// import * as cytoscape from 'cytoscape'
-// import * as pz from 'cytoscape-panzoom'
 
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-dependency-graph',
@@ -15,6 +14,7 @@ import * as _ from 'lodash'
   styleUrls: ['./dependency-graph.component.css']
 })
 export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDestroy {
+  LOCAL_STORAGE_KEY = "DependencyGraphComponent.PREFS"
 
   @ViewChild('drawingArea') drawingArea
   @ViewChild('navigator') navigator
@@ -23,24 +23,36 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
   db: Database
   styles = new Styles()
   layoutChoices = [
-    { name: "Circle", vallue: "circle" },
-    { name: "COSE", vallue: "cose" },
-    { name: "Grid", vallue: "grid" },
-    { name: "Concentric", vallue: "concentric" },
-    { name: "Breadth First", vallue: "breadthfirst" },
-    { name: "Directed Graph", vallue: "dagre" }
+    { name: "Breadth First", value: "breadthfirst" },
+    { name: "Circle", value: "circle" },
+    { name: "Concentric", value: "concentric" },
+    { name: "COSE", value: "cose" },
+    { name: "Directed Graph", value: "dagre" },
+    { name: "Grid", value: "grid" }
   ]
-  layout = this.layoutChoices[0]
 
   types = [
     "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm Invoked"
   ]
-  filtered = new Array<string>()
-  autoLayout = true
-  showNav = true
 
-  constructor(private dataSvc: DataService) {
+  layout = this.layoutChoices[2]
 
+  // filtered = new Array<string>()
+  // autoLayout = true
+  // showNav = true
+  // showVersion = false
+  // showArrows = true
+
+  prefs = new Prefs()
+
+  constructor(private dataSvc: DataService, private localStorage: LocalStorageService) {
+    let str = <string>this.localStorage.get(this.LOCAL_STORAGE_KEY)
+    if (str) {
+      this.prefs = JSON.parse(str)
+      if (this.prefs.layoutChoice >= 0) {
+        this.layout = this.layoutChoices[this.prefs.layoutChoice]
+      }
+    }
   }
 
   ngAfterContentInit() {
@@ -73,23 +85,24 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 
   }
 
-
   public isLayout(layout: any): boolean {
-    return this.layout.vallue == layout.vallue
+    return this.layout.value == layout.vallue
   }
 
   public isFiltered(l: string): boolean {
-    return _.includes(this.filtered, l)
+    return _.includes(this.prefs.filtered, l)
   }
 
   public setLayout(newLayout: any) {
     this.layout = newLayout
+    this.prefs.layoutChoice = _.indexOf(this.layoutChoices, newLayout)
+    this.savePrefs()
     this.update()
   }
 
   public update() {
     let layoutOptions = {
-      name: this.layout.vallue,
+      name: this.layout.value,
       nodeSpacing: 5,
       minNodeSpacing: 30,
       edgeLengthVal: 45,
@@ -99,26 +112,66 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     this.getActiveEles().layout(layoutOptions).run()
   }
 
+  public toggleAuto() {
+    this.prefs.autoLayout = !this.prefs.autoLayout
+    this.savePrefs()
+    this.update()
+  }
+
+  public toggleNav() {
+    this.prefs.showNavigator = !this.prefs.showNavigator
+    this.savePrefs()
+  }
+
+  public toggleVersion() {
+    this.prefs.showVersion = !this.prefs.showVersion
+    this.savePrefs()
+    this.updateVersion()
+  }
+
+  public updateVersion() {
+    if (this.prefs.showVersion) {
+      this.cy.edges().addClass('version')
+    } else {
+      this.cy.edges().removeClass('version')
+    }
+  }
+  public toggleArrows() {
+    this.prefs.showArrows = !this.prefs.showArrows
+    this.savePrefs()
+    this.updateArrows()
+  }
+
+  public updateArrows() {
+    if (this.prefs.showArrows) {
+      this.cy.edges().addClass('arrow')
+    } else {
+      this.cy.edges().removeClass('arrow')
+    }
+  }
+
   public toggleFilter(t) {
     // Toggle the filter
-    let len = this.filtered.length
-    let success = _.pull(this.filtered, t)
+    let len = this.prefs.filtered.length
+    let success = _.pull(this.prefs.filtered, t)
     if (success.length == len) {
-      this.filtered.push(t)
+      this.prefs.filtered.push(t)
     }
+    this.savePrefs()
+    this.updateFilters()
+    this.update()
+  }
 
-    console.log("Filters:  " + JSON.stringify(this.filtered));
-
+  public updateFilters() {
     this.cy.batch(() => {
       this.cy.nodes().forEach(p => {
         let n = p._private
         let type = n.data['type']
         p.removeClass('filtered')
-        if (_.includes(this.filtered, type)) {
+        if (_.includes(this.prefs.filtered, type)) {
           p.addClass('filtered')
         }
       });
-      this.update()
     })
   }
 
@@ -132,8 +185,6 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
       this.update()
     })
   }
-
-
 
   ngOnDestroy() {
     this.cy.destroy()
@@ -157,9 +208,12 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
         db.graph.forEach((i: GraphItem) => {
           this.cy.add(i)
         })
+        this.updateArrows()
+        this.updateVersion()
 
         // Layout
         this.update()
+        this.cy.fit()
       }
     })
   }
@@ -202,10 +256,36 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
   }
 
   public getActiveEles(): any {
-    if (this.autoLayout) {
+    if (this.prefs.autoLayout) {
       return this.cy.elements().not('.filtered').not('.hidden')
     } else {
       return this.cy.elements()
     }
   }
+
+  public savePrefs() {
+    let str = JSON.stringify(this.prefs)
+    this.localStorage.set(this.LOCAL_STORAGE_KEY, str)
+  }
+
+  public resetPreferences() {
+    this.prefs = new Prefs()
+    if (this.prefs.layoutChoice >= 0) {
+      this.layout = this.layoutChoices[this.prefs.layoutChoice]
+    }
+    this.savePrefs()
+    this.updateArrows()
+    this.updateVersion()
+    this.updateFilters()
+    this.update()
+  }
+}
+
+class Prefs {
+  layoutChoice: number = 2
+  showNavigator = true
+  autoLayout = true
+  showArrows = true
+  showVersion = true
+  filtered: string[] = new Array<string>()
 }

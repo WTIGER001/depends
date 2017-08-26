@@ -1,5 +1,4 @@
 export class Styles {
-
     public styles =
     [{
         "selector": "node",
@@ -44,17 +43,28 @@ export class Styles {
     }, {
         "selector": "edge",
         "style": {
-            "curve-style": "haystack",
-            "haystack-radius": "0.5",
-            "opacity": "0.7",
+            'curve-style': 'bezier',
+            "opacity": "0.8",
             "line-color": "#bbb",
             "width": "1",
-            "overlay-padding": "3px"
+            "overlay-padding": "3px",
+            "font-size": "6px"
         }
     }, {
         "selector": "node.unhighlighted",
         "style": {
             "opacity": "0.2"
+        }
+    }, {
+        "selector": "edge.arrow",
+        "style": {
+            "target-arrow-shape": "triangle",
+            "target-arrow-color": "#bbb"
+        }
+    }, {
+        "selector": "edge.version",
+        "style": {
+            "content": "data(label)",
         }
     }, {
         "selector": "edge.unhighlighted",
@@ -98,6 +108,13 @@ export class Styles {
         "selector": "node[type=\"Intent\"]",
         "style": {
             "shape": "tag",
+            "background-color": "#BAB6AB",
+            "text-outline-color": "#BAB6AB"
+        }
+    }, {
+        "selector": "node[type=\"Data Type\"]",
+        "style": {
+            "shape": "triangle",
             "background-color": "#BAB6AB",
             "text-outline-color": "#BAB6AB"
         }

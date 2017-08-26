@@ -13,34 +13,25 @@
   </div>
   <button class="btn btn-secondary btn-sm" (click)="update()"><i class="fa fa-refresh"></i></button>
 </div>
-<!--
-<div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons">
-  <button class="btn btn-secondary btn-sm" *ngFor="let l of layoutChoices" (click)="setLayout(l)" [ngClass]="{'active': isLayout(l)}">{{l}}</button>
-</div>
--->
 
 <div class="btn-group btn-group-sm mb-1 mr-auto" role="group" data-toggle="buttons">
   <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t)" [ngClass]="{'active': isFiltered(t)}">{{t}}</button>
 </div>
-<!--
-<label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" [(ngModel)]="autoLayout">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Automatic Layout</span>
-</label>
--->
 
 <div ngbDropdown class="d-inline-block">
   <button class="btn btn-secondary btn-sm  mb-1 " id="ddCog" ngbDropdownToggle><i class="fa fa-cog"></i></button>
   <div ngbDropdownMenu aria-labelledby="ddCog">
-    <button class="dropdown-item gutter" (click)="autoLayout=!autoLayout"><i class="fa fa-check  fa-fw check" *ngIf="autoLayout"></i> Auto Layout</button>
-    <button class="dropdown-item gutter" (click)="showNav=!showNav"><i class="fa fa-check  fa-fw check" *ngIf="showNav"></i> Show Navigator</button>
-
+    <button class="dropdown-item gutter" (click)="toggleAuto()"><i class="fa fa-check  fa-fw check" *ngIf="prefs.autoLayout"></i> Auto Layout</button>
+    <button class="dropdown-item gutter" (click)="toggleNav()"><i class="fa fa-check fa-fw check" *ngIf="prefs.showNavigator"></i> Navigator</button>
+    <button class="dropdown-item gutter" (click)="toggleVersion()"><i class="fa fa-check fa-fw check" *ngIf="prefs.showVersion"></i> Version Information</button>
+    <button class="dropdown-item gutter" (click)="toggleArrows()"><i class="fa fa-check fa-fw check" *ngIf="prefs.showArrows"></i> Dependency Arrows</button>
+    <div class="dropdown-divider dropdown-provider-override"></div>
+    <button class="dropdown-item gutter" (click)="resetPreferences()"> Reset Preferences</button>
   </div>
 </div>
 
 <div>
   <div class="full" #drawingArea>
-    <div class="navigator" #navigator [ngClass]="{'hidden': !showNav}"></div>
+    <div class="navigator" #navigator [ngClass]="{'hidden': !prefs.showNavigator}"></div>
   </div>
 </div>
