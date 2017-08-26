@@ -4,7 +4,8 @@
       <div class="split-pane-content-primary">
         <div class="left">
           <h4> Processes </h4>
-          <ng-table [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+          <ng-table [className]="'cell'" [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)"
+            [rows]="rows" [columns]="columns">
           </ng-table>
         </div>
       </div>

@@ -17,46 +17,79 @@ import * as _ from 'lodash'
 export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDestroy {
 
   @ViewChild('drawingArea') drawingArea
+  @ViewChild('navigator') navigator
   cy: any;
+
   db: Database
   styles = new Styles()
-  layout: string = "concentric"
   layoutChoices = [
-    "circle",
-    "cose",
-    "grid",
-    "concentric",
-    "breadthfirst",
-    "dagre"
+    { name: "Circle", vallue: "circle" },
+    { name: "COSE", vallue: "cose" },
+    { name: "Grid", vallue: "grid" },
+    { name: "Concentric", vallue: "concentric" },
+    { name: "Breadth First", vallue: "breadthfirst" },
+    { name: "Directed Graph", vallue: "dagre" }
   ]
+  layout = this.layoutChoices[0]
+
   types = [
     "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm Invoked"
   ]
   filtered = new Array<string>()
   autoLayout = true
-  allNodes = null;
-  allEles = null;
+  showNav = true
 
   constructor(private dataSvc: DataService) {
 
   }
 
-  public isLayout(l: string): boolean {
-    return this.layout == l
+  ngAfterContentInit() {
+    this.resize()
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    // let windowH = event.target.innerHeight
+    // var rect = this.drawingArea.nativeElement.getBoundingClientRect();
+    // this.drawingArea.nativeElement.style.height = (windowH - rect.top - 10) + "px"
+    this.resize()
+  }
+
+  public resize() {
+    // Resize the main window
+    var rect = this.drawingArea.nativeElement.getBoundingClientRect();
+    let windowH = window.innerHeight
+    this.drawingArea.nativeElement.style.height = (windowH - rect.top - 10) + "px"
+
+    let r2 = this.drawingArea.nativeElement.getBoundingClientRect()
+    let aspect = r2.width / r2.height
+
+    let navH = 100
+    let navW = navH * aspect
+
+    let r3 = this.navigator.nativeElement.getBoundingClientRect()
+    this.navigator.nativeElement.style.height = (navH + 6) + "px";
+    this.navigator.nativeElement.style.width = navW + "px";
+
+  }
+
+
+  public isLayout(layout: any): boolean {
+    return this.layout.vallue == layout.vallue
   }
 
   public isFiltered(l: string): boolean {
     return _.includes(this.filtered, l)
   }
 
-  public setLayout(newLayout: string) {
+  public setLayout(newLayout: any) {
     this.layout = newLayout
     this.update()
   }
 
   public update() {
     let layoutOptions = {
-      name: this.layout,
+      name: this.layout.vallue,
       nodeSpacing: 5,
       minNodeSpacing: 30,
       edgeLengthVal: 45,
@@ -64,14 +97,6 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     }
 
     this.getActiveEles().layout(layoutOptions).run()
-    // let l: any
-    // if (this.autoLayout) {
-    //   this.cy.elements().not('.filtered').not('.hidden').layout(layoutOptions).run()
-    // } else {
-    //   this.cy.layout(layoutOptions).run()
-    // }
-
-    // this.fit()
   }
 
   public toggleFilter(t) {
@@ -90,14 +115,11 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
         let type = n.data['type']
         p.removeClass('filtered')
         if (_.includes(this.filtered, type)) {
-          console.log("Filtering " + n.data['id'])
           p.addClass('filtered')
         }
       });
       this.update()
     })
-
-    // this.update()
   }
 
   public highlight(node) {
@@ -107,23 +129,11 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     this.cy.batch(() => {
       others.addClass('hidden');
       nhood.removeClass('hidden');
-
       this.update()
     })
   }
 
-  ngAfterContentInit() {
-    var rect = this.drawingArea.nativeElement.getBoundingClientRect();
-    let windowH = window.innerHeight
-    this.drawingArea.nativeElement.style.height = (windowH - rect.top - 10) + "px"
-  }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    let windowH = event.target.innerHeight
-    var rect = this.drawingArea.nativeElement.getBoundingClientRect();
-    this.drawingArea.nativeElement.style.height = (windowH - rect.top - 10) + "px"
-  }
 
   ngOnDestroy() {
     this.cy.destroy()
@@ -133,7 +143,8 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     // Setup Cy
     this.cy = cytoscape({
       container: this.drawingArea.nativeElement,
-      style: this.styles.styles
+      style: this.styles.styles,
+      wheelSensitivity: .2
     });
     this.setUpExtensions()
     this.setUpEvents()
@@ -147,10 +158,6 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
           this.cy.add(i)
         })
 
-        // Get the collections
-        this.allNodes = this.cy.nodes();
-        this.allEles = this.cy.elements();
-
         // Layout
         this.update()
       }
@@ -159,8 +166,11 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 
   private setUpExtensions() {
     // Setup Extensions
-    var defaults = {}
-    this.cy.panzoom(defaults);
+    let pzdefaults = {}
+    this.cy.panzoom(pzdefaults);
+
+    let navDefaults = { container: this.navigator.nativeElement }
+    this.cy.navigator(navDefaults);
   }
 
   private setUpEvents() {

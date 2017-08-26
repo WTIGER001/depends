@@ -3,9 +3,32 @@
   width: 100%;
   min-height: 400px;
   min-width: 400px;
-  border: 1px solid black
 }
 
 .library {
   background-color: yellow
+}
+
+.check {
+  margin-left: -24px
+}
+
+.gutter {
+  padding-left: 1.75rem
+}
+
+.navigator {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 200px;
+  min-height: 150px;
+  overflow: hidden;
+  box-shadow: 10px 10px 10px #888888;
+  outline: #ffffff solid thick;
+}
+
+.hidden {
+  display: none;
 }

@@ -19,7 +19,8 @@
     "prefix": "app",
     "styles": [
       "styles.css",
-      "../node_modules/cytoscape-panzoom/cytoscape.js-panzoom.css"
+      "../node_modules/cytoscape-panzoom/cytoscape.js-panzoom.css",
+      "../node_modules/cytoscape-navigator/cytoscape.js-navigator.css"
     ],
     "scripts": [
       "../node_modules/jquery/dist/jquery.js",
@@ -27,6 +28,7 @@
       "../node_modules/cytoscape/dist/cytoscape.js",
       "../node_modules/file-saver/FileSaver.js",
       "../node_modules/cytoscape-panzoom/cytoscape-panzoom.js",
+      "../node_modules/cytoscape-navigator/cytoscape-navigator.js",
       "../node_modules/dagre/dist/dagre.js",
       "../node_modules/cytoscape-dagre/cytoscape-dagre.js"
     ],

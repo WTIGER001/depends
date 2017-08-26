@@ -6,3 +6,7 @@ chevron_button {
   min-height: 600px;
   height: 100%;
 }
+
+.cell {
+  padding: .1rem !important;
+}

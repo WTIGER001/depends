@@ -1,19 +1,46 @@
 <h4> Network Graph</h4>
+
+<span>Layout </span>
+
+<div class="btn-group btn-group-sm  mb-1 " role="group" aria-label="Button group with nested dropdown">
+  <div class="btn-group btn-group-sm" role="group">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-secondary btn-sm" id="ddCog2" ngbDropdownToggle>{{layout.name}}</button>
+      <div ngbDropdownMenu aria-labelledby="ddCog2">
+        <button class="dropdown-item gutter" *ngFor="let l of layoutChoices" (click)="setLayout(l)"><i class="fa fa-check fa-fw check" *ngIf="l == layout"></i> {{l.name}}</button>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-secondary btn-sm" (click)="update()"><i class="fa fa-refresh"></i></button>
+</div>
+<!--
 <div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons">
   <button class="btn btn-secondary btn-sm" *ngFor="let l of layoutChoices" (click)="setLayout(l)" [ngClass]="{'active': isLayout(l)}">{{l}}</button>
 </div>
+-->
 
 <div class="btn-group btn-group-sm mb-1 mr-auto" role="group" data-toggle="buttons">
   <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t)" [ngClass]="{'active': isFiltered(t)}">{{t}}</button>
 </div>
-
+<!--
 <label class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input" [(ngModel)]="autoLayout">
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Automatic Layout</span>
-  </label>
+</label>
+-->
+
+<div ngbDropdown class="d-inline-block">
+  <button class="btn btn-secondary btn-sm  mb-1 " id="ddCog" ngbDropdownToggle><i class="fa fa-cog"></i></button>
+  <div ngbDropdownMenu aria-labelledby="ddCog">
+    <button class="dropdown-item gutter" (click)="autoLayout=!autoLayout"><i class="fa fa-check  fa-fw check" *ngIf="autoLayout"></i> Auto Layout</button>
+    <button class="dropdown-item gutter" (click)="showNav=!showNav"><i class="fa fa-check  fa-fw check" *ngIf="showNav"></i> Show Navigator</button>
+
+  </div>
+</div>
 
 <div>
   <div class="full" #drawingArea>
+    <div class="navigator" #navigator [ngClass]="{'hidden': !showNav}"></div>
   </div>
 </div>
