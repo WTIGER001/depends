@@ -19,33 +19,11 @@ Data Type - A Data Structure or file that is written or read by processes. This 
 Intent - A intent that is handled or used by a process
 Algorithm - Algorithm called by the process
 
-<pre>
-                        +---------------+
-                        |               |
-                        |   Component   |
-                        |               |
-                        +-------+-------+
-                                ^
-                                |
-                        +-------+-------+
-                        |               |
-      +-----------------+   Process     +-------------------+
-      |        +--------+               +----------+        |
-      |        |        +-+--+-----+---++          |        |
-      |        |          |  ^     |   ^           |        |
-+-----v------+ |          |  |     |   |           |  +-----v---+
-| Technology | |          |  |     |   |           |  |Algorithm|
-+------------+ |          |  |     |   |           |  +---------+
-               |          |  |     |   |           |
-               |          |  |     |   |           |
-         +-----v--+       |  |     |   |         +-v-------+
-         | Library|       |  |     |   |         |Data Type|
-         +--------+       |  |     |   |         +---------+
-                          |  |     |   |
-                      +---v--+-+  +v---+-+
-                      |Endpoint|  |Intent|
-                      +--------+  +------+
-</pre>
+- Components only link to processes
+- Processes are depenent on: Technologies and LIbraries
+- Processes can be depenent on: Technologies, Libraries, Data Types, Intents, Endpoints and Algorithms
+- Data Types, Intents, and Endpoints can be dependent on Processes
+
 
 ##  Capabilities
 
