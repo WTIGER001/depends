@@ -55,11 +55,17 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     }
   }
 
+  //STUPID, STUPID, STUPID
   ngAfterContentInit() {
-    this.resize()
     setTimeout(() => {
-      this.resize()
-      this.update()
+      if (this.resize()) {
+        this.update()
+        setTimeout(() => {
+          if (this.resize()) {
+            this.update()
+          }
+        }, 1000);
+      }
     }, 1000);
   }
 
@@ -75,15 +81,22 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     // Resize the main window
     var rect = this.drawingArea.nativeElement.getBoundingClientRect();
     let windowH = window.innerHeight
-    this.drawingArea.nativeElement.style.height = (windowH - rect.top - 10) + "px"
+    let newH = (windowH - rect.top - 10)
+    if (newH == this.drawingArea.nativeElement.style.height) {
+      // nochange 
+      return false
+    } else {
+      this.drawingArea.nativeElement.style.height = (windowH - rect.top - 10) + "px"
 
-    let r2 = this.drawingArea.nativeElement.getBoundingClientRect()
-    let aspect = r2.width / r2.height
+      let r2 = this.drawingArea.nativeElement.getBoundingClientRect()
+      let aspect = r2.width / r2.height
 
-    let navH = 100
-    let navW = navH * aspect
-    this.navigator.nativeElement.style.height = (navH + 6) + "px";
-    this.navigator.nativeElement.style.width = navW + "px";
+      let navH = 100
+      let navW = navH * aspect
+      this.navigator.nativeElement.style.height = (navH + 6) + "px";
+      this.navigator.nativeElement.style.width = navW + "px";
+      return true
+    }
   }
 
   public isLayout(layout: any): boolean {
