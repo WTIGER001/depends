@@ -13,14 +13,14 @@ import * as _ from 'lodash'
 export class DependencyMatrixComponent implements OnInit {
   LOCAL_STORAGE_KEY = "DependencyMatrixComponent.PREFS"
   types = [
-    "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm Invoked"
+    "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm"
   ]
 
   db: Database
   prefs = new Prefs()
 
-  xHeaders: string[] = new Array()
-  yHeaders: string[] = new Array()
+  xHeaders: Pair[] = new Array()
+  yHeaders: Pair[] = new Array()
   cells: string[][] = new Array()
   cy: any
   selected: any
@@ -52,6 +52,7 @@ export class DependencyMatrixComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   public setY(y: string) {
@@ -78,7 +79,7 @@ export class DependencyMatrixComponent implements OnInit {
       for (let col = 0; col < this.yHeaders.length; col++) {
         let x = this.xHeaders[row]
         let y = this.yHeaders[col]
-        let c = this.getCell(x, y)
+        let c = this.getCell(x.value, y.value)
         // cells.push(c)
         cells[row][col] = c
       }
@@ -115,8 +116,8 @@ export class DependencyMatrixComponent implements OnInit {
     }
   }
 
-  private getHeaders(type: string): string[] {
-    let all = new Array<string>()
+  private getHeaders(type: string): Pair[] {
+    let all = new Array<Pair>()
 
     let selector = 'node[type=\"' + type + '\"]'
     let items = this.cy.nodes(selector)
@@ -124,7 +125,8 @@ export class DependencyMatrixComponent implements OnInit {
     items.forEach(p => {
       let n = p._private
       let id = n.data['id']
-      all.push(id)
+      let label = n.data.label
+      all.push({ display: label, value: id })
     });
 
     return all
@@ -140,10 +142,10 @@ export class DependencyMatrixComponent implements OnInit {
     //TODO
   }
 
-  public select(id: String) {
+  public select(me: any) {
     let item = undefined
     this.db.processes.forEach(p => {
-      if (p.process_name == id) {
+      if (p.process_name == me.display) {
         item = p
       }
     })
@@ -166,3 +168,8 @@ class Prefs {
   yAxis = "Process"
 }
 
+
+class Pair {
+  display: string
+  value: string
+}

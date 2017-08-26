@@ -1,0 +1,68 @@
+{
+  "processes": [{
+    "process_name": "events_server",
+    "component_name": "Events",
+    "executor_name": "marathon",
+    "version": "1.0",
+    "docker_base": "java",
+    "resources": {
+      "cpu": 1,
+      "ram": 1024,
+      "disk": 0,
+      "gpu": 0,
+      "instances": 1,
+      "dfs_storage": 0,
+      "archive_storage": 0
+    },
+    "platform_technologies_used": [{
+        "technology": "dcos",
+        "version": ">=1.9.1"
+      },
+      {
+        "technology": "kafka",
+        "version": ">=1.0"
+      },
+      {
+        "technology": "docker",
+        "version": ">=1.13"
+      }
+    ],
+    "third_party_libraries": [],
+    "data_written": [{
+      "data_name": "ONIRXML",
+      "version": "1.0"
+    }, {
+      "data_name": "JODP3",
+      "version": "1.0"
+    }],
+    "data_consumed": [{
+      "data_name": "ONIRXML",
+      "version": "1.0"
+    }, {
+      "data_name": "JODP3",
+      "version": "1.0"
+    }],
+    "intents_handled": [{
+      "intent_name": "analyze",
+      "version": "0.1"
+    }],
+    "intents_used": [{
+      "intent_name": "search",
+      "version": "0.1"
+    }],
+    "service_calls": [{
+      "process_name": "algorithm invocation service",
+      "endpoint": "post",
+      "version": "0.1"
+    }, {
+      "process_name": "intent manager service",
+      "endpoint": "post",
+      "version": "0.1"
+    }],
+    "service_endpoints": [],
+    "algorithms_invoked": [{
+      "alg_name": "treatements",
+      "version": "0.1"
+    }]
+  }]
+}

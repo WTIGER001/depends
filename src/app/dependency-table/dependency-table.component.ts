@@ -13,7 +13,7 @@ export class DependencyTableComponent implements OnInit, OnChanges {
 
   @Input() dependencyType: string = "predecessors"
   _items: any[] = new Array()
-
+  _filters: string[] = new Array()
   predecessors: any[] = []
   successors: any[] = []
   rows: any[] = []
@@ -70,6 +70,12 @@ export class DependencyTableComponent implements OnInit, OnChanges {
   @Input()
   set items(newItems: string[]) {
     this._items = newItems
+    this.generate()
+  }
+
+  @Input()
+  set filters(filters: string[]) {
+    this._filters = filters
     this.generate()
   }
 
@@ -223,12 +229,14 @@ export class DependencyTableComponent implements OnInit, OnChanges {
     preds.forEach(p => {
       let n = p._private
       if (n.group == 'nodes') {
-        let item = {
-          id: n.data['id'],
-          type: n.data['type'],
-          version: n.data['version']
+        if (!_.includes(this._filters, n.data.type)) {
+          let item = {
+            id: n.data['id'],
+            type: n.data['type'],
+            version: n.data['version']
+          }
+          newPreds.push(item)
         }
-        newPreds.push(item)
       }
     });
 

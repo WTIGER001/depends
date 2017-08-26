@@ -13,9 +13,12 @@ export class ReportComponent implements OnInit {
   LOCAL_STORAGE_KEY = "ReportComponent.PREFS"
 
   separatorKeys = [',']
-  // items: any[] = new Array()
   strItems: string[] = []
-  choices: string[] = new Array()
+  choices = new Array()
+
+  types = [
+    "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Algorithm"
+  ]
 
   db: Database
   prefs = new Prefs()
@@ -38,11 +41,29 @@ export class ReportComponent implements OnInit {
       if (db.graph) {
         db.graph.forEach((i: GraphItem) => {
           if (i.group == 'nodes') {
-            this.choices.push(i.data.id)
+            this.choices.push({
+              display: i.data.label,
+              value: i.data.id
+            })
           }
         })
       }
     })
+  }
+
+  public isFiltered(l: string): boolean {
+    return _.includes(this.prefs.filtered, l)
+  }
+
+  public toggleFilter(t) {
+    // Toggle the filter
+    let len = this.prefs.filtered.length
+    let success = _.without(this.prefs.filtered, t)
+    if (success.length == len) {
+      success.push(t)
+    }
+    this.prefs.filtered = success
+    this.savePrefs()
   }
 
   set items(i: any[]) {
@@ -76,4 +97,5 @@ export class ReportComponent implements OnInit {
 }
 
 class Prefs {
+  filtered: string[] = new Array<string>()
 }

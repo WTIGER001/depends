@@ -181,7 +181,7 @@ export class DataService {
       e.data.target = DataService.valid(t.technology)
       e.data.from = e.data.source
       e.data.to = e.data.target
-      e.data.id = DataService.valid(p.process_name + ":" + t.technology)
+      e.data.id = DataService.valid(p.process_name + "_" + t.technology)
       e.data.label = t.version
       e.data.type = "Technology"
       // e.type = "Technology"
@@ -199,7 +199,7 @@ export class DataService {
       e.group = 'edges'
       e.data.source = DataService.valid(p.process_name)
       e.data.target = DataService.valid(l.library)
-      e.data.id = DataService.valid(p.process_name + ":" + l.library)
+      e.data.id = DataService.valid(p.process_name + "_" + l.library)
       e.data.from = e.data.source
       e.data.to = e.data.target
       e.data.label = l.version
@@ -218,7 +218,7 @@ export class DataService {
       e.group = 'edges'
       e.data.source = DataService.valid(p.process_name)
       e.data.target = DataService.valid(d.data_name)
-      e.data.id = DataService.valid(p.process_name + ":" + d.data_name)
+      e.data.id = DataService.valid(p.process_name + "_" + d.data_name)
       e.data.from = e.data.source
       e.data.to = e.data.target
       e.data.label = d.version
@@ -239,7 +239,7 @@ export class DataService {
       e.data.source = DataService.valid(d.data_name)
       e.data.from = e.data.source
       e.data.to = e.data.target
-      e.data.id = DataService.valid(p.process_name + ":" + d.data_name)
+      e.data.id = DataService.valid(p.process_name + "_" + d.data_name)
       e.data.label = d.version
       e.data.type = "Data Written"
       nodes.set(e.data.id, e)
@@ -258,7 +258,7 @@ export class DataService {
       e.data.target = DataService.valid(d.intent_name)
       e.data.from = e.data.source
       e.data.to = e.data.target
-      e.data.id = DataService.valid(p.process_name + ":" + d.intent_name)
+      e.data.id = DataService.valid(p.process_name + "_" + d.intent_name)
       e.data.label = d.version
       e.data.type = "Intent Used"
       nodes.set(e.data.id, e)
@@ -275,7 +275,7 @@ export class DataService {
       e.group = 'edges'
       e.data.target = DataService.valid(p.process_name)
       e.data.source = DataService.valid(d.intent_name)
-      e.data.id = DataService.valid(p.process_name + ":" + d.intent_name)
+      e.data.id = DataService.valid(p.process_name + "_" + d.intent_name)
       e.data.from = e.data.source
       e.data.to = e.data.target
       e.data.label = d.version
@@ -285,7 +285,7 @@ export class DataService {
 
     // Service Calls 
     p.service_calls.forEach(d => {
-      let id = DataService.valid(d.process_name + ":" + d.endpoint)
+      let id = DataService.valid(d.process_name + "_" + d.endpoint)
       if (!nodes.has(id)) {
         let n = DataService.add(id, nodes)
         n.data.type = "Service Call"
@@ -297,7 +297,7 @@ export class DataService {
       e.data.target = id
       e.data.from = e.data.source
       e.data.to = e.data.target
-      e.data.id = DataService.valid(p.process_name + ":" + id)
+      e.data.id = DataService.valid(p.process_name + "_" + id)
       e.data.label = d.version
       e.data.type = "Service Called"
       nodes.set(e.data.id, e)
@@ -305,7 +305,7 @@ export class DataService {
 
     // Endpoints
     p.service_endpoints.forEach(d => {
-      let id = DataService.valid(p.process_name + ":" + d.endpoint)
+      let id = DataService.valid(p.process_name + "_" + d.endpoint)
       if (!nodes.has(id)) {
         let n = DataService.add(id, nodes)
         n.data.type = "Endpoint"
@@ -317,7 +317,7 @@ export class DataService {
       e.data.target = id
       e.data.from = e.data.source
       e.data.to = e.data.target
-      e.data.id = DataService.valid(p.process_name + ":" + id)
+      e.data.id = DataService.valid(p.process_name + "_" + id)
       e.data.label = p.version
       e.data.type = "Endpoint"
       nodes.set(e.data.id, e)
@@ -336,7 +336,7 @@ export class DataService {
       e.data.target = DataService.valid(d.alg_name)
       e.data.from = e.data.source
       e.data.to = e.data.target
-      e.data.id = DataService.valid(p.process_name + ":" + d.alg_name)
+      e.data.id = DataService.valid(p.process_name + "_" + d.alg_name)
       e.data.label = p.version
       e.data.type = "Algorithm Invoked"
       nodes.set(e.data.id, e)
@@ -432,7 +432,7 @@ export class DataService {
   }
 
   private static valid(s: string): string {
-    return s.replace(' ', '_')
+    return s.replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_')
   }
 }
 

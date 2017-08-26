@@ -9,17 +9,18 @@ td.matrix {
   text-align: center;
   padding: 5px 10px;
   border: 1px solid #ccc;
+  white-space: nowrap;
 }
 
 th.rotate {
   font-weight: normal;
-  height: 140px;
+  height: 180px;
   white-space: nowrap;
 }
 
 th.rotate>div {
-  transform: /* Magic Numbers */
-  translate(24px, 50px)
+  transform: /* Magic Numbers  height-110*/
+  translate(24px, 70px)
   /* 45 is really 360 - 45 */
   rotate(315deg);
   width: 30px;
@@ -28,6 +29,8 @@ th.rotate>div {
 th.rotate>div>span {
   border-bottom: 1px solid #ccc;
   padding: 5px 10px;
+  display: inline-block;
+  width: 200px;
 }
 
 td:hover {
@@ -48,5 +51,5 @@ td:hover {
 }
 
 .hidden {
-    display : none;
+  display: none;
 }

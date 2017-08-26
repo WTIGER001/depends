@@ -36,11 +36,11 @@
         <tr>
           <th class="matrix"> </th>
           <th *ngFor="let yHeader of yHeaders" class="matrix rotate">
-            <div><span>{{yHeader}}</span></div>
+            <div><span>{{yHeader.display}}</span></div>
           </th>
         </tr>
         <tr *ngFor="let xHeader of xHeaders; let row = index">
-          <td class="matrix" (click)="select(xHeader)">{{xHeader}}</td>
+          <td class="matrix" (click)="select(xHeader)">{{xHeader.display}}</td>
           <td *ngFor="let yHeader of yHeaders; let col = index" class="matrix item" [ngClass]="{'filled': xHeader == yHeader}"><i class="fa fa-fw {{cells[row][col]}}"></i></td>
         </tr>
       </table>

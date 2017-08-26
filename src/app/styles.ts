@@ -3,7 +3,7 @@ export class Styles {
     [{
         "selector": "node",
         "style": {
-            "content": "data(id)",
+            "content": "data(label)",
             "font-size": "12px",
             "text-valign": "center",
             "text-halign": "center",

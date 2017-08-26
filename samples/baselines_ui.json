@@ -1,0 +1,43 @@
+{
+  "processes": [{
+    "process_name": "Baselines Scout",
+    "component_name": "Baselines",
+    "executor_name": "marathon",
+    "version": "1.0",
+    "docker_base": "java",
+    "resources": {
+      "cpu": 1,
+      "ram": 1024,
+      "disk": 0,
+      "gpu": 0,
+      "instances": 1,
+      "dfs_storage": 0,
+      "archive_storage": 0
+    },
+    "platform_technologies_used": [{
+        "technology": "dcos",
+        "version": ">=1.9.1"
+      },
+      {
+        "technology": "docker",
+        "version": ">=1.13"
+      },
+      {
+        "technology": "Angular",
+        "version": "^4.0.0"
+      }
+    ],
+    "third_party_libraries": [],
+    "data_written": [],
+    "data_consumed": [],
+    "intents_handled": [],
+    "intents_used": [],
+    "service_calls": [{
+      "process_name": "Baselines Data Store",
+      "endpoint": "POST",
+      "version": "1.0"
+    }],
+    "service_endpoints": [],
+    "algorithms_invoked": []
+  }]
+}

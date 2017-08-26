@@ -1,0 +1,39 @@
+{
+  "processes": [{
+    "process_name": "Rasters Imagery",
+    "component_name": "Rasters",
+    "executor_name": "marathon",
+    "version": "1.0",
+    "docker_base": "java",
+    "resources": {
+      "cpu": 1,
+      "ram": 1024,
+      "disk": 0,
+      "gpu": 0,
+      "instances": 1,
+      "dfs_storage": 0,
+      "archive_storage": 0
+    },
+    "platform_technologies_used": [{
+        "technology": "dcos",
+        "version": ">=1.9.1"
+      },
+      {
+        "technology": "kafka",
+        "version": ">=1.0"
+      },
+      {
+        "technology": "docker",
+        "version": ">=1.13"
+      }
+    ],
+    "third_party_libraries": [],
+    "data_written": [],
+    "data_consumed": [],
+    "intents_handled": [],
+    "intents_used": [],
+    "service_calls": [],
+    "service_endpoints": [],
+    "algorithms_invoked": []
+  }]
+}
