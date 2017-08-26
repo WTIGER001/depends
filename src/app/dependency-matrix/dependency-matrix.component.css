@@ -12,7 +12,6 @@ td.matrix {
 }
 
 th.rotate {
-  /* Something you can count on */
   font-weight: normal;
   height: 140px;
   white-space: nowrap;
@@ -31,10 +30,23 @@ th.rotate>div>span {
   padding: 5px 10px;
 }
 
+td:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
 .check {
   margin-left: -24px
 }
 
 .gutter {
   padding-left: 1.75rem
+}
+
+.filled {
+  background-color: #ccc
+}
+
+.hidden {
+    display : none;
 }

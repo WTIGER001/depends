@@ -1,0 +1,9 @@
+<h4> Dependency Report</h4>
+
+
+Report Items 
+<tag-input name="items"  [placeholder]="'Add'" [secondaryPlaceholder]="'Type the name of an item'" [separatorKeys]="separatorKeys" [(ngModel)]="items"
+(onRemove)="onRemoving" (onAdd)="onAdd" [onlyFromAutocomplete]="true"> 
+  <tag-input-dropdown [autocompleteItems]="['item2', 'item3']">
+  </tag-input-dropdown>
+</tag-input>

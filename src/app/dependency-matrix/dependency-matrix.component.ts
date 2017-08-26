@@ -23,6 +23,7 @@ export class DependencyMatrixComponent implements OnInit {
   yHeaders: string[] = new Array()
   cells: string[][] = new Array()
   cy: any
+  selected: any
 
   constructor(private dataSvc: DataService, private localStorage: LocalStorageService) {
     // Load Preferences 
@@ -137,6 +138,16 @@ export class DependencyMatrixComponent implements OnInit {
 
   public updateVersion() {
     //TODO
+  }
+
+  public select(id: String) {
+    let item = undefined
+    this.db.processes.forEach(p => {
+      if (p.process_name == id) {
+        item = p
+      }
+    })
+    this.selected = item
   }
 
   public savePrefs() {

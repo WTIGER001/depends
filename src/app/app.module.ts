@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { SplitPaneModule } from 'ng2-split-pane/lib/ng2-split-pane';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
+import { TagInputModule } from 'ngx-chips';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -18,6 +19,7 @@ import { DependencyGraphComponent } from './dependency-graph/dependency-graph.co
 import { ProcessViewComponent } from './process-view/process-view.component';
 import { DataManagerComponent } from './data-manager/data-manager.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ReportComponent } from './report/report.component';
 
 import { DataService } from './data.service';
 
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
   { path: 'process/:id', component: ProcessViewComponent },
   { path: 'matrix', component: DependencyMatrixComponent },
   { path: 'graph', component: DependencyGraphComponent },
+  { path: 'report', component: ReportComponent },
   { path: 'database', component: DataManagerComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -42,7 +45,8 @@ const appRoutes: Routes = [
     DependencyMatrixComponent,
     DependencyGraphComponent,
     DataManagerComponent,
-    SettingsComponent
+    SettingsComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,8 @@ const appRoutes: Routes = [
       storageType: 'localStorage'
     }),
     SplitPaneModule,
-    Ng2TableModule
+    Ng2TableModule, 
+    TagInputModule
   ],
   providers: [
     DataService],
