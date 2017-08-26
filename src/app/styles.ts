@@ -126,6 +126,13 @@ export class Styles {
             "text-outline-color": "#BAB6AB"
         }
     }, {
+        "selector": "node[type=\"Endpoint\"]",
+        "style": {
+            "shape": "ellipse",
+            "background-color": "#4682B4",
+            "text-outline-color": "#4682B4"
+        }
+    }, {
         "selector": "node.hidden",
         "style": {
             "display": "none"

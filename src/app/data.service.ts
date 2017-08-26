@@ -280,7 +280,7 @@ export class DataService {
     p.service_endpoints.forEach(d => {
       let id = p.process_name + ":" + d.endpoint
       if (!nodes.has(id)) {
-        DataService.add(id, nodes).data.type = "End Point"
+        DataService.add(id, nodes).data.type = "Endpoint"
       }
       let e = new GraphItem()
       e.group = 'edges'
@@ -288,7 +288,7 @@ export class DataService {
       e.data.target = id
       e.data.id = p.process_name + ":" + id
       e.data.label = p.version
-      e.data.type = "Endpoint Prrovide"
+      e.data.type = "Endpoint"
       nodes.set(e.data.id, e)
     })
 
