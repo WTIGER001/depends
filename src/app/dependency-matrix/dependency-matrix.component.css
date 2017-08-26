@@ -1,0 +1,40 @@
+table.matrix {
+  border-spacing: 2px;
+  border-color: grey;
+}
+
+td.matrix {
+  border: 1px solid black;
+  width: 30px;
+  text-align: center;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+}
+
+th.rotate {
+  /* Something you can count on */
+  font-weight: normal;
+  height: 140px;
+  white-space: nowrap;
+}
+
+th.rotate>div {
+  transform: /* Magic Numbers */
+  translate(24px, 50px)
+  /* 45 is really 360 - 45 */
+  rotate(315deg);
+  width: 30px;
+}
+
+th.rotate>div>span {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 10px;
+}
+
+.check {
+  margin-left: -24px
+}
+
+.gutter {
+  padding-left: 1.75rem
+}

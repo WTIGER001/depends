@@ -1,3 +1,45 @@
-<p>
-  dependency-matrix works!
-</p>
+<h4> Dependency Matrix</h4>
+
+<span>Rows </span>
+<div class="btn-group btn-group-sm  mb-1 " role="group" aria-label="Button group with nested dropdown">
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-secondary btn-sm" id="ddCog2" ngbDropdownToggle>{{prefs.xAxis}}</button>
+    <div ngbDropdownMenu aria-labelledby="ddCog2">
+      <button class="dropdown-item gutter" *ngFor="let l of types" (click)="setX(l)"><i class="fa fa-check fa-fw check" *ngIf="l == xAxis"></i> {{l}}</button>
+    </div>
+  </div>
+</div>
+
+<span>Columns </span>
+<div class="btn-group btn-group-sm  mb-1 " role="group" aria-label="Button group with nested dropdown">
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-secondary btn-sm" id="ddCog2" ngbDropdownToggle>{{prefs.yAxis}}</button>
+    <div ngbDropdownMenu aria-labelledby="ddCog2">
+      <button class="dropdown-item gutter" *ngFor="let l of types" (click)="setY(l)"><i class="fa fa-check fa-fw check" *ngIf="l == yAxis"></i> {{l}}</button>
+    </div>
+  </div>
+</div>
+
+<div ngbDropdown class="d-inline-block">
+  <button class="btn btn-secondary btn-sm  mb-1 " id="ddCog" ngbDropdownToggle><i class="fa fa-cog"></i></button>
+  <div ngbDropdownMenu aria-labelledby="ddCog">
+    <button class="dropdown-item gutter" (click)="toggleVersion()"><i class="fa fa-check fa-fw check" *ngIf="prefs.showVersion"></i> Version Information</button>
+    <div class="dropdown-divider dropdown-provider-override"></div>
+    <button class="dropdown-item gutter" (click)="resetPreferences()"> Reset Preferences</button>
+  </div>
+</div>
+
+<div>
+  <table class="matrix">
+    <tr>
+      <th class="matrix"> </th>
+      <th *ngFor="let yHeader of yHeaders" class="matrix rotate">
+        <div><span>{{yHeader}}</span></div>
+      </th>
+    </tr>
+    <tr *ngFor="let xHeader of xHeaders; let row = index">
+      <td class="matrix">{{xHeader}}</td>
+      <td *ngFor="let yHeader of yHeaders; let col = index" class="matrix"><i class="fa fa-fw {{cells[row][col]}}"></i></td>
+    </tr>
+  </table>
+</div>

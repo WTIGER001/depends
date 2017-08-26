@@ -66,7 +66,7 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
           }
         }, 1000);
       }
-    }, 1000);
+    }, 300);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -100,7 +100,7 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
   }
 
   public isLayout(layout: any): boolean {
-    return this.layout.value == layout.vallue
+    return this.layout.value == layout.value
   }
 
   public isFiltered(l: string): boolean {
@@ -236,18 +236,11 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
           this.cy.add(i)
         })
 
-        // db.graph.forEach((i: GraphItem) => {
-        //   let d = this.cy.nodes().dc({ root: '#' + i.data.id }).degree
-        //   i.data.degree = d
-        // })
-
         var max = 1
         this.cy.nodes().forEach(p => {
           let n = p._private
           let id = n.data['id']
           let l = p.connectedEdges().length
-          let d = this.cy.nodes().dc({ root: p }).degree
-          console.log("DC " + id + " = " + d + " " + l);
           n.data.degree = l
           max = Math.max(max, l)
         });
