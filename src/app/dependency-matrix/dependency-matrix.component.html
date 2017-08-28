@@ -40,8 +40,8 @@
           </th>
         </tr>
         <tr *ngFor="let xHeader of xHeaders; let row = index">
-          <td class="matrix" (click)="select(xHeader)">{{xHeader.display}}</td>
-          <td *ngFor="let yHeader of yHeaders; let col = index" class="matrix item" [ngClass]="{'filled': xHeader == yHeader}"><i class="fa fa-fw {{cells[row][col]}}"></i></td>
+          <td class="matrix_left" (click)="select(xHeader)">{{xHeader.display}}</td>
+          <td *ngFor="let yHeader of yHeaders; let col = index" class="matrix item" [ngClass]="{'filled': xHeader.value == yHeader.value}"><i class="fa fa-fw {{cells[row][col].direction}}"></i><br /> <span class="version" *ngIf="prefs.showVersion">{{cells[row][col].version}}</span></td>
         </tr>
       </table>
     </div>

@@ -13,7 +13,7 @@ import * as _ from 'lodash'
 export class DependencyMatrixComponent implements OnInit {
   LOCAL_STORAGE_KEY = "DependencyMatrixComponent.PREFS"
   types = [
-    "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm"
+    "Component", "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm"
   ]
 
   db: Database
@@ -21,7 +21,8 @@ export class DependencyMatrixComponent implements OnInit {
 
   xHeaders: Pair[] = new Array()
   yHeaders: Pair[] = new Array()
-  cells: string[][] = new Array()
+  cells: Cell[][] = new Array()
+
   cy: any
   selected: any
 
@@ -73,7 +74,7 @@ export class DependencyMatrixComponent implements OnInit {
     this.yHeaders = this.getHeaders(this.prefs.yAxis)
 
     // Get the cells
-    let cells: string[][] = []
+    let cells: Cell[][] = new Array()
     for (let row = 0; row < this.xHeaders.length; row++) {
       cells[row] = []
       for (let col = 0; col < this.yHeaders.length; col++) {
@@ -87,32 +88,36 @@ export class DependencyMatrixComponent implements OnInit {
     this.cells = cells
   }
 
-  private getCell(xAxis: string, yAxis: string): string {
+  private getCell(xAxis: string, yAxis: string): Cell {
     let nodex = this.cy.getElementById(xAxis)
     let nodey = this.cy.getElementById(yAxis)
 
     if (nodex && nodey) {
-
       let incoming = nodex.incomers('#' + yAxis)
       let outgoers = nodex.outgoers('#' + yAxis)
 
       let left = false
       let top = false
-      let val = ""
+      let val = new Cell()
       if (incoming && incoming.length > 0) {
         top = true
-        val = "fa-arrow-up"
+        val.direction = "fa-arrow-left"
+        let n = incoming[0]._private
+        val.version = n.data.version
       }
       if (outgoers && outgoers.length > 0) {
         left = true
-        val = "fa-arrow-left"
+        val.direction = "fa-arrow-up"
+        let n = outgoers[0]._private
+        val.version = n.data.version
       }
       if (left && top) {
-        val = "fa-arrows-alt"
+        val.direction = "fa-arrow-up"
       }
+
       return val
     } else {
-      return ""
+      return new Cell()
     }
   }
 
@@ -172,4 +177,9 @@ class Prefs {
 class Pair {
   display: string
   value: string
+}
+
+class Cell {
+  direction: string
+  version: string
 }

@@ -112,5 +112,6 @@ export class Data {
     type: string
     degree: number
     version: string
-
+    component: string
+    attachment: any
 }

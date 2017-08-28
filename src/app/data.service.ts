@@ -86,51 +86,6 @@ export class DataService {
     r.readAsText(file)
   }
 
-  // public addFile(event) {
-  //   let fileList: FileList = event.target.files;
-  //   if (fileList.length > 0) {
-  //     let file: File = fileList[0];
-  //     JSZip().
-  //       file.
-
-
-  //     let formData: FormData = new FormData();
-  //     formData.append('uploadFile', file, file.name);
-  //     let headers = new Headers();
-  //     /** No need to include Content-Type in Angular 4 */
-  //     headers.append('Content-Type', 'multipart/form-data');
-  //     headers.append('Accept', 'application/json');
-  //     let options = new RequestOptions({ headers: headers });
-  //     this.http.post(`${this.apiEndPoint}`, formData, options)
-  //       .map(res => res.json())
-  //       .catch(error => Observable.throw(error))
-  //       .subscribe(
-  //       data => console.log('success'),
-  //       error => console.log(error)
-  //       )
-  //   }
-  // }
-
-  // private unzip(file: File): Observable<Zipped> {
-
-  //   let items = new Zipped()
-  //   let jz = new JSZip()
-  //   jz.loadAsync(file)
-  //     .then(function (zip) {
-  //       jz.forEach((path, jzo) => {
-  //         jzo.async("string").then(data => {
-  //           let item = JSON.parse(data)
-  //           if (path == "repos.json") {
-  //             items.repos = item.values
-  //           } else {
-  //             items.dbs.push(item)
-  //           }
-  //         })
-  //       })
-  //     });
-
-  // }
-
   public static generateGraph(db: Database) {
     let nodes = new Map<string, GraphItem>()
 
@@ -154,19 +109,19 @@ export class DataService {
   }
 
   private static addTo(p: Process, nodes: Map<string, GraphItem>) {
-    //COmponent
+    // Component
     // if (!nodes.has(p.component_name)) {
-    //   DataService.add(p.component_name, nodes).data.type = "Component"
+    //   let n = DataService.add(p.component_name, nodes)
+    //   n.data.type = "Component"
+    //   n.data.version = "N/A"
     // }
 
     // Generate the parent node
-
-    if (!nodes.has(DataService.valid(p.process_name))) {
-      let n = DataService.add(p.process_name, nodes)
-      n.data.parent = DataService.valid(p.component_name)
-      n.data.type = "Process"
-      n.data.version = p.version
-    }
+    let n = DataService.add(p.process_name, nodes)
+    n.data.parent = DataService.valid(p.component_name)
+    n.data.type = "Process"
+    n.data.component = p.component_name
+    n.data.version = p.version
 
     // Technologies
     p.platform_technologies_used.forEach(t => {
@@ -301,6 +256,22 @@ export class DataService {
       e.data.label = d.version
       e.data.type = "Service Called"
       nodes.set(e.data.id, e)
+
+      // Service Calls are also
+      let n2 = DataService.add(d.process_name, nodes)
+      n2.data.type = "Process"
+      n2.data.version = d.version
+
+      let e1 = new GraphItem()
+      e1.group = 'edges'
+      e1.data.source = DataService.valid(p.process_name)
+      e1.data.target = DataService.valid(d.process_name)
+      e1.data.from = e1.data.source
+      e1.data.to = e1.data.target
+      e1.data.id = DataService.valid(p.process_name + "_" + d.process_name)
+      e1.data.label = d.version
+      e1.data.type = "Process Dependency"
+      nodes.set(e1.data.id, e1)
     })
 
     // Endpoints
@@ -352,6 +323,8 @@ export class DataService {
       n.data.label = id
       nodes.set(n.data.id, n)
       return n
+    } else {
+      return nodes.get(realId)
     }
   }
 

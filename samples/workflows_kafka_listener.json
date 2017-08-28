@@ -1,6 +1,6 @@
 {
   "processes": [{
-    "process_name": "Filter Parameters API",
+    "process_name": "Kafka Listener",
     "component_name": "Workflows",
     "executor_name": "marathon",
     "version": "1.0",
@@ -21,6 +21,10 @@
       {
         "technology": "docker",
         "version": ">=1.13"
+      },
+      {
+        "technology": "kafka",
+        "version": "^1.10"
       }
     ],
     "third_party_libraries": [],

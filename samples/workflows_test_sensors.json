@@ -1,6 +1,6 @@
 {
   "processes": [{
-    "process_name": "Filter Parameters API",
+    "process_name": "Test Sensors",
     "component_name": "Workflows",
     "executor_name": "marathon",
     "version": "1.0",

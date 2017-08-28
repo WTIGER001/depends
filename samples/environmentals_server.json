@@ -1,6 +1,6 @@
 {
   "processes": [{
-    "process_name": "Environmentals File Management Service",
+    "process_name": "Environmentals Server",
     "component_name": "Environmentals",
     "executor_name": "marathon",
     "version": "1.0",

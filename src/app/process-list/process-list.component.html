@@ -3,9 +3,12 @@
     <vertical-split-pane primary-component-minsize="35" secondary-component-minsize="35" primary-component-initialratio="0.8">
       <div class="split-pane-content-primary">
         <div class="left">
-          <h4> Processes </h4>
-          <ng-table [className]="'cell'" [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)"
-            [rows]="rows" [columns]="columns">
+          <h4> List </h4>
+          <div class="btn-group btn-group-sm mb-1 mr-auto" role="group" data-toggle="buttons">
+            <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t)" [ngClass]="{'active': isFiltered(t)}">{{t}}</button>
+          </div>
+          <ng-table [className]="'cell'" [config]="getConfig()" (tableChanged)="onChangeTable()" (cellClicked)="onCellClick($event)"
+            [rows]="rows" [columns]="getConfig().sorting.columns">
           </ng-table>
         </div>
       </div>

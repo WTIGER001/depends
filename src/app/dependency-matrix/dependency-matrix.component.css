@@ -3,13 +3,20 @@ table.matrix {
   border-color: grey;
 }
 
-td.matrix {
+td.matrix_left {
   border: 1px solid black;
-  width: 30px;
-  text-align: center;
+  text-align: right;
   padding: 5px 10px;
   border: 1px solid #ccc;
   white-space: nowrap;
+}
+
+td.matrix {
+  border: 1px solid black;
+  width: 40px;
+  text-align: center;
+  padding: 0px;
+  border: 1px solid #ccc;
 }
 
 th.rotate {
@@ -52,4 +59,9 @@ td:hover {
 
 .hidden {
   display: none;
+}
+
+.version {
+  font-size: 8pt;
+  text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
 }

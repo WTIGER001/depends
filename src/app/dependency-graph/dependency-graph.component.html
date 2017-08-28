@@ -26,7 +26,17 @@
     <button class="dropdown-item gutter" (click)="toggleVersion()"><i class="fa fa-check fa-fw check" *ngIf="prefs.showVersion"></i> Version Information</button>
     <button class="dropdown-item gutter" (click)="toggleArrows()"><i class="fa fa-check fa-fw check" *ngIf="prefs.showArrows"></i> Dependency Arrows</button>
     <button class="dropdown-item gutter" (click)="toggleSized()"><i class="fa fa-check fa-fw check" *ngIf="prefs.sized"></i> Size Based on Dependencies</button>
+
     <div class="dropdown-divider dropdown-provider-override"></div>
+    <button class="dropdown-item gutter" (click)="setSelectPref('neighborhood')"><i class="fa fa-check fa-fw check" *ngIf="prefs.select=='neighborhood'"></i> 1st Level Incoming and Outgoing</button>
+    <button class="dropdown-item gutter" (click)="setSelectPref('incomers')"><i class="fa fa-check fa-fw check" *ngIf="prefs.select=='incomers'"></i> 1st Level Incoming</button>
+    <button class="dropdown-item gutter" (click)="setSelectPref('outgoers')"><i class="fa fa-check fa-fw check" *ngIf="prefs.select=='outgoers'"></i> 1st Level Outgoing</button>
+    <button class="dropdown-item gutter" (click)="setSelectPref('big-neighborhood')"><i class="fa fa-check fa-fw check" *ngIf="prefs.select=='big-neighborhood'"></i> All Incoming and Outgoing</button>
+    <button class="dropdown-item gutter" (click)="setSelectPref('successors')"><i class="fa fa-check fa-fw check" *ngIf="prefs.select=='successors'"></i> All Incoming</button>
+    <button class="dropdown-item gutter" (click)="setSelectPref('predessors')"><i class="fa fa-check fa-fw check" *ngIf="prefs.select=='predessors'"></i> All Outgoing</button>
+
+    <div class="dropdown-divider dropdown-provider-override"></div>
+
     <button class="dropdown-item gutter" (click)="resetPreferences()"> Reset Preferences</button>
   </div>
 </div>

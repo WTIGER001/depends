@@ -114,6 +114,11 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     this.update()
   }
 
+  public setSelectPref(p: string) {
+    this.prefs.select = p
+    this.update()
+  }
+
   public update() {
     let layoutOptions = {
       name: this.layout.value,
@@ -203,12 +208,36 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
   }
 
   public highlight(node) {
-    var nhood = node.closedNeighborhood();
-    var others = this.cy.elements().not(nhood);
+    let keep: any
+
+    let selector = "#" + node.id()
+    if (this.prefs.select == 'neighborhood') {
+      keep = node.closedNeighborhood()
+    } else if (this.prefs.select == 'incomers') {
+      keep = this.cy.nodes(selector).incomers()
+    } else if (this.prefs.select == 'outgoers') {
+      keep = this.cy.nodes(selector).outgoers()
+    } else if (this.prefs.select == 'successors') {
+      keep = this.cy.nodes(selector).successors()
+    } else if (this.prefs.select == 'predecessors') {
+      keep = this.cy.nodes(selector).predecessors()
+    } else if (this.prefs.select == 'bog-neighborhood') {
+      keep = this.cy.nodes(selector).predecessors().union(this.cy.nodes(selector).successors())
+    }
+
+    if (keep == undefined) {
+      console.log("Bad Selection " + this.prefs.select + " or BAD Selector " + selector);
+      keep = node.closedNeighborhood()
+    }
+    var others = this.cy.elements().not(keep);
+
+    console.log("Results KEEP=" + keep.length + " OUT=" + others.length);
 
     this.cy.batch(() => {
       others.addClass('hidden');
-      nhood.removeClass('hidden');
+      keep.removeClass('hidden');
+      this.cy.edges().removeClass('hidden');
+      node.removeClass('hidden');
       this.update()
     })
   }
@@ -328,5 +357,6 @@ class Prefs {
   showArrows = true
   showVersion = true
   sized = false
-  filtered: string[] = new Array<string>()
+  select = 'neighborhood'
+  filtered: string[] = [""]
 }

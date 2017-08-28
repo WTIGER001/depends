@@ -47,6 +47,9 @@ export class ReportComponent implements OnInit {
             })
           }
         })
+        this.choices.sort((a, b) => {
+          return a.display.localeCompare(b.display)
+        })
       }
     })
   }
