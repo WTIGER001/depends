@@ -6,24 +6,54 @@ The application will combine the files and provide tools to view the dependencie
 
 ## Data Model
 
-> *I am not real happy with the data model and I think it needs to be more generic but still capture the same data to better support the network analysis*
+### Node Types
 
-**Core Concepts** 
+Component   - Top level component of the system. Traditionally called a CSCi. 
+Process     - A sub-component, typically called a CSC or CSU. Processes are meant to capture the physical architecture not the logical
+Endpoint    - A Function in a process (typically a REST Endpoint / Verb)
+Technology  - A Technology that runs separate from a Process (e.g. Elastic Search, Apache Kafka, DCOS)
+Library     - A third party libary that is used in the process or as an operating system depenendcy
+Data Type   - A Data Structure or file that is written or read by processes. This includes files, kafka messages, etc.
+Intent      - A intent that is handled or used by a process
+Algorithm   - Algorithm called by the process
+Version     - A release of a process
+Event       - An activity or milestone
 
-Component - Top level component of the system. Traditionally called a CSCi. 
-Process - A sub-component, typically called a CSC or CSU. Processes are meant to capture the physical architecture not the logical
-Endpoint - A Function in a process (typically a REST Endpoint / Verb)
-Technology - A Technology that runs separate from a Process (e.g. Elastic Search, Apache Kafka, DCOS)
-Library - A third party libary that is used in the process or as an operating system depenendcy
-Data Type - A Data Structure or file that is written or read by processes. This includes files, kafka messages, etc.
-Intent - A intent that is handled or used by a process
-Algorithm - Algorithm called by the process
+#### Component
+
+Top level component of the system. Traditionally called a CSCi. 
+
+Extra Fields
+
+
+#### Process
+
+A sub-component, typically called a CSC or CSU. Processes are meant to capture the physical architecture not the logical
+Extra Fields
+    "component_name": "Baselines",
+    "executor_name": "marathon",
+    "docker_base": "java",
+    "cpu": 1,
+    "ram": 1024,
+    "disk": 0,
+    "gpu": 0,
+    "instances": 1,
+    "dfs_storage": 0,
+    "archive_storage": 0
+
+#### Endpoint
+
+
+### Edge Types
+
+Dependency  - 
+Parent      - 
+Version     - 
 
 - Components only link to processes
 - Processes are depenent on: Technologies and LIbraries
 - Processes can be depenent on: Technologies, Libraries, Data Types, Intents, Endpoints and Algorithms
 - Data Types, Intents, and Endpoints can be dependent on Processes
-
 
 ##  Capabilities
 
@@ -49,15 +79,38 @@ Items remaining to do
 - Redesign
 - Figure out how to include dates and the time phasing of dependencies
 - Make more representative sample data (2-4 hours)
+- Refactor to make the cytoscape nodes only calculated once
+- Collapse child dependencies into parent ones (e.g. Endpoints -> Processes -> Components)
+- model a gannt chart and calender
+- Determine how to update a model
+- Save a baseline, perform scenario modeling
+- Hook to JIRA and get status from there
 
 ### List Page
 
 - Compact the format
 - Column chooser
 - Look at different table widget
-- Support other types (not just processes)
+- Export to Excel / CSV
+- PDF Export
  
-### Analyze Dependencies Page
+### Matrix Page 
+- PDF Export
+- Export to Excel / CSV
+
+### Network Page 
+- Image Export (PNG)
+
+### Report Page
+
+
+### Database Page
+
+
+### Other
+
+- PDF Export
+- Gantt CHart
 
 
 ### Design Questions

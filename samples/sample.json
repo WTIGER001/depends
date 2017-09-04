@@ -1,0 +1,47 @@
+{
+  "nodes": [{
+    "id": "a",
+    "name": "A",
+    "type": "Process",
+    "extra": {
+      "status": "",
+      "date-finished-planned": "",
+      "date-started-planned": "",
+      "date-finished-actual": "",
+      "date-started-actual": "",
+    }
+  }],
+  "edges": [{
+    "id": "b_b",
+    "name": "Edge 1",
+    "type": "depends",
+    "version": "1.x",
+    "target": "a",
+    "source": "a",
+    "extra": {
+      "status": "",
+      "date-finished-planned": "",
+      "date-started-planned": "",
+      "date-finished-actual": "",
+      "date-started-actual": "",
+    }
+  }],
+  "versions": [{
+    "version": "",
+    "node": "",
+    "description": "",
+    "status": "",
+    "extra": {}
+  }],
+  "events": [{
+    "id": "",
+    "name": "",
+    "description": "",
+    "status": "",
+    "date-finished-planned": "",
+    "date-started-planned": "",
+    "date-finished-actual": "",
+    "date-started-actual": "",
+    "extra": {}
+  }]
+}

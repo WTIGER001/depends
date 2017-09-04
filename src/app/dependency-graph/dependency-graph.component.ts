@@ -18,8 +18,9 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 
   @ViewChild('drawingArea') drawingArea
   @ViewChild('navigator') navigator
+  cyZoom
   cy: any;
-
+  large = true
   db: Database
   styles = new Styles()
   layoutChoices = [
@@ -37,15 +38,10 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 
   layout = this.layoutChoices[2]
 
-  // filtered = new Array<string>()
-  // autoLayout = true
-  // showNav = true
-  // showVersion = false
-  // showArrows = true
-
   prefs = new Prefs()
 
   constructor(private dataSvc: DataService, private localStorage: LocalStorageService) {
+    // Read Prefereces
     let str = <string>this.localStorage.get(this.LOCAL_STORAGE_KEY)
     if (str) {
       this.prefs = JSON.parse(str)
@@ -53,6 +49,15 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
         this.layout = this.layoutChoices[this.prefs.layoutChoice]
       }
     }
+
+    // Monitor ScreenSize
+    let mq = window.matchMedia("(min-width: 992px)");
+    this.large = mq.matches
+    mq.addListener(newMatch => {
+      this.large = newMatch.matches
+      this.updateForMedia()
+    });
+
   }
 
   //STUPID, STUPID, STUPID
@@ -286,10 +291,27 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
     })
   }
 
+  public updateForMedia() {
+    if (!this.large) {
+      this.cyZoom.hidden = true
+    } else {
+      this.cyZoom.hidden = !this.prefs.showZoom
+    }
+  }
+
+  public toggleZoom() {
+    this.prefs.showZoom = !this.prefs.showZoom
+    this.savePrefs()
+    this.updateForMedia()
+  }
+
   private setUpExtensions() {
     // Setup Extensions
     let pzdefaults = {}
     this.cy.panzoom(pzdefaults);
+    // this.cyZoom = this.drawingArea.nativeElement.
+    this.cyZoom = document.getElementsByClassName("cy-panzoom").item(0);
+    this.updateForMedia()
 
     let navDefaults = { container: this.navigator.nativeElement }
     this.cy.navigator(navDefaults);
@@ -353,6 +375,7 @@ export class DependencyGraphComponent implements OnInit, AfterContentInit, OnDes
 class Prefs {
   layoutChoice: number = 2
   showNavigator = true
+  showZoom = true
   autoLayout = true
   showArrows = true
   showVersion = true

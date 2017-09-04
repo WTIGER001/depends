@@ -10,3 +10,20 @@ chevron_button {
 .cell {
   padding: .1rem !important;
 }
+
+.selectable {
+  cursor: pointer;
+  padding: 5px 10px 10px 5px;
+}
+
+.selectable:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.selectable:hover {
+  background-color: #BABABA;
+}
+
+.selected {
+  background-color: #BABABA;
+}

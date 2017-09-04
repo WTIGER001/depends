@@ -9,8 +9,12 @@ import { Process } from '../models'
 export class ProcessViewComponent implements OnInit {
 
   constructor() { }
-  @Input() selected : Process
-  
+  @Input() selected: Process
+
   ngOnInit() {
+  }
+
+  edit() {
+
   }
 }

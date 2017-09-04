@@ -1,0 +1,24 @@
+{
+  "nodes": [{
+    "id": "id",
+    "status": "Planned",
+    "planned-finish": "",
+    "planned-start": "",
+    "actual-start": "",
+    "actual-finish": "",
+    "link": ""
+  }],
+  "edges": [{
+    "id": "x",
+    "target": "y",
+    "source": "z",
+    "type": "depends on | contained by"
+  }],
+  "deletions": [{
+    "id": "",
+    "date-deleted": "",
+    "description": ""
+  }]
+
+
+}

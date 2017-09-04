@@ -1,24 +1,39 @@
-<div class="split-pane-content-secondary page">
-  <div class="lower">
-    <vertical-split-pane primary-component-minsize="35" secondary-component-minsize="35" primary-component-initialratio="0.8">
-      <div class="split-pane-content-primary">
-        <div class="left">
-          <h4> List </h4>
-          <div class="btn-group btn-group-sm mb-1 mr-auto" role="group" data-toggle="buttons">
-            <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t)" [ngClass]="{'active': isFiltered(t)}">{{t}}</button>
-          </div>
-          <ng-table [className]="'cell'" [config]="getConfig()" (tableChanged)="onChangeTable()" (cellClicked)="onCellClick($event)"
-            [rows]="rows" [columns]="getConfig().sorting.columns">
-          </ng-table>
-        </div>
-      </div>
-      <div class="split-pane-content-secondary">
-        <div class="right">
-          <h4>Process Details</h4>
-          <app-process-view [selected]="selected"></app-process-view>
-        </div>
-      </div>
-    </vertical-split-pane>
+<h4> List </h4>
+<div class="sticky-top">
+  <div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons" *ngIf="large">
+    <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t)" [ngClass]="{'active': isFiltered(t)}">{{t}}</button>
+  </div>
 
+  <div ngbDropdown class="d-inline-block" *ngIf="!large">
+    <button class="btn btn-sm btn-info mb-1" id="dropdownBasic1" ngbDropdownToggle>{{prefs.typeSelected}}</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button class="dropdown-item gutter" *ngFor="let t of types" (click)="toggleFilter(t)"><i class="fa fa-check fa-fw check" *ngIf="isFiltered(t)"></i>{{t}}</button>
+    </div>
+  </div>
+
+  <div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons" *ngIf="large">
+    <button class="btn btn-info btn-sm" (click)="display = 'table'" [ngClass]="{'active': display == 'table'}"><i class="fa fa-table"></i></button>
+    <button class="btn btn-info btn-sm" (click)="display = 'list'" [ngClass]="{'active': display == 'list'}"><i class="fa fa-list"></i></button>
+  </div>
+
+  <button [disabled]="!selected" class="btn btn-secondary btn-sm  mb-1" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </button>
+  <button class="btn btn-sm btn-secondary  mb-1" (click)="newItem()"><i class="fa fa-plus" aria-hidden="true"></i> New Item</button>
+
+</div>
+<div class="row">
+  <div class="col-lg-9">
+    <ng-table *ngIf="large && display=='table'" [className]="['table-responsive','table-condensed']" [config]="getConfig()" (tableChanged)="onChangeTable()"
+      (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="getConfig().sorting.columns">
+    </ng-table>
+
+    <div *ngIf="!large || display=='list'">
+      <div *ngFor="let r of rows" class="selectable" [ngClass]="{'selected' : r.item == selected}" (click)="onListClick(r)" (dblclick)="view(r)"
+        (press)="view(r)">
+        {{r.item.data.label}} <span class="text-muted">v: {{r.item.data.version}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3" *ngIf="large">
+    <app-view [item]="selected"></app-view>
   </div>
 </div>

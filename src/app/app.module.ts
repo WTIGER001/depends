@@ -23,11 +23,15 @@ import { ReportComponent } from './report/report.component';
 
 import { DataService } from './data.service';
 import { DependencyTableComponent } from './dependency-table/dependency-table.component';
-
+import { EditorComponent } from './editor/editor.component';
+import { ViewComponent } from './view/view.component';
+import 'hammerjs';
 
 const appRoutes: Routes = [
   { path: 'home', component: ProcessListComponent },
-  { path: 'process/:id', component: ProcessViewComponent },
+  { path: 'edit', component: EditorComponent },
+  { path: 'edit/:id', component: EditorComponent },
+  { path: 'view/:id', component: ViewComponent },
   { path: 'matrix', component: DependencyMatrixComponent },
   { path: 'graph', component: DependencyGraphComponent },
   { path: 'report', component: ReportComponent },
@@ -48,7 +52,9 @@ const appRoutes: Routes = [
     DataManagerComponent,
     SettingsComponent,
     ReportComponent,
-    DependencyTableComponent
+    DependencyTableComponent,
+    EditorComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,7 @@ const appRoutes: Routes = [
       storageType: 'localStorage'
     }),
     SplitPaneModule,
-    Ng2TableModule, 
+    Ng2TableModule,
     TagInputModule
   ],
   providers: [

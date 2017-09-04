@@ -4,6 +4,14 @@
   border-top: 1px solid #d0d7de
 }
 
+.check {
+  margin-left: -24px
+}
+
+.gutter {
+  padding-left: 1.75rem
+}
+
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
 @import"~cytoscape-panzoom/cytoscape.js-panzoom.css";

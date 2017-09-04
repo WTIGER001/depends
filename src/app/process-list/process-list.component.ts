@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { LocalStorageService } from 'angular-2-local-storage'
+
 import { DataService } from '../data.service'
 import { Database, Process, GraphItem } from '../models'
+
 
 @Component({
   selector: 'app-process-list',
@@ -8,6 +13,7 @@ import { Database, Process, GraphItem } from '../models'
   styleUrls: ['./process-list.component.css']
 })
 export class ProcessListComponent implements OnInit {
+  LOCAL_STORAGE_KEY = "ProcessListComponent.prefs"
   types = [
     "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm"
   ]
@@ -15,25 +21,29 @@ export class ProcessListComponent implements OnInit {
   db: Database
   items: Row[] = new Array()
   rows: Row[] = new Array()
-  selected: Process
+  selected: GraphItem
   prefs = new Prefs()
   cy: any
+  large: boolean
 
-  constructor(private dataSvc: DataService) {
-    // Init Cytoscape engine
-    this.cy = cytoscape({
-      headless: true,
-      styleEnabled: false,
+  constructor(private dataSvc: DataService, private router: Router, private modalService: NgbModal, private localStorage: LocalStorageService) {
+    let str = <string>this.localStorage.get(this.LOCAL_STORAGE_KEY)
+    if (str) {
+      this.prefs = JSON.parse(str)
+    }
+
+    let mq = window.matchMedia("(min-width: 992px)");
+    this.large = mq.matches
+    mq.addListener(newMatch => {
+      console.log("Media Query " + newMatch.matches + " IS LARGE");
+      this.large = newMatch.matches
     });
 
     // Get the data
     this.dataSvc.getDb().subscribe(db => {
       this.db = db
       if (db.graph) {
-        // Add the nodes
-        db.graph.forEach((i: GraphItem) => {
-          this.cy.add(i)
-        })
+        this.cy = this.dataSvc.cy
         this.generate()
       }
     })
@@ -129,7 +139,8 @@ export class ProcessListComponent implements OnInit {
         name: label,
         value: id,
         version: n.data.version,
-        component: ProcessListComponent.blank(component)
+        component: ProcessListComponent.blank(component),
+        item: n
       })
     });
 
@@ -253,28 +264,56 @@ export class ProcessListComponent implements OnInit {
   }
 
   public onCellClick(data: any): any {
-    console.log("clicked " + JSON.stringify(data))
-
+    // console.log("clicked " + JSON.stringify(data))
     let r: Row = data.row
-    let found = false
-    if (this.prefs.typeSelected == "Process") {
-      let pName = r.value
-      this.db.processes.forEach(p => {
-        if (pName == p.process_name) {
-          this.selected = p
-          found = true
-        }
-      })
+    this.selected = r.item
+  }
+
+  public onListClick(r: any): any {
+    // console.log("clicked " + JSON.stringify(data))
+    this.selected = r.item
+  }
+
+  public edit() {
+    if (this.selected) {
+      this.router.navigate(['/edit', this.selected.data.id]);
     }
-    if (!found) {
-      this.selected = undefined
+  }
+
+  public view(r: any) {
+    if (r) {
+      this.router.navigate(['/view', r.item.data.id]);
     }
+    if (this.selected) {
+      this.router.navigate(['/view', this.selected.data.id]);
+    }
+  }
+
+  public newItem() {
+    this.router.navigate(['/edit'])
+  }
+
+  public set display(d: string) {
+    this.prefs.display = d
+    this.savePrefs()
+  }
+
+  public get display(): string {
+    if (this.prefs.display) {
+      return this.prefs.display
+    }
+    return 'table'
+  }
+
+  public savePrefs() {
+    let str = JSON.stringify(this.prefs)
+    this.localStorage.set(this.LOCAL_STORAGE_KEY, str)
   }
 }
 
-
 class Prefs {
   typeSelected = 'Process'
+  display = 'table'
 }
 
 class Row {
@@ -282,4 +321,5 @@ class Row {
   value: string
   version: string
   component: string
+  item: GraphItem
 }

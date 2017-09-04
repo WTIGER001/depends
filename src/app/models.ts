@@ -5,6 +5,7 @@ export class Database {
     public networks: Network[] = new Array()
     public technologies: Technology[] = new Array()
     public graph: GraphItem[] = new Array()
+    public structure = new DbConfig()
 }
 
 export class Process {
@@ -113,5 +114,22 @@ export class Data {
     degree: number
     version: string
     component: string
-    attachment: any
+    extra: any
+    status = "Complete"
+    start_date: Date
+    finish_date: Date
+    description: string
+}
+
+export class DbConfig {
+    types = ["Component", "Process", "Endpoint", "Technology", "Library", "Intent", "Data", "Algorithm"]
+    relationTypes = ["Parent", "Dependency"]
+}
+
+export class ProcessExtra {
+    public component_name: string
+    public executor_name: string
+    public version: string
+    public docker_base: string
+    public resources: Resources = new Resources()
 }
