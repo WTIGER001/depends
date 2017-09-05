@@ -5,3 +5,4 @@ interface NodeModule {
 }
 
 declare var cytoscape: any;
+declare var gantt: any;

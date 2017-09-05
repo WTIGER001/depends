@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProcessViewComponent } from './process-view.component';
+import { GanttComponent } from './gantt.component';
 
-describe('ProcessViewComponent', () => {
-  let component: ProcessViewComponent;
-  let fixture: ComponentFixture<ProcessViewComponent>;
+describe('GanttComponent', () => {
+  let component: GanttComponent;
+  let fixture: ComponentFixture<GanttComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProcessViewComponent ]
+      declarations: [ GanttComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProcessViewComponent);
+    fixture = TestBed.createComponent(GanttComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

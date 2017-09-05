@@ -40,6 +40,11 @@ th.rotate>div>span {
   width: 200px;
 }
 
+th.rotate>div>span:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
 td:hover {
   background-color: #eee;
   cursor: pointer;

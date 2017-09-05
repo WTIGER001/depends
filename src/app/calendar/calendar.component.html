@@ -1,0 +1,45 @@
+<h4> {{ viewDate | calendarDate:(display + 'ViewTitle') }} </h4>
+<div class="sticky-top">
+  <div class="btn-group btn-group-sm  mb-1">
+    <div class="btn btn-info btn-sm" mwlCalendarPreviousView [view]="display" [(viewDate)]="viewDate">Previous </div>
+    <div class="btn btn-secondary btn-sm" mwlCalendarToday [(viewDate)]="viewDate">Today</div>
+    <div class="btn btn-info btn-sm" mwlCalendarNextView [view]="display" [(viewDate)]="viewDate">Next</div>
+  </div>
+
+  <div class="btn-group btn-group-sm  mb-1">
+    <div class="btn btn-info btn-sm" (click)="display = 'month'" [class.active]="display === 'month'">
+      Month
+    </div>
+    <div class="btn btn-info btn-sm" (click)="display = 'week'" [class.active]="display === 'week'">
+      Week
+    </div>
+    <!-- <div class="btn btn-info btn-sm" (click)="display = 'day'" [class.active]="display === 'day'">
+      Day
+    </div> -->
+  </div>
+
+  <div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons">
+    <button [disabled]="!selected" class="btn btn-secondary btn-sm " (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </button>
+    <button class="btn btn-sm btn-secondary " (click)="newItem()"><i class="fa fa-plus" aria-hidden="true"></i> New Item</button>
+    <button class="btn btn-sm btn-secondary " (click)="newEdge()"><i class="fa fa-plus" aria-hidden="true"></i> New Link</button>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-lg-9">
+    <div [ngSwitch]="display">
+      <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events" [activeDayIsOpen]="activeDayIsOpen"
+        (eventClicked)="eventClicked($event)" (dayClicked)="dayClicked($event.day)">
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events" (eventClicked)="eventClicked($event)">
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events" (eventClicked)="eventClicked($event)">
+      </mwl-calendar-day-view>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <app-view [item]="selected"></app-view>
+  </div>
+</div>

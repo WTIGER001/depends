@@ -48,12 +48,6 @@ Extra Fields
 
 Dependency  - 
 Parent      - 
-Version     - 
-
-- Components only link to processes
-- Processes are depenent on: Technologies and LIbraries
-- Processes can be depenent on: Technologies, Libraries, Data Types, Intents, Endpoints and Algorithms
-- Data Types, Intents, and Endpoints can be dependent on Processes
 
 ##  Capabilities
 
@@ -74,43 +68,18 @@ Provides a "Focus" on a few items and all the dependencies are then listed for t
 
 Items remaining to do
 
-### Data Model
-
-- Redesign
-- Figure out how to include dates and the time phasing of dependencies
-- Make more representative sample data (2-4 hours)
 - Refactor to make the cytoscape nodes only calculated once
 - Collapse child dependencies into parent ones (e.g. Endpoints -> Processes -> Components)
 - model a gannt chart and calender
-- Determine how to update a model
 - Save a baseline, perform scenario modeling
 - Hook to JIRA and get status from there
-
-### List Page
-
-- Compact the format
 - Column chooser
 - Look at different table widget
 - Export to Excel / CSV
 - PDF Export
- 
-### Matrix Page 
-- PDF Export
-- Export to Excel / CSV
-
-### Network Page 
-- Image Export (PNG)
-
-### Report Page
-
-
-### Database Page
-
-
-### Other
-
-- PDF Export
-- Gantt CHart
+- Color code by scheduling status
+- Color code by end date
+- Filter by status / end date
 
 
 ### Design Questions

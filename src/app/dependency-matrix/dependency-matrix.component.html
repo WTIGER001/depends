@@ -20,6 +20,12 @@
   </div>
 </div>
 
+<div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons">
+  <button [disabled]="!selected" class="btn btn-secondary btn-sm " (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </button>
+  <button class="btn btn-sm btn-secondary " (click)="newItem()"><i class="fa fa-plus" aria-hidden="true"></i> New Item</button>
+  <button class="btn btn-sm btn-secondary " (click)="newEdge()"><i class="fa fa-plus" aria-hidden="true"></i> New Link</button>
+</div>
+
 <div ngbDropdown class="d-inline-block">
   <button class="btn btn-secondary btn-sm  mb-1 " id="ddCog" ngbDropdownToggle><i class="fa fa-cog"></i></button>
   <div ngbDropdownMenu aria-labelledby="ddCog">
@@ -29,25 +35,22 @@
   </div>
 </div>
 
-<vertical-split-pane primary-component-minsize="35" secondary-component-minsize="35" primary-component-initialratio="0.8">
-  <div class="split-pane-content-primary">
-    <div>
-      <table class="matrix">
-        <tr>
-          <th class="matrix"> </th>
-          <th *ngFor="let yHeader of yHeaders" class="matrix rotate">
-            <div><span>{{yHeader.display}}</span></div>
-          </th>
-        </tr>
-        <tr *ngFor="let xHeader of xHeaders; let row = index">
-          <td class="matrix_left" (click)="select(xHeader)">{{xHeader.display}}</td>
-          <td *ngFor="let yHeader of yHeaders; let col = index" class="matrix item" [ngClass]="{'filled': xHeader.value == yHeader.value}"><i class="fa fa-fw {{cells[row][col].direction}}"></i><br /> <span class="version" *ngIf="prefs.showVersion">{{cells[row][col].version}}</span></td>
-        </tr>
-      </table>
-    </div>
+<div class="row">
+  <div class="col-lg-9">
+    <table class="matrix">
+      <tr>
+        <th class="matrix"> </th>
+        <th *ngFor="let yHeader of yHeaders" class="matrix rotate">
+          <div><span (click)="select(yHeader)">{{yHeader.display}}</span></div>
+        </th>
+      </tr>
+      <tr *ngFor="let xHeader of xHeaders; let row = index">
+        <td class="matrix_left" (click)="select(xHeader)">{{xHeader.display}}</td>
+        <td *ngFor="let yHeader of yHeaders; let col = index" class="matrix item" (click)="select(cells[row][col])" [ngClass]="{'filled': xHeader.value == yHeader.value}"><i class="fa fa-fw {{cells[row][col].direction}}"></i><br /> <span class="version" *ngIf="prefs.showVersion">{{cells[row][col].version}}</span></td>
+      </tr>
+    </table>
   </div>
-  <div class="split-pane-content-secondary">
-    <h4>Process Details</h4>
-    <app-process-view [selected]="selected"></app-process-view>
+  <div class="col-lg-3" *ngIf="large">
+    <app-view [item]="selected"></app-view>
   </div>
-</vertical-split-pane>
+</div>

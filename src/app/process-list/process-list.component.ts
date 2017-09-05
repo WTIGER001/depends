@@ -5,7 +5,7 @@ import { LocalStorageService } from 'angular-2-local-storage'
 
 import { DataService } from '../data.service'
 import { Database, Process, GraphItem } from '../models'
-
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-process-list',
@@ -293,6 +293,10 @@ export class ProcessListComponent implements OnInit {
     this.router.navigate(['/edit'])
   }
 
+  public newEdge() {
+    this.router.navigate(['/edit_edge'])
+  }
+
   public set display(d: string) {
     this.prefs.display = d
     this.savePrefs()
@@ -309,8 +313,40 @@ export class ProcessListComponent implements OnInit {
     let str = JSON.stringify(this.prefs)
     this.localStorage.set(this.LOCAL_STORAGE_KEY, str)
   }
-}
 
+  public isSelected(r: Row): boolean {
+    if (this.selected) {
+      return r.item.data.id == this.selected.data.id
+    }
+    return false
+  }
+
+  public key(event) {
+    console.log("KEY " + event.keyCode);
+
+    if (event.keyCode) {
+      let dir = 0
+      if (event.keyCode == 38) {
+        dir = -1
+      } else if (event.keyCode == 40) {
+        dir = 1
+      }
+
+      if (dir != 0) {
+        let indx = 0
+        if (this.selected) {
+          indx = _.findIndex(this.rows, i => i.item.data.id == this.selected.data.id)
+          indx += dir
+          indx = Math.max(indx, 0)
+          indx = Math.min(indx, this.rows.length - 1)
+        }
+        console.log("KEY WORK " + indx)
+        this.selected = this.rows[indx].item
+        event.preventDefault();
+      }
+    }
+  }
+}
 class Prefs {
   typeSelected = 'Process'
   display = 'table'

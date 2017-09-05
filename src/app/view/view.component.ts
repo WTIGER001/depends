@@ -28,8 +28,10 @@ export class ViewComponent implements OnInit {
   }
 
   @Input() set item(i: GraphItem) {
-    this._item = i
-    this.getLinks()
+    if (i && i.data) {
+      this._item = i
+      this.getLinks()
+    }
   }
 
   get item() {

@@ -16,8 +16,11 @@
     <button class="btn btn-info btn-sm" (click)="display = 'list'" [ngClass]="{'active': display == 'list'}"><i class="fa fa-list"></i></button>
   </div>
 
-  <button [disabled]="!selected" class="btn btn-secondary btn-sm  mb-1" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </button>
-  <button class="btn btn-sm btn-secondary  mb-1" (click)="newItem()"><i class="fa fa-plus" aria-hidden="true"></i> New Item</button>
+  <div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons">
+    <button [disabled]="!selected" class="btn btn-secondary btn-sm " (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </button>
+    <button class="btn btn-sm btn-secondary " (click)="newItem()"><i class="fa fa-plus" aria-hidden="true"></i> New Item</button>
+    <button class="btn btn-sm btn-secondary " (click)="newEdge()"><i class="fa fa-plus" aria-hidden="true"></i> New Link</button>
+  </div>
 
 </div>
 <div class="row">
@@ -26,9 +29,9 @@
       (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="getConfig().sorting.columns">
     </ng-table>
 
-    <div *ngIf="!large || display=='list'">
-      <div *ngFor="let r of rows" class="selectable" [ngClass]="{'selected' : r.item == selected}" (click)="onListClick(r)" (dblclick)="view(r)"
-        (press)="view(r)">
+    <div *ngIf="!large || display=='list'" tabindex="1" (keydown)="key($event)" class="list">
+      <div (keydown)="key($event)" *ngFor="let r of rows" class="selectable" [ngClass]="{'selected' : isSelected(r)}" (click)="onListClick(r)"
+        (dblclick)="view(r)" (press)="view(r)">
         {{r.item.data.label}} <span class="text-muted">v: {{r.item.data.version}}</span>
       </div>
     </div>

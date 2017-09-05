@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { DataService } from '../data.service'
 import { LocalStorageService } from 'angular-2-local-storage'
 import { Database, GraphItem } from '../models'
@@ -24,14 +26,22 @@ export class DependencyMatrixComponent implements OnInit {
   cells: Cell[][] = new Array()
 
   cy: any
-  selected: any
+  selected: GraphItem
+  large = true
 
-  constructor(private dataSvc: DataService, private localStorage: LocalStorageService) {
+  constructor(private dataSvc: DataService, private localStorage: LocalStorageService, private router: Router) {
     // Load Preferences 
     let str = <string>this.localStorage.get(this.LOCAL_STORAGE_KEY)
     if (str) {
       this.prefs = JSON.parse(str)
     }
+
+    // Monitor ScreenSize
+    let mq = window.matchMedia("(min-width: 992px)");
+    this.large = mq.matches
+    mq.addListener(newMatch => {
+      this.large = newMatch.matches
+    });
 
     // Init Cytoscape engine
     this.cy = cytoscape({
@@ -54,6 +64,23 @@ export class DependencyMatrixComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  public view(r: any) {
+    if (r) {
+      this.router.navigate(['/view', r.item.data.id]);
+    }
+    if (this.selected) {
+      this.router.navigate(['/view', this.selected.data.id]);
+    }
+  }
+
+  public newItem() {
+    this.router.navigate(['/edit'])
+  }
+
+  public newEdge() {
+    this.router.navigate(['/edit_edge'])
   }
 
   public setY(y: string) {
@@ -93,8 +120,11 @@ export class DependencyMatrixComponent implements OnInit {
     let nodey = this.cy.getElementById(yAxis)
 
     if (nodex && nodey) {
-      let incoming = nodex.incomers('#' + yAxis)
-      let outgoers = nodex.outgoers('#' + yAxis)
+      let outgoers = nodex.edgesTo('#' + yAxis)
+      let incoming = nodey.edgesTo('#' + xAxis)
+
+      // let incoming = nodex.incomers('#' + yAxis)
+      // let outgoers = nodex.outgoers('#' + yAxis)
 
       let left = false
       let top = false
@@ -104,12 +134,14 @@ export class DependencyMatrixComponent implements OnInit {
         val.direction = "fa-arrow-left"
         let n = incoming[0]._private
         val.version = n.data.version
+        val.value = n.data.id
       }
       if (outgoers && outgoers.length > 0) {
         left = true
         val.direction = "fa-arrow-up"
         let n = outgoers[0]._private
         val.version = n.data.version
+        val.value = n.data.id
       }
       if (left && top) {
         val.direction = "fa-arrow-up"
@@ -147,13 +179,18 @@ export class DependencyMatrixComponent implements OnInit {
     //TODO
   }
 
-  public select(me: any) {
-    let item = undefined
-    this.db.processes.forEach(p => {
-      if (p.process_name == me.display) {
-        item = p
+  public edit() {
+    if (this.selected) {
+      if (this.selected.group == 'nodes') {
+        this.router.navigate(['/edit', this.selected.data.id]);
+      } else {
+        this.router.navigate(['/edit_edge', this.selected.data.id]);
       }
-    })
+    }
+  }
+
+  public select(me: any) {
+    let item = this.dataSvc.findItem(me.value)
     this.selected = item
   }
 
@@ -180,6 +217,7 @@ class Pair {
 }
 
 class Cell {
+  value: string
   direction: string
   version: string
 }

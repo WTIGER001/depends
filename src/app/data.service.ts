@@ -20,6 +20,22 @@ export class DataService {
 
   database: BehaviorSubject<Database>;
   public cy: any
+
+  public edgeTypes = [{
+    value: "dependency",
+    label: "Depends On"
+  }, {
+    value: "parent",
+    label: "Child Of "
+  }, {
+    value: "child",
+    label: "Parent Of"
+  },
+  ]
+  public nodeTypes = [
+    "Component", "Process", "Technology", "Library", "Datatype", "Intent", "Endpoint", "Algorithm", "Release"
+  ]
+
   constructor(private localStorageService: LocalStorageService, private http: Http) {
     console.log("Reading from Local Storage");
     let dbString = this.localStorageService.get<string>("database")
@@ -65,15 +81,27 @@ export class DataService {
     this.cy.add(item)
   }
 
-  public addEdge(target: string, source: string, type: string, version?: string) {
+  public edgeTypeLabel(value: string) {
+    return _.result(_.find(this.edgeTypes, { 'value': value }), 'label');
+  }
+
+  public label(id: string) {
+    let i = this.getItem(id)
+    if (i) {
+      return i.data.label
+    }
+    return ""
+  }
+
+  public addEdge(target: string, source: string, type: string, version?: string, label?: string, id?: string): GraphItem {
     let e = new GraphItem()
     e.group = 'edges'
     e.data.target = target
     e.data.source = source
-    e.data.id = UUID.UUID()
+    e.data.id = id ? id : UUID.UUID()
     e.data.from = e.data.source
     e.data.to = e.data.target
-    e.data.label = version
+    e.data.label = label ? label : version
     e.data.type = type
 
     // Check if the target and source already exist
@@ -88,6 +116,7 @@ export class DataService {
 
     this.database.getValue().graph.push(e)
     this.cy.add(e)
+    return e
   }
 
   public remove(id: string) {
@@ -141,12 +170,21 @@ export class DataService {
       return []
     }
   }
-  public findItem(id: string): GraphItem {
-    return this.getItem(id)
-    // let db = this.database.getValue();
-    // return _.find(db.graph, item => {
-    //   return item.data.id == id
-    // })
+  public findItem(value: string, field: string = 'id'): GraphItem {
+    if (field == 'id') {
+      return this.getItem(value)
+    }
+
+    let selector = DataService.selector(value, field)
+    this.cy.elements(selector).forEach(item => {
+      return item._private
+    });
+
+    return undefined
+  }
+
+  public static selector(value: string, field: string = 'id') {
+    return 'node[ + "field + "=\"' + value + '\"]'
   }
 
   public findAll(term: string): string[] {
@@ -588,7 +626,12 @@ export class DataService {
    * @param s original ID
    */
   public static valid(s: string): string {
-    return s.replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_')
+    try {
+      return s.replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_')
+    } catch (error) {
+      console.log("BAD " + JSON.stringify(s));
+    }
+    return ""
   }
 
   /**

@@ -29,6 +29,7 @@
       "../node_modules/file-saver/FileSaver.js",
       "../node_modules/cytoscape-panzoom/cytoscape-panzoom.js",
       "../node_modules/cytoscape-navigator/cytoscape-navigator.js",
+      "../node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.js",
       "../node_modules/dagre/dist/dagre.js",
       "../node_modules/cytoscape-dagre/cytoscape-dagre.js"
     ],

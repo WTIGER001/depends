@@ -25,5 +25,13 @@ chevron_button {
 }
 
 .selected {
-  background-color: #BABABA;
+  background-color: #BABABA !important;
+}
+
+.list {
+  outline: 0px solid transparent;
+}
+
+.list:focus {
+  outline: 0px solid transparent;
 }

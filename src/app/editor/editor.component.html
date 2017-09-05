@@ -92,7 +92,7 @@
     <h6 class="text-muted">Links</h6>
 
     <div class="form-row">
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-4">
         <label for="linkType" class="col-form-label">Type</label>
         <select name="edgeType" class="form-control" [(ngModel)]="newEdge.data.type">
               <option value="dependency">Depends On</option>
@@ -100,17 +100,52 @@
               <option value="parent">Parent Of</option>
             </select>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-4">
         <label for="target" class="col-form-label">Target</label>
         <input name="edgeTarget " type="text" class="form-control" id="target" placeholder="Target" [(ngModel)]="newEdge.data.target"
           [ngbTypeahead]="searchforIds" [resultTemplate]="rt" [inputFormatter]="formatter">
 
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-4">
         <label for="linkVersion" class="col-form-label">Version</label>
         <input name="edgeVersion" type="text" class="form-control" id="linkVersion" placeholder="Version" [(ngModel)]="newEdge.data.version">
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-4">
+        <label class="col-form-label"> Status </label>
+        <div class="form-group">
+          <label class="custom-control custom-radio">
+            <input id="radio1" name="radio" type="radio" class="custom-control-input"  [(ngModel)]="newEdge.data.status" value="complete">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Complete</span>
+        </label>
+          <label class="custom-control custom-radio">
+            <input id="radio2" name="radio" type="radio" class="custom-control-input"   [(ngModel)]="newEdge.data.status" value="planned">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">In Work / Planned</span>
+          </label>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="name" class="col-form-label">Start Date</label>
+        <div class="input-group">
+          <input name="planned_start_date" class="form-control" placeholder="yyyy-mm-dd" name="dp3" [(ngModel)]="newEdge.data.start_date"
+            ngbDatepicker #d3="ngbDatepicker">
+          <button class="input-group-addon" (click)="d3.toggle()" type="button">
+             <i class="fa fa-calendar" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="name" class="col-form-label">Finish Date</label>
+        <div class="input-group">
+          <input name="planned_finish_date" class="form-control" placeholder="yyyy-mm-dd" name="dp4" [(ngModel)]="newEdge.data.finish_date"
+            ngbDatepicker #d4="ngbDatepicker">
+          <button class="input-group-addon" (click)="d4.toggle()" type="button">
+               <i class="fa fa-calendar" aria-hidden="true"></i>
+            </button>
+        </div>
+      </div>
+      <div class="form-group col-md-1">
         <div class="align-self-end">
           <button class="btn btn-sm btn-secondary align-self-end" (click)="addEdge()">Add</button>
         </div>

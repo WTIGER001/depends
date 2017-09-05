@@ -87,14 +87,16 @@ export class EditorComponent implements OnInit {
   }
 
   public save() {
-    if (this.node.data['start_date_obj']) {
-      let dt: NgbDateStruct = this.node.data['start_date_obj']
-      this.node.data.start_date = new Date(dt.day, dt.month, dt.year, 0, 0, 0, 0)
+
+
+    if (this.node.data.start_date) {
+      let dt: any = this.node.data.start_date
+      this.node.data.start_date = new Date(dt.year, dt.month - 1, dt.day, 0, 0, 0, 0)
     }
 
-    if (this.node.data['finish_date_obj']) {
-      let dt: NgbDateStruct = this.node.data['finish_date_obj']
-      this.node.data.start_date = new Date(dt.day, dt.month, dt.year, 0, 0, 0, 0)
+    if (this.node.data.finish_date) {
+      let dt: any = this.node.data.finish_date
+      this.node.data.finish_date = new Date(dt.year, dt.month - 1, dt.day, 0, 0, 0, 0)
     }
 
     if (this.original) {

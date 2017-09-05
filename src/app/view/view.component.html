@@ -29,34 +29,35 @@
   <div class="mt-2 mb-2">{{item.data.finish_date}}<span *ngIf="!item.data.finish_date" class="text-muted">No Finish Date</span></div>
 
   <h6 class="text-muted mt-3">Links / Edges</h6>
-  <div *ngFor="let link of links" class=""><span class="badge badge-secondary">{{link.data.type}}</span> {{link.data.target}}<span class="text-muted"> v: {{link.data.version}}</span></div>
+  <div *ngFor="let link of links" class="">
+    <!-- <div class="btn-group btn-group-sm" role="group" data-toggle="buttons">
+      <button class="btn btn-sm btn-light"><i class="fa fa-pencil"></i></button>
+      <button class="btn btn-sm btn-light"><i class="fa fa-times"></i></button>
+    </div> -->
+    <span class="badge badge-secondary">{{link.data.target|type}}</span> {{link.data.target|label}}<span class="text-muted"> v: {{link.data.version}}</span>
+  </div>
 
 </div>
 <div class="container-fluid" *ngIf="item && item.group == 'edges'">
-  <h4>item.data.label</h4>
-  <h6 class="text-muted">General Information</h6>
-  <div class="row">
-    <div class="col-md-2">Label</div>
-    <div class="col-md-10">{{item.data.label}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">ID</div>
-    <div class="col-md-10">{{item.data.id}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">Type</div>
-    <div class="col-md-10">{{item.data.type}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">Version</div>
-    <div class="col-md-10">{{item.data.version}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">Source</div>
-    <div class="col-md-10">{{item.data.source}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">Target</div>
-    <div class="col-md-10">{{item.data.target}}</div>
-  </div>
+  <h4>{{item.data.source|label}} <i class="fa fa-arrow-right"></i> {{item.data.target|label}}</h4>
+  <h6 class="text-muted mt-2 mb-2">General Information</h6>
+
+  <h6>ID</h6>
+  <div class="mt-2 mb-2">{{item.data.id}}</div>
+  <h6>Type</h6>
+  <div class="mt-2 mb-2">{{item.data.type}}</div>
+  <h6>Version</h6>
+  <div class="mt-2 mb-2"> {{item.data.version}}<span *ngIf="!item.data.version" class="text-muted">No Version</span></div>
+  <h6>Source</h6>
+  <div class="mt-2 mb-2">{{item.data.source |label}}</div>
+  <h6>Target</h6>
+  <div class="mt-2 mb-2">{{item.data.target|label}}</div>
+
+  <h6 class="text-muted mt-3">Scheduling</h6>
+  <h6>Status</h6>
+  <div class="mt-2 mb-2">{{item.data.status}}<span *ngIf="!item.data.status" class="text-muted">No Scheduing Status</span></div>
+  <h6>Start Date</h6>
+  <div class="mt-2 mb-2">{{item.data.start_date}}<span *ngIf="!item.data.start_date" class="text-muted">No Start Date</span></div>
+  <h6>Finish Date</h6>
+  <div class="mt-2 mb-2">{{item.data.finish_date}}<span *ngIf="!item.data.finish_date" class="text-muted">No Finish Date</span></div>
 </div>

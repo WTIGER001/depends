@@ -1,0 +1,112 @@
+<div class="container-fluid sticky-top">
+  <div class="row justify-content-end">
+
+    <button class="btn btn-info btn-sm mr-1" (click)="save()" type="button">
+                    <i class="fa fa-floppy-o" aria-hidden="true"> Save</i>
+                </button>
+    <button class="btn btn-secondary btn-sm" (click)="cancel()" type="button">
+                    <i class="fa fa-ban" aria-hidden="true"> Cancel</i>
+                </button>
+  </div>
+</div>
+
+<h6 class="text-muted">General Information</h6>
+
+<div class="form-row">
+
+  <div class="form-group  col-md-4">
+    <label for="label" class="col-form-label">Label</label>
+    <input name="label" type="text" class="form-control" id="label" aria-describedby="label" placeholder="Label..." [(ngModel)]="node.data.label">
+  </div>
+
+  <div class="form-group col-md-4">
+    <label for="id" class="col-form-label">ID</label>
+    <div class="input-group">
+      <input name="id" type="text" class="form-control" id="id" aria-describedby="id" placeholder="Enter Valid ID" [(ngModel)]="node.data.id">
+      <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button" (click)="randomId()"><i class="fa fa-random"></i></button>
+            <button class="btn btn-secondary" type="button" (click)="fixId()"><i class="fa fa-check-circle"></i></button>
+          </span>
+    </div>
+  </div>
+
+  <div class="form-group col-md-4">
+    <label for="linkVersion" class="col-form-label">Version</label>
+    <input name="edgeVersion" type="text" class="form-control" id="linkVersion" placeholder="Version" [(ngModel)]="node.data.version">
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-4">
+    <label for="source" class="col-form-label">Source</label>
+    <input name="edgeSource " type="text" class="form-control" id="source" placeholder="Source" [(ngModel)]="source" [ngbTypeahead]="searchforIds"
+      [resultTemplate]="rt" [inputFormatter]="formatter">
+  </div>
+  <div class="form-group col-md-4">
+    <label for="linkType" class="col-form-label">Type</label>
+    <select name="edgeType" class="form-control" [(ngModel)]="node.data.type">
+          <option value="dependency">Depends On</option>
+          <option value="child">Child Of</option>
+          <option value="parent">Parent Of</option>
+    </select>
+  </div>
+
+  <div class="form-group col-md-4">
+    <label for="target" class="col-form-label">Target</label>
+    <input name="edgeTarget " type="text" class="form-control" id="target" placeholder="Target" [(ngModel)]="target" [ngbTypeahead]="searchforIds"
+      [resultTemplate]="rt" [inputFormatter]="formatter">
+  </div>
+
+
+</div>
+
+<div class="form-group">
+  <label for="description">Description</label>
+  <textarea name="description" rows="4" type="textarea" class="form-control" id="description" aria-describedby="description"
+    placeholder="Description..." [(ngModel)]="node.data.description"></textarea>
+</div>
+
+<h6 class="text-muted">Scheduling</h6>
+
+<div class="form-row">
+  <div class="form-group col-md-4">
+    <label class="col-form-label"> Status </label>
+    <div class="form-group">
+      <label class="custom-control custom-radio">
+        <input id="radio1" name="radio" type="radio" class="custom-control-input"  [(ngModel)]="node.data.status" value="complete">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Complete</span>
+    </label>
+      <label class="custom-control custom-radio">
+        <input id="radio2" name="radio" type="radio" class="custom-control-input"   [(ngModel)]="node.data.status" value="planned">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">In Work / Planned</span>
+      </label>
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="name" class="col-form-label">Start Date</label>
+    <div class="input-group">
+      <input name="planned_start_date" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="node.data.start_date"
+        ngbDatepicker #d="ngbDatepicker">
+      <button class="input-group-addon" (click)="d.toggle()" type="button">
+         <i class="fa fa-calendar" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="name" class="col-form-label">Finish Date</label>
+    <div class="input-group">
+      <input name="planned_finish_date" class="form-control" placeholder="yyyy-mm-dd" name="dp2" [(ngModel)]="node.data.finish_date"
+        ngbDatepicker #d2="ngbDatepicker">
+      <button class="input-group-addon" (click)="d2.toggle()" type="button">
+           <i class="fa fa-calendar" aria-hidden="true"></i>
+        </button>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #rt let-r="result" let-t="term">
+  <span class="badge badge-secondary">{{r.data.type}}</span> {{ r.data.label}} <span class="text-muted">id: {{r.data.label}}</span>
+</ng-template>

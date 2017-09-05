@@ -10,31 +10,43 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 import { SplitPaneModule } from 'ng2-split-pane/lib/ng2-split-pane';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
 import { TagInputModule } from 'ngx-chips';
+import { CalendarModule } from 'angular-calendar';
+import { NgxTimelineModule } from 'ngx-timeline';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProcessListComponent } from './process-list/process-list.component';
 import { DependencyMatrixComponent } from './dependency-matrix/dependency-matrix.component';
 import { DependencyGraphComponent } from './dependency-graph/dependency-graph.component';
-import { ProcessViewComponent } from './process-view/process-view.component';
 import { DataManagerComponent } from './data-manager/data-manager.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ReportComponent } from './report/report.component';
+import { CalendarComponent } from './calendar/calendar.component'
+import { TimelineComponent } from './timeline/timeline.component'
 
 import { DataService } from './data.service';
 import { DependencyTableComponent } from './dependency-table/dependency-table.component';
 import { EditorComponent } from './editor/editor.component';
 import { ViewComponent } from './view/view.component';
 import 'hammerjs';
+import { LabelPipe } from './label.pipe';
+import { TypePipe } from './type.pipe';
+import { EditorEdgeComponent } from './editor-edge/editor-edge.component';
+import { GanttComponent } from './gantt/gantt.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: ProcessListComponent },
   { path: 'edit', component: EditorComponent },
+  { path: 'edit_edge', component: EditorEdgeComponent },
   { path: 'edit/:id', component: EditorComponent },
+  { path: 'edit_edge/:id', component: EditorEdgeComponent },
   { path: 'view/:id', component: ViewComponent },
   { path: 'matrix', component: DependencyMatrixComponent },
   { path: 'graph', component: DependencyGraphComponent },
   { path: 'report', component: ReportComponent },
+  { path: 'calendar', component: CalendarComponent },
+  { path: 'timeline', component: TimelineComponent },
+  { path: 'gantt', component: GanttComponent },
   { path: 'database', component: DataManagerComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -46,7 +58,6 @@ const appRoutes: Routes = [
     AppComponent,
     MenuComponent,
     ProcessListComponent,
-    ProcessViewComponent,
     DependencyMatrixComponent,
     DependencyGraphComponent,
     DataManagerComponent,
@@ -54,7 +65,13 @@ const appRoutes: Routes = [
     ReportComponent,
     DependencyTableComponent,
     EditorComponent,
-    ViewComponent
+    ViewComponent,
+    LabelPipe,
+    TypePipe,
+    EditorEdgeComponent,
+    CalendarComponent,
+    TimelineComponent,
+    GanttComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +88,9 @@ const appRoutes: Routes = [
     }),
     SplitPaneModule,
     Ng2TableModule,
-    TagInputModule
+    TagInputModule,
+    CalendarModule.forRoot(),
+    NgxTimelineModule
   ],
   providers: [
     DataService],
