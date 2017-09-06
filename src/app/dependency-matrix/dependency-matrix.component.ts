@@ -190,7 +190,9 @@ export class DependencyMatrixComponent implements OnInit {
   }
 
   public select(me: any) {
+    console.log("Selecting " + me.value);
     let item = this.dataSvc.findItem(me.value)
+    console.log("FOUND = " + item)
     this.selected = item
   }
 

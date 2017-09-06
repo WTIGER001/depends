@@ -9,7 +9,7 @@
       <p>The current source of your database is: {{database.source}}</p>
       <p>Current database contains </p>
       <ul>
-        <li>{{database.processes.length}} Processes</li>
+        <li>{{database.graph.length}} Graph Items</li>
       </ul>
       <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".json" multiple>
       <button class="btn btn-primary" (click)="clearDb()">Clear Database</button>

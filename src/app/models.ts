@@ -1,96 +1,12 @@
 export class Database {
     public source: string = "None"
-    public processes: Process[] = new Array()
-    public dataTypes: DataType[] = new Array()
-    public networks: Network[] = new Array()
-    public technologies: Technology[] = new Array()
+    // public processes: Process[] = new Array()
+    // public dataTypes: DataType[] = new Array()
+    // public networks: Network[] = new Array()
+    // public technologies: Technology[] = new Array()
     public graph: GraphItem[] = new Array()
     public structure = new DbConfig()
 }
-
-export class Process {
-    public source: string = ""
-    public process_name: string = ""
-    public component_name: string
-    public executor_name: string
-    public version: string
-    public docker_base: string
-    public resources: Resources = new Resources()
-    public platform_technologies_used: Technology[] = new Array()
-    public third_party_libraries: Library[] = new Array()
-    public data_written: DataTypeRef[] = new Array()
-    public data_consumed: DataTypeRef[] = new Array()
-    public intents_handled: Intent[] = new Array()
-    public intents_used: Intent[] = new Array()
-    public service_calls: ServiceCall[] = new Array()
-    public service_endpoints: ServiceEndpoint[] = new Array()
-    public algorithms_invoked: AlgInvoke[] = new Array()
-}
-
-export class Resources {
-    public cpu: number
-    public ram: number
-    public disk: number
-    public gpu: number
-    public instances: number
-    public dfs_storage: number
-    public archive_storage: number
-}
-
-export class Technology {
-    public technology: string
-    public version: string
-}
-
-export class Library {
-    public library: string
-    public version: string
-}
-
-export class DataTypeRef {
-    public data_name: string
-    public version: string
-}
-
-export class Intent {
-    public intent_name: string
-    public version: string
-}
-
-export class ServiceCall {
-    public process_name: string = ""
-    public endpoint: string
-    public version: string
-}
-
-export class ServiceEndpoint {
-    public endpoint: string
-}
-
-export class AlgInvoke {
-    public alg_name: string
-    public version: string
-}
-
-export class DataType {
-    public source: string = ""
-    public data_name: string
-    public version: string
-}
-
-export class ProcessVersion {
-    public source: string = ""
-    public process_name: string
-    public version: string
-}
-
-export class Network {
-    public source: string = ""
-    public network_name: String
-    public platform_technologies: Technology[] = new Array()
-    public installed_processes: ProcessVersion[] = new Array()
-}
-
 
 export class GraphItem {
     group: string = 'nodes'
@@ -122,8 +38,97 @@ export class Data {
 }
 
 export class DbConfig {
-    types = ["Component", "Process", "Endpoint", "Technology", "Library", "Intent", "Data", "Algorithm"]
-    relationTypes = ["Parent", "Dependency"]
+    nodeTypes: Label[] = [
+        {
+            label: 'Component',
+            value: 'component'
+        }, {
+            label: 'Process',
+            value: 'process'
+        }, {
+            label: 'Requirement',
+            value: 'requirement'
+        }, {
+            label: 'Capability',
+            value: 'capability'
+        }, {
+            label: 'Technology',
+            value: 'technology'
+        }, {
+            label: 'Library',
+            value: 'library'
+        }, {
+            label: 'Intent',
+            value: 'intent'
+        }, {
+            label: 'Data Type',
+            value: 'datatype'
+        }, {
+            label: 'Intent',
+            value: 'Intent'
+        }, {
+            label: 'Release',
+            value: 'release'
+        }, {
+            label: 'Install',
+            value: 'install'
+        }, {
+            label: 'Event',
+            value: 'event'
+        }
+    ]
+
+    edgeTypes: Label[] = [
+        {
+            label: 'Parent',
+            value: 'parent'
+        },
+        {
+            label: 'Depends On',
+            value: 'depends'
+        },
+        {
+            label: 'Association',
+            value: 'association'
+        },
+        {
+            label: 'Implements',
+            value: 'implements'
+        },
+        {
+            label: 'Satisfies',
+            value: 'satisfies'
+        },
+        {
+            label: 'Reads',
+            value: 'reads'
+        },
+        {
+            label: 'Writes',
+            value: 'writes'
+        },
+        {
+            label: 'Consumes',
+            value: 'consumes'
+        },
+        {
+            label: 'Handles',
+            value: 'handles'
+        },
+        {
+            label: 'Writes',
+            value: 'writes'
+        }
+    ]
+
+    validRelations: ValidRelation[] = [
+        {
+            sourceType: 'process',
+            targetType: 'component',
+            edgeType: 'parent'
+        }
+    ]
+
 }
 
 export class ProcessExtra {
@@ -131,5 +136,23 @@ export class ProcessExtra {
     public executor_name: string
     public version: string
     public docker_base: string
-    public resources: Resources = new Resources()
+
+    public cpu: number
+    public ram: number
+    public disk: number
+    public gpu: number
+    public instances: number
+    public dfs_storage: number
+    public archive_storage: number
+}
+
+export class Label {
+    value: string
+    label: string
+}
+
+export class ValidRelation {
+    sourceType: string
+    targetType: string
+    edgeType: string
 }

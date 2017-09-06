@@ -63,11 +63,7 @@ export class TimelineComponent implements OnInit, AfterViewInit {
       }
     });
 
-    this.types = []
-    this.types.push(...this.data.nodeTypes)
-    this.data.edgeTypes.forEach(t => {
-      this.types.push(t.value)
-    })
+    this.types = this.data.nodeTypes
     this.update()
   }
 

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { DataService } from '../data.service'
 import { GraphItem } from '../models'
 import { LocalStorageService } from 'angular-2-local-storage'
+import { Utils } from '../utils'
+import * as dt from 'date-fns'
 
 import * as _ from 'lodash'
 
@@ -12,6 +14,7 @@ import * as _ from 'lodash'
   styleUrls: ['./gantt.component.css']
 })
 export class GanttComponent implements OnInit, AfterViewInit {
+  u: Utils
   LOCAL_STORAGE_KEY = "GanttComponent.PREFS"
 
   @ViewChild('drawingArea') drawingArea
@@ -21,6 +24,8 @@ export class GanttComponent implements OnInit, AfterViewInit {
   large = true
 
   constructor(private data: DataService, private router: Router, private localStorage: LocalStorageService) {
+    // this.u = new Utils(localStorage, router, data, this.LOCAL_STORAGE_KEY, new Prefs(), this.update)
+
     // Read Prefereces
     let str = <string>this.localStorage.get(this.LOCAL_STORAGE_KEY)
     if (str) {
@@ -34,12 +39,15 @@ export class GanttComponent implements OnInit, AfterViewInit {
       this.large = newMatch.matches
     });
 
-    this.types = []
-    this.types.push(...this.data.nodeTypes)
-    this.data.edgeTypes.forEach(t => {
-      this.types.push(t.value)
-    })
+    this.types = this.data.nodeTypes
   }
+
+  // public get prefs() : Prefs {
+  //   return this.u.prefs
+  // }
+  // public get large() : boolean {
+  //   return this.u.large
+  // }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -50,6 +58,88 @@ export class GanttComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+  }
+
+  // private createTasks() {
+
+  //   let tasks = new Map<string, any>()
+
+  //   this.data.cy.nodes().forEach(i => {
+  //     let n: GraphItem = i._private
+  //     if (n.data.start_date || n.data.finish_date) {
+  //       let type = n.data.type
+  //       let dStart = n.data.start_date
+  //       let dEnd = n.data.finish_date
+  //       if (!dStart) {
+  //         dStart = dEnd
+  //       } else if (!dEnd) {
+  //         dEnd = dStart
+  //       }
+  //       let duration = dt.differenceInCalendarDays(dStart, dEnd)
+
+  //       // Create the basic task
+  //       let t: any = {
+  //         id: n.data.id,
+  //         text: n.data.label,
+  //         start_date: dStart,
+  //         duration: duration
+  //       }
+
+  //       // Determine which active schemes are used
+  //       let schemes = this.getSchemes(type)
+
+  //       // determine the possible paths
+
+  //       // Look for a parent
+  //       // this.data.cy.nodes()
+  //       // let parents = i.outgoers("edges[type=\"parent\"]") 
+  //       // let pids = []
+  //       // parents.forEach(p => {
+  //       //   let pId = p.target()
+  //       //   pids.push(pId)
+  //       // });
+  //       // if (pids.length >= 1) {
+  //       //   t.parent = pids[0]
+  //       // }
+
+  //     }
+  //   })
+  // }
+
+  private getPath(eles: any, s: Scheme): any {
+    var dfs = this.data.cy.elements().dfs({
+      // The element to start from
+      roots: eles,
+      // Function figure out if we are taking the right path
+      visit: function (v, e, u, i, depth) {
+        console.log('visit ' + v.id());
+
+        // The desired node type is 
+        let backLevels = s.levels.slice().reverse();
+        let lookingForType = backLevels[depth]
+
+        if (v.data('type') != lookingForType) {
+          // DoOwn the wrong path
+          return false
+        }
+
+        if (depth == backLevels.length) {
+          return true
+        }
+      },
+      directed: false
+    });
+
+  }
+
+  private getSchemes(type: string): Scheme[] {
+    let result = []
+    this.Schemes.forEach(scheme => {
+      if (_.includes(scheme.levels, type)) {
+        result.push(scheme)
+      }
+    });
+    return result;
   }
 
   private resize() {
@@ -293,8 +383,21 @@ export class GanttComponent implements OnInit, AfterViewInit {
     this.savePrefs()
     this.update()
   }
+
+  public Schemes: Scheme[] = [
+    { name: "Components", id_prefix: "com", levels: ['component', 'process', 'release'] },
+    { name: "Requirements", id_prefix: "req", levels: ['requirement', 'feature', 'release'] },
+    { name: "Installs", id_prefix: "ins", levels: ['install'] },
+    { name: "Environments", id_prefix: "ins", levels: ['environment', 'install'] },
+  ]
 }
 
 class Prefs {
   filtered: string[] = [""]
+}
+
+class Scheme {
+  name: string
+  id_prefix: string
+  levels: string[]
 }

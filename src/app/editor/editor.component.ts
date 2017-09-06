@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgbDateStruct, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap'
-import { GraphItem, Database } from '../models';
+import { GraphItem, Database, Label, DbConfig } from '../models';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs/Observable';
 import { UUID } from 'angular2-uuid';
@@ -20,6 +20,9 @@ const holder = []
 })
 export class EditorComponent implements OnInit {
 
+  nodeTypes: Label[] = []
+  edgeTypes: Label[] = []
+
   original: GraphItem
   node = new GraphItem()
   newEdge: any = {
@@ -33,6 +36,9 @@ export class EditorComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private db: DataService) {
     console.log("VERSION " + _.VERSION);
+
+    this.nodeTypes = this.db.nodeTypes
+    this.edgeTypes = this.db.edgeTypes
 
     let id = this.route.snapshot.paramMap.get('id');
     this.route.paramMap.subscribe((p: ParamMap) => {

@@ -1,13 +1,15 @@
 <h4> List </h4>
 <div class="sticky-top">
   <div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons" *ngIf="large">
-    <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t)" [ngClass]="{'active': isFiltered(t)}">{{t}}</button>
+    <button class="btn btn-info btn-sm" (click)="toggleFilter('ALL')" [ngClass]="{'active': isFiltered('ALL')}">ALL</button>
+    <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t.value)" [ngClass]="{'active': isFiltered(t.value)}">{{t.label}}</button>
   </div>
 
   <div ngbDropdown class="d-inline-block" *ngIf="!large">
     <button class="btn btn-sm btn-info mb-1" id="dropdownBasic1" ngbDropdownToggle>{{prefs.typeSelected}}</button>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <button class="dropdown-item gutter" *ngFor="let t of types" (click)="toggleFilter(t)"><i class="fa fa-check fa-fw check" *ngIf="isFiltered(t)"></i>{{t}}</button>
+      <button class="dropdown-item gutter" (click)="toggleFilter('ALL')"><i class="fa fa-check fa-fw check" *ngIf="isFiltered('ALL')"></i>ALL</button>
+      <button class="dropdown-item gutter" *ngFor="let t of types" (click)="toggleFilter(t.value)"><i class="fa fa-check fa-fw check" *ngIf="isFiltered(t.value)"></i>{{t.label}}</button>
     </div>
   </div>
 
@@ -37,6 +39,8 @@
     </div>
   </div>
   <div class="col-lg-3" *ngIf="large">
-    <app-view [item]="selected"></app-view>
+    <div class=" sticky-top">
+      <app-view [item]="selected"></app-view>
+    </div>
   </div>
 </div>

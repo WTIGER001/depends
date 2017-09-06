@@ -4,7 +4,7 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LocalStorageService } from 'angular-2-local-storage'
 
 import { DataService } from '../data.service'
-import { Database, Process, GraphItem } from '../models'
+import { Database, GraphItem } from '../models'
 import * as _ from 'lodash'
 
 @Component({
@@ -15,7 +15,6 @@ import * as _ from 'lodash'
 export class ProcessListComponent implements OnInit {
   LOCAL_STORAGE_KEY = "ProcessListComponent.prefs"
   types = [
-    "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm"
   ]
 
   db: Database
@@ -42,12 +41,13 @@ export class ProcessListComponent implements OnInit {
     // Get the data
     this.dataSvc.getDb().subscribe(db => {
       this.db = db
+      // this.types = this.db.structure.nodeTypes
       if (db.graph) {
         this.cy = this.dataSvc.cy
         this.generate()
       }
     })
-
+    this.types = this.dataSvc.nodeTypes
   }
 
   public columnsProcess: Array<any> = [
@@ -128,7 +128,12 @@ export class ProcessListComponent implements OnInit {
     let all = new Array<Row>()
 
     let selector = 'node[type=\"' + type + '\"]'
-    let items = this.cy.nodes(selector)
+    let items
+    if (type === 'ALL') {
+      items = this.cy.nodes()
+    } else {
+      items = this.cy.nodes(selector)
+    }
 
     items.forEach(p => {
       let n = p._private

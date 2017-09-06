@@ -17,6 +17,8 @@ export class ViewComponent implements OnInit {
   links
 
   constructor(private route: ActivatedRoute, private db: DataService, private router: Router) {
+    console.log("Created View");
+
     let id = this.route.snapshot.paramMap.get('id');
     this.route.paramMap.subscribe((p: ParamMap) => {
       let id = p.get("id")
@@ -28,6 +30,7 @@ export class ViewComponent implements OnInit {
   }
 
   @Input() set item(i: GraphItem) {
+    console.log("Setting Items " + i);
     if (i && i.data) {
       this._item = i
       this.getLinks()

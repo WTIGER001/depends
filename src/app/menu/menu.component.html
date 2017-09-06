@@ -30,7 +30,8 @@
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/database"><i class="fa fa-database" aria-hidden="true"></i></a>
+        <a *ngIf="!large" class="nav-link" routerLink="/database"><i class="fa fa-database" aria-hidden="true"></i> Data Manager</a>
+        <a *ngIf="large" class="nav-link" routerLink="/database"><i class="fa fa-database" aria-hidden="true"></i></a>
       </li>
     </ul>
   </div>

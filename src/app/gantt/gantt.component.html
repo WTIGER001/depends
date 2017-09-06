@@ -3,7 +3,7 @@
 <div class="sticky-top">
 
   <div class="btn-group btn-group-sm mb-1 mr-auto" role="group" data-toggle="buttons" *ngIf="large">
-    <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t)" [ngClass]="{'active': isFiltered(t)}">{{t}}</button>
+    <button class="btn btn-info btn-sm" *ngFor="let t of types" (click)="toggleFilter(t.value)" [ngClass]="{'active': isFiltered(t.value)}">{{t.label}}</button>
   </div>
 
   <div ngbDropdown class="d-inline-block" *ngIf="!large">
