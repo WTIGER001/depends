@@ -183,7 +183,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
           id: n.data.id,
           text: n.data.label,
           start_date: n.data.start_date,
-          duration: 5
+          duration: dt.differenceInCalendarDays(n.data.finish_date, n.data.start_date)
         }, n.data.type, 1);
       }
     })

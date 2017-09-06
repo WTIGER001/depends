@@ -20,6 +20,7 @@ export class DataService {
 
   database: BehaviorSubject<Database>;
 
+
   public cy: any
 
   constructor(private localStorageService: LocalStorageService, private http: Http) {
@@ -33,15 +34,21 @@ export class DataService {
       db.structure = new DbConfig()
       this.generateCy(db)
 
-      this.database = new BehaviorSubject(db) //Signals that we are ready
-      this.deconflict(db)
-
     } else {
       db = new Database()
+      this.generateCy(db)
+
       this.loadDefaultData()
     }
+    this.database = new BehaviorSubject(db) //Signals that we are ready
+    this.deconflict(db)
 
+  }
 
+  private loadFromLocalStorage(dbString): Observable<Database> {
+    let db = JSON.parse(dbString)
+    db.source = "Local Storage"
+    return Observable.of(db)
   }
 
   public get nodeTypes(): Label[] {
@@ -335,6 +342,20 @@ export class DataService {
     console.log("Reading Default Database");
     this.http.get("assets/data/database.json").subscribe(res => {
       let db = <Database>res.json()
+
+      db.graph.forEach(i => {
+        let a: any = i.data.start_date
+        let b: any = i.data.finish_date
+
+        if ((typeof a) == 'string') {
+          i.data.start_date = new Date(a)
+        }
+
+        if ((typeof b) == 'string') {
+          i.data.finish_date = new Date(b)
+        }
+      })
+
       // DataService.generateGraph(db)
       db.source = "Default"
 
@@ -344,6 +365,8 @@ export class DataService {
       console.log("DB2");
 
       this.database.next(db)
+      // this.database = new BehaviorSubject(db) //Signals that we are ready
+
       console.log("DECONFLICT");
       this.deconflict(db)
     })

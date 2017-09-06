@@ -95,7 +95,6 @@ export class TimelineComponent implements OnInit, AfterViewInit {
   }
 
   public select(event) {
-    console.log("SELECT " + JSON.stringify(event));
     this.selected = event.meta
   }
 

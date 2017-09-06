@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Database, GraphItem } from '../models';
 import { DataService } from '../data.service';
 import { saveAs } from 'file-saver';
+import * as df from 'date-fns';
 
 @Component({
   selector: 'app-data-manager',
@@ -67,17 +68,30 @@ export class DataManagerComponent implements OnInit {
       let n: GraphItem = i._private
 
       // Generate a random date 
+
       let yr = 2017
-      let mon = Math.floor(Math.random() * 12) + 1
-      let day = Math.floor(Math.random() * 4) + 1
-      let dt = new Date(yr, mon, day, 0, 0, 0)
-      let dt2 = new Date(yr, mon, day + 4, 0, 0, 0)
+      let mon = Math.floor(Math.random() * 3) + 9
+      let days = Math.floor(Math.random() * 60) + 1
+      let dateStart = new Date(yr, mon, 0, 0, 0, 0)
+      let dt = df.addDays(dateStart, days)
+      let duration = Math.floor(Math.random() * 30) + 1
       n.data.start_date = dt
-      n.data.finish_date = dt
+      n.data.finish_date = df.addDays(dt, duration)
     });
   }
 
   public edgeLabels() {
+    let types = this.dataService.nodeTypes
+    this.dataService.cy.nodes().forEach(i => {
+      let n: GraphItem = i._private
+      let type = n.data.type
+      types.forEach(t => {
+        if (t.value == type.toLowerCase()) {
+          n.data.type = t.value
+        }
+      })
+    });
+
     this.dataService.cy.edges().forEach(i => {
       let n: GraphItem = i._private
 
