@@ -22,22 +22,6 @@ export class DataService {
 
   public cy: any
 
-  // public edgeTypes = [{
-  //   value: "dependency",
-  //   label: "Depends On"
-  // }, {
-  //   value: "parent",
-  //   label: "Child Of "
-  // }, {
-  //   value: "child",
-  //   label: "Parent Of"
-  // },
-  // ]
-
-  // public nodeTypes = [
-  //   "Component", "Process", "Technology", "Library", "Datatype", "Intent", "Endpoint", "Algorithm", "Release"
-  // ]
-
   constructor(private localStorageService: LocalStorageService, private http: Http) {
     console.log("Reading from Local Storage");
     let dbString = this.localStorageService.get<string>("database")
@@ -83,12 +67,12 @@ export class DataService {
       styleEnabled: false,
     });
 
-    if (db.graph) {
-      // Add the nodes
-      db.graph.forEach((i: GraphItem) => {
-        cy.add(i)
-      })
-    }
+    // if (db.graph) {
+    // Add the nodes
+    db.graph.forEach((i: GraphItem) => {
+      cy.add(i)
+    })
+    // }
     this.cy = cy
     console.log("Complete CY " + cy.elements().length);
   }
