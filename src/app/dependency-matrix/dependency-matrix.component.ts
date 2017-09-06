@@ -14,9 +14,7 @@ import * as _ from 'lodash'
 })
 export class DependencyMatrixComponent implements OnInit {
   LOCAL_STORAGE_KEY = "DependencyMatrixComponent.PREFS"
-  types = [
-    "Component", "Process", "Technology", "Library", "Data Type", "Intent", "Endpoint", "Service Call", "Algorithm"
-  ]
+  types
 
   db: Database
   prefs = new Prefs()
@@ -52,6 +50,7 @@ export class DependencyMatrixComponent implements OnInit {
     // Get the data
     this.dataSvc.getDb().subscribe(db => {
       this.db = db
+      this.types = this.db.structure.nodeTypes
       if (db.graph) {
         // Add the nodes
         db.graph.forEach((i: GraphItem) => {
@@ -59,6 +58,7 @@ export class DependencyMatrixComponent implements OnInit {
         })
         this.generate()
       }
+
     })
   }
 
@@ -208,8 +208,8 @@ export class DependencyMatrixComponent implements OnInit {
 
 class Prefs {
   showVersion = true
-  xAxis = "Process"
-  yAxis = "Process"
+  xAxis = "process"
+  yAxis = "process"
 }
 
 
