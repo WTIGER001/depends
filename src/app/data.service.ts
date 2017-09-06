@@ -30,19 +30,18 @@ export class DataService {
       // console.log("Read " + dbString);
       db = JSON.parse(dbString)
       db.source = "Local Storage"
+      db.structure = new DbConfig()
+      this.generateCy(db)
+
+      this.database = new BehaviorSubject(db) //Signals that we are ready
+      this.deconflict(db)
+
     } else {
       db = new Database()
       this.loadDefaultData()
     }
 
-    db.structure = new DbConfig()
-    this.generateCy(db)
-    console.log("DB1");
-    this.database = new BehaviorSubject(db) //Signals that we are ready
-    console.log("DECONFLICT");
-    this.deconflict(db)
-    console.log("DB2");
-    this.database.next(db)
+
   }
 
   public get nodeTypes(): Label[] {
@@ -338,7 +337,15 @@ export class DataService {
       let db = <Database>res.json()
       // DataService.generateGraph(db)
       db.source = "Default"
+
+      db.structure = new DbConfig()
+      this.generateCy(db)
+
+      console.log("DB2");
+
       this.database.next(db)
+      console.log("DECONFLICT");
+      this.deconflict(db)
     })
   }
 
