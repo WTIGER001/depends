@@ -19,6 +19,7 @@ export class DataService {
   stash_project = "PIR"
 
   database: BehaviorSubject<Database>;
+
   public cy: any
 
   // public edgeTypes = [{
@@ -49,10 +50,15 @@ export class DataService {
       db = new Database()
       this.loadDefaultData()
     }
+
     db.structure = new DbConfig()
     this.generateCy(db)
-    this.database = new BehaviorSubject(db)
+    console.log("DB1");
+    this.database = new BehaviorSubject(db) //Signals that we are ready
+    console.log("DECONFLICT");
     this.deconflict(db)
+    console.log("DB2");
+    this.database.next(db)
   }
 
   public get nodeTypes(): Label[] {
@@ -69,6 +75,8 @@ export class DataService {
    * @param db Database to use
    */
   private generateCy(db: Database) {
+    console.log("Generating CY");
+
     // Init Cytoscape engine
     let cy = cytoscape({
       headless: true,
@@ -82,6 +90,7 @@ export class DataService {
       })
     }
     this.cy = cy
+    console.log("Complete CY " + cy.elements().length);
   }
 
   public getDb(): Observable<Database> {

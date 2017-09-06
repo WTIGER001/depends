@@ -128,12 +128,16 @@ export class ProcessListComponent implements OnInit {
     let all = new Array<Row>()
 
     let selector = 'node[type=\"' + type + '\"]'
+    console.log("Selecting " + selector);
+
     let items
     if (type === 'ALL') {
       items = this.cy.nodes()
     } else {
       items = this.cy.nodes(selector)
     }
+
+    console.log("Found " + items.length);
 
     items.forEach(p => {
       let n = p._private
