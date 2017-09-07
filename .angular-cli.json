@@ -3,48 +3,49 @@
   "project": {
     "name": "depends"
   },
-  "apps": [{
-    "root": "src",
-    "outDir": "dist",
-    "assets": [
-      "assets",
-      "favicon.ico"
-    ],
-    "index": "index.html",
-    "main": "main.ts",
-    "polyfills": "polyfills.ts",
-    "test": "test.ts",
-    "tsconfig": "tsconfig.app.json",
-    "testTsconfig": "tsconfig.spec.json",
-    "prefix": "app",
-    "styles": [
-      "styles.css",
-      "../node_modules/cytoscape-panzoom/cytoscape.js-panzoom.css",
-      "../node_modules/cytoscape-navigator/cytoscape.js-navigator.css"
-    ],
-    "scripts": [
-      "../node_modules/jquery/dist/jquery.js",
-      "../node_modules/jszip/dist/jszip.js",
-      "../node_modules/cytoscape/dist/cytoscape.js",
-      "../node_modules/file-saver/FileSaver.js",
-      "../node_modules/cytoscape-panzoom/cytoscape-panzoom.js",
-      "../node_modules/cytoscape-navigator/cytoscape-navigator.js",
-      "../node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.js",
-      "../node_modules/dagre/dist/dagre.js",
-      "../node_modules/cytoscape-dagre/cytoscape-dagre.js"
-    ],
-    "environmentSource": "environments/environment.ts",
-    "environments": {
-      "dev": "environments/environment.ts",
-      "prod": "environments/environment.prod.ts"
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": ["assets", "favicon.ico"],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "../node_modules/cytoscape-panzoom/cytoscape.js-panzoom.css",
+        "../node_modules/cytoscape-navigator/cytoscape.js-navigator.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/jszip/dist/jszip.js",
+        "../node_modules/cytoscape/dist/cytoscape.js",
+        "../node_modules/file-saver/FileSaver.js",
+        "../node_modules/cytoscape-panzoom/cytoscape-panzoom.js",
+        "../node_modules/cytoscape-navigator/cytoscape-navigator.js",
+        "../node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.js",
+        "../node_modules/dhtmlx-gantt/codebase/ext/dhtmlxgantt_marker.js",
+        "../node_modules/dagre/dist/dagre.js",
+        "../node_modules/cytoscape-dagre/cytoscape-dagre.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
     }
-  }],
+  ],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
     }
   },
-  "lint": [{
+  "lint": [
+    {
       "project": "src/tsconfig.app.json",
       "exclude": "**/node_modules/**"
     },

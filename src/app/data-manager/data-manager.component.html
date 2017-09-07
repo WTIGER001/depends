@@ -11,7 +11,7 @@
       <ul>
         <li>{{database.graph.length}} Graph Items</li>
       </ul>
-      <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".json" multiple>
+      <label class="btn btn-primary btn-file">Upload Database<input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".json" multiple></label>
       <button class="btn btn-primary" (click)="clearDb()">Clear Database</button>
       <button class="btn btn-primary" (click)="downloadFile()">Download Database</button>
       <button class="btn btn-primary" (click)="randomDates()">Random Dates</button>

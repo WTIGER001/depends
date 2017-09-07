@@ -3,7 +3,7 @@
 <span>Rows </span>
 <div class="btn-group btn-group-sm  mb-1 " role="group" aria-label="Button group with nested dropdown">
   <div ngbDropdown class="d-inline-block">
-    <button class="btn btn-secondary btn-sm" id="ddCog2" ngbDropdownToggle>{{prefs.xAxis}}</button>
+    <button class="btn btn-secondary btn-sm" id="ddCog2" ngbDropdownToggle>{{prefs.xAxis|nodetypelabel}}</button>
     <div ngbDropdownMenu aria-labelledby="ddCog2">
       <button class="dropdown-item gutter" *ngFor="let l of types" (click)="setX(l.value)"><i class="fa fa-check fa-fw check" *ngIf="l.value == xAxis"></i> {{l.label}}</button>
     </div>
@@ -13,7 +13,7 @@
 <span>Columns </span>
 <div class="btn-group btn-group-sm  mb-1 " role="group" aria-label="Button group with nested dropdown">
   <div ngbDropdown class="d-inline-block">
-    <button class="btn btn-secondary btn-sm" id="ddCog2" ngbDropdownToggle>{{prefs.yAxis}}</button>
+    <button class="btn btn-secondary btn-sm" id="ddCog2" ngbDropdownToggle>{{prefs.yAxis|nodetypelabel}}</button>
     <div ngbDropdownMenu aria-labelledby="ddCog2">
       <button class="dropdown-item gutter" *ngFor="let l of types" (click)="setY(l.value)"><i class="fa fa-check fa-fw check" *ngIf="l.value == yAxis"></i> {{l.label}}</button>
     </div>

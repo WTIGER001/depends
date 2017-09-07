@@ -28,6 +28,7 @@
     "@types/lodash": "^4.14.74",
     "angular-2-local-storage": "^1.0.1",
     "angular-calendar": "^0.21.1",
+    "angular2-logger": "^0.6.0",
     "angular2-uuid": "^1.1.1",
     "bootstrap": "^4.0.0-beta",
     "core-js": "^2.4.1",
