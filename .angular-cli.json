@@ -30,7 +30,8 @@
         "../node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.js",
         "../node_modules/dhtmlx-gantt/codebase/ext/dhtmlxgantt_marker.js",
         "../node_modules/dagre/dist/dagre.js",
-        "../node_modules/cytoscape-dagre/cytoscape-dagre.js"
+        "../node_modules/cytoscape-dagre/cytoscape-dagre.js",
+        "../node_modules/cytoscape-klay/cytoscape-klay.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

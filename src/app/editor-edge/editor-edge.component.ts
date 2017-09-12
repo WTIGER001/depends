@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgbDateStruct, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap'
 import { DataService } from '../data.service';
@@ -23,10 +23,6 @@ export class EditorEdgeComponent implements OnInit {
   node: GraphItem
   target
   source
-  // newEdge: any = {
-  //   data: {},
-  //   temp: true
-  // }
 
   constructor(private route: ActivatedRoute, private db: DataService) {
     this.node = new GraphItem()
@@ -51,6 +47,13 @@ export class EditorEdgeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+
+  public updateid() {
+    if (!this.original) {
+    this.node.data.id = DataService.valid(this.node.data.label.toLowerCase())
+    }
   }
 
   public fillIn() {

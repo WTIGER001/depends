@@ -11,6 +11,8 @@ import { DataService } from "../data.service";
 import { DateType, GraphItem } from "../models";
 import { LocalStorageService } from "angular-2-local-storage";
 import { Utils } from "../utils";
+import { Logger } from "angular2-logger/core";
+
 import * as dt from "date-fns";
 
 import * as _ from "lodash";
@@ -26,33 +28,25 @@ export class GanttComponent implements OnInit, AfterViewInit {
 
   @ViewChild("drawingArea") drawingArea;
   types = [];
-  selected: GraphItem;
   prefs = new Prefs();
-  large = true;
 
   dataset: Dataset;
 
   constructor(
+    private logger: Logger,
     private data: DataService,
     private router: Router,
     private localStorage: LocalStorageService
   ) {
-    // this.u = new Utils(localStorage, router, data, this.LOCAL_STORAGE_KEY, new Prefs(), this.update)
+    this.u = new Utils(
+      localStorage,
+      router,
+      data,
+      this.LOCAL_STORAGE_KEY,
+      new Prefs(),
+      this.update
+    );
     this.dataset = new Dataset(this.data);
-
-    // Read Prefereces
-    let str = <string>this.localStorage.get(this.LOCAL_STORAGE_KEY);
-    if (str) {
-      this.prefs = JSON.parse(str);
-    }
-
-    let mq = window.matchMedia("(min-width: 992px)");
-    this.large = mq.matches;
-    mq.addListener(newMatch => {
-      console.log("Media Query " + newMatch.matches + " IS LARGE");
-      this.large = newMatch.matches;
-    });
-
     this.types = this.data.nodeTypes;
   }
 
@@ -113,6 +107,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
     } else {
       this.drawingArea.nativeElement.style.height =
         windowH - rect.top - 10 + "px";
+      gantt.render();
       return true;
     }
   }
@@ -122,10 +117,24 @@ export class GanttComponent implements OnInit, AfterViewInit {
     gantt.config.drag_move = false;
     gantt.config.drag_links = false;
     gantt.config.readonly = true;
+    gantt.config.show_unscheduled = true;
     gantt.config.columns = [
       { name: "text", tree: true, width: "*", resize: true },
       { name: "start_date", align: "left" }
     ];
+
+    gantt.attachEvent("onTaskClick", (id, e) => {
+      //any custom logic here
+      let item = this.data.getItem(id);
+      if (this.u.selected && this.u.selected == item) {
+        this.u.selected = undefined;
+      } else {
+        this.u.selected = item;
+      }
+      // gantt.render();
+      setTimeout(() => gantt.render(), 50);
+      return true;
+    });
 
     gantt.init("gantt_here");
 
@@ -196,6 +205,34 @@ export class GanttComponent implements OnInit, AfterViewInit {
     });
   }
 
+  public stepNext() {
+    var project = gantt.getSubtaskDates();
+    console.log(JSON.stringify(project));
+
+    let newIndex = this.prefs.scaleIndex + 1;
+    if (newIndex >= this.scaleConfigs.length) {
+      newIndex = 0;
+    }
+
+    this.applyConfig(this.scaleConfigs[newIndex], project);
+    this.prefs.scaleIndex = newIndex;
+    gantt.render();
+  }
+
+  public stepPrev() {
+    var project = gantt.getSubtaskDates();
+    console.log(JSON.stringify(project));
+
+    let newIndex = this.prefs.scaleIndex - 1;
+    if (newIndex < 0) {
+      newIndex = this.scaleConfigs.length - 1;
+    }
+
+    this.applyConfig(this.scaleConfigs[newIndex], project);
+    this.prefs.scaleIndex = newIndex;
+    gantt.render();
+  }
+
   public zoomToFit() {
     var project = gantt.getSubtaskDates(),
       areaWidth = gantt.$task.offsetWidth;
@@ -217,6 +254,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
     }
 
     this.applyConfig(this.scaleConfigs[i], project);
+    this.prefs.scaleIndex = i;
     gantt.render();
   }
   // get number of columns in timeline
@@ -267,22 +305,6 @@ export class GanttComponent implements OnInit, AfterViewInit {
 
   //Setting available scales
   scaleConfigs = [
-    // minutes
-    {
-      unit: "minute",
-      step: 1,
-      scale_unit: "hour",
-      date_scale: "%H",
-      subscales: [{ unit: "minute", step: 1, date: "%H:%i" }]
-    },
-    // hours
-    {
-      unit: "hour",
-      step: 1,
-      scale_unit: "day",
-      date_scale: "%j %M",
-      subscales: [{ unit: "hour", step: 1, date: "%H:%i" }]
-    },
     // days
     {
       unit: "day",
@@ -368,12 +390,12 @@ export class GanttComponent implements OnInit, AfterViewInit {
     // decades
     {
       unit: "year",
-      step: 10,
+      step: 5,
       scale_unit: "year",
       template: function(date) {
         var dateToStr = gantt.date.date_to_str("%Y");
         var endDate = gantt.date.add(
-          gantt.date.add(date, 10, "year"),
+          gantt.date.add(date, 5, "year"),
           -1,
           "day"
         );
@@ -382,11 +404,11 @@ export class GanttComponent implements OnInit, AfterViewInit {
       subscales: [
         {
           unit: "year",
-          step: 100,
+          step: 50,
           template: function(date) {
             var dateToStr = gantt.date.date_to_str("%Y");
             var endDate = gantt.date.add(
-              gantt.date.add(date, 100, "year"),
+              gantt.date.add(date, 50, "year"),
               -1,
               "day"
             );
@@ -410,29 +432,6 @@ export class GanttComponent implements OnInit, AfterViewInit {
     }
     this.savePrefs();
     this.update();
-  }
-
-  public edit() {
-    if (this.selected) {
-      this.router.navigate(["/edit", this.selected.data.id]);
-    }
-  }
-
-  public view(r: any) {
-    if (r) {
-      this.router.navigate(["/view", r.item.data.id]);
-    }
-    if (this.selected) {
-      this.router.navigate(["/view", this.selected.data.id]);
-    }
-  }
-
-  public newItem() {
-    this.router.navigate(["/edit"]);
-  }
-
-  public newEdge() {
-    this.router.navigate(["/edit_edge"]);
   }
 
   public savePrefs() {
@@ -468,6 +467,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
 
 class Prefs {
   filtered: string[] = [""];
+  scaleIndex = -1;
 }
 
 class Scheme {
@@ -500,7 +500,8 @@ class Dataset {
       let t: any = {
         id: id,
         text: text,
-        type: "project"
+        type: "project",
+        open: true
       };
       if (parent) {
         t.parent = parent;

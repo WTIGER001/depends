@@ -1,1 +1,9 @@
+.gantt_container {
+  width: 100%;
+  height: 700px;
+  position: relative;
+}
 
+.bordered {
+  border: 3px solid #000000;
+}

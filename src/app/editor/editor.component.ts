@@ -69,6 +69,12 @@ export class EditorComponent implements OnInit {
 
   ngOnInit() {}
 
+  public updateid(event) {
+    if (!this.original) {
+      this.node.data.id = DataService.valid(this.node.data.label.toLowerCase());
+    }
+  }
+
   public updateLinks() {
     // Get all the links from the database
     let links = [];

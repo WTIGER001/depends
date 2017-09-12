@@ -66,11 +66,9 @@ Provides a "Focus" on a few items and all the dependencies are then listed for t
 
 ## Todo List
 
-Items remaining to do
-
-- Refactor to make the cytoscape nodes only calculated once
 - Collapse child dependencies into parent ones (e.g. Endpoints -> Processes -> Components)
-- model a gannt chart and calender
+- Better Sample Data
+- Timeline Sorting
 - Save a baseline, perform scenario modeling
 - Hook to JIRA and get status from there
 - Column chooser
@@ -81,10 +79,8 @@ Items remaining to do
 - Color code by end date
 - Filter by status / end date
 
-
 ### Design Questions
 
-1. Can people change the data
 
 ## Development
 

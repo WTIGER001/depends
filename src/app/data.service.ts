@@ -38,12 +38,12 @@ export class DataService {
 
     this.cyo = new BehaviorSubject<any>(this.cy);
 
-    console.log("Reading from Local Storage");
+    logger.info("Reading from Local Storage");
 
     let dbString = this.localStorageService.get<string>("database");
     var db: Database;
     if (dbString) {
-      // console.log("Read " + dbString);
+      // logger.info("Read " + dbString);
       db = JSON.parse(dbString);
       db.source = "Local Storage";
       db.structure = new DbConfig();
@@ -112,6 +112,7 @@ export class DataService {
     this.database.getValue().graph.push(item);
     this.deconflict();
     this.cy.add(item);
+    this.save();
   }
 
   public edgeTypeLabel(value: string) {
@@ -156,13 +157,26 @@ export class DataService {
 
     this.database.getValue().graph.push(e);
     this.cy.add(e);
+
+    this.save();
+
     return e;
+  }
+
+  /** Saves to Local Storage */
+  public save() {
+    this.localStorageService.set(
+      "database",
+      JSON.stringify(this.database.getValue())
+    );
+    this.logger.info("Wrote updated database to local storage");
   }
 
   public remove(id: string) {
     this.logger.info("Removing item with id " + id);
     this.cy.remove("#" + id);
     _.remove(this.database.getValue().graph, item => item.data.id == id);
+    this.save();
   }
 
   public static makeDefault(
@@ -293,7 +307,7 @@ export class DataService {
     let db = this.database.getValue();
     let r = new FileReader();
     r.onload = e => {
-      console.log(r.result);
+      this.logger.debug(r.result);
       let obj = <Database>JSON.parse(r.result);
       let source = file.name.replace(".json", "");
       if (obj.graph) {
@@ -309,8 +323,7 @@ export class DataService {
         );
       }
 
-      local.set("database", JSON.stringify(db));
-      this.logger.info("Wrote updated database to local storage");
+      this.save();
       callback();
     };
     r.readAsText(file);
@@ -343,12 +356,12 @@ export class DataService {
       db.structure = new DbConfig();
       this.generateCy(db);
 
-      console.log("DB2");
+      this.logger.info("DB2");
 
       this.database.next(db);
       // this.database = new BehaviorSubject(db) //Signals that we are ready
 
-      console.log("DECONFLICT");
+      this.logger.info("DECONFLICT");
       this.deconflict(db);
     });
   }

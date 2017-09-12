@@ -64,6 +64,12 @@ export class DbConfig {
       dateType: DateType.None
     },
     {
+      label: "Feature",
+      value: "feature",
+      hasDate: false,
+      dateType: DateType.None
+    },
+    {
       label: "Technology",
       value: "technology",
       hasDate: false,
@@ -76,20 +82,14 @@ export class DbConfig {
       dateType: DateType.None
     },
     {
-      label: "Intent",
-      value: "intent",
+      label: "Environment",
+      value: "environment",
       hasDate: false,
       dateType: DateType.None
     },
     {
       label: "Data Type",
       value: "datatype",
-      hasDate: false,
-      dateType: DateType.None
-    },
-    {
-      label: "Intent",
-      value: "Intent",
       hasDate: false,
       dateType: DateType.None
     },

@@ -42,38 +42,40 @@ export class TimelineComponent implements OnInit, AfterViewInit {
     });
 
     let newAll = [];
-    this.data.cy.elements().forEach(i => {
+    this.data.cy.nodes().forEach(i => {
       let n: GraphItem = i._private;
+      let t = this.data.nodeType(n.data.type);
+      if (t && t.hasDate) {
+        let icon = "fa-calendar-o";
+        switch (n.data.type) {
+          case "install":
+            icon = "fa-file-archive-o";
+            break;
+          case "release":
+            icon = "fa-gift";
+            break;
+          case "event":
+            icon = "fa-calendar-o";
+            break;
+        }
 
-      let icon = "fa-calendar-o";
-      switch (n.data.type) {
-        case "dependency":
-          icon = "fa-chain";
-          break;
-        case "Release":
-          icon = "fa-gift";
-          break;
+        let date = this.best(n.data.start_date, n.data.finish_date);
+        if (date) {
+          let e: TimelineEvent = {
+            date: date,
+            header: n.data.label,
+            body: n.data.description,
+            icon: icon
+          };
+          e["id"] = n.data.id;
+          e["node"] = n;
+          newAll.push(e);
+        }
       }
-
-      if (n.data.start_date || n.data.finish_date) {
-        let e: TimelineEvent = {
-          date: n.data.finish_date,
-          header: n.data.label,
-          body: n.data.description,
-          icon: icon
-        };
-        e["id"] = n.data.id;
-        e["node"] = n;
-        newAll.push(e);
-      }
-    });
-
-    newAll.sort((a, b): number => {
-      return b - a;
     });
     this.all = newAll;
 
-    this.types = this.data.nodeTypes;
+    this.types = _.filter(this.data.nodeTypes, i => i.hasDate);
     this.update();
   }
 
@@ -85,6 +87,9 @@ export class TimelineComponent implements OnInit, AfterViewInit {
         return !this.isFiltered(n.data.type);
       }
       return false;
+    });
+    let items2 = items.sort((a, b): number => {
+      return a.date > b.date ? 1 : -1;
     });
     this.events = items;
   }
@@ -116,6 +121,21 @@ export class TimelineComponent implements OnInit, AfterViewInit {
           this.selected = this.data.getItem(event.target.id);
         });
       });
+  }
+
+  best(d1, d2) {
+    if (d1 && d2) {
+      if (d1 > d2) {
+        return d1;
+      } else {
+        return d2;
+      }
+    } else if (d1) {
+      return d1;
+    } else if (d2) {
+      return d2;
+    }
+    return undefined;
   }
 
   ngOnInit() {}
