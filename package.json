@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ghpages": "rm -rf docs && ng build --prod --output-path docs --base-href depends && cp docs/index.html docs/404.html"
+    "ghpages":
+      "rm -rf docs && ng build --prod --output-path docs --base-href depends && cp docs/index.html docs/404.html"
   },
   "private": true,
   "dependencies": {
@@ -43,7 +44,6 @@
     "hammerjs": "^2.0.8",
     "jquery": "^3.2.1",
     "jszip": "^3.1.3",
-    "moment": "^2.17.1",
     "ng2-split-pane": "^1.4.0",
     "ng2-table": "^1.3.2",
     "ngx-chips": "^1.5.3",
