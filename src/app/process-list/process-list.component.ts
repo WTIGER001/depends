@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { LocalStorageService } from "angular-2-local-storage";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LocalStorageService } from 'angular-2-local-storage';
+import * as _ from 'lodash';
 
-import { DataService } from "../data.service";
-import { Database, GraphItem } from "../models";
-import * as _ from "lodash";
+import { DataService } from '../data.service';
+import { Database, GraphItem } from '../models';
 
 @Component({
   selector: "app-process-list",
@@ -70,9 +70,9 @@ export class ProcessListComponent implements OnInit {
       filtering: { filterString: "", placeholder: "Filter by component" }
     },
     {
-      title: "Version",
-      name: "version",
-      filtering: { filterString: "", placeholder: "Filter by source" }
+      title: "Type",
+      name: "type",
+      filtering: { filterString: "", placeholder: "Filter by type" }
     }
   ];
 
@@ -88,9 +88,9 @@ export class ProcessListComponent implements OnInit {
       filtering: { filterString: "", placeholder: "Filter by component" }
     },
     {
-      title: "Version",
-      name: "version",
-      filtering: { filterString: "", placeholder: "Filter by source" }
+      title: "Type",
+      name: "type",
+      filtering: { filterString: "", placeholder: "Filter by type" }
     }
   ];
 
@@ -155,7 +155,7 @@ export class ProcessListComponent implements OnInit {
       all.push({
         name: label,
         value: id,
-        version: n.data.version,
+        type: n.data.type,
         component: ProcessListComponent.blank(component),
         item: n
       });
@@ -383,7 +383,7 @@ class Prefs {
 class Row {
   name: string;
   value: string;
-  version: string;
+  type: string;
   component: string;
   item: GraphItem;
 }

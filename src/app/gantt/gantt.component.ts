@@ -1,21 +1,13 @@
-import { log } from "util";
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  AfterViewInit,
-  HostListener
-} from "@angular/core";
-import { Router } from "@angular/router";
-import { DataService } from "../data.service";
-import { DateType, GraphItem } from "../models";
-import { LocalStorageService } from "angular-2-local-storage";
-import { Utils } from "../utils";
-import { Logger } from "angular2-logger/core";
+import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { Logger } from 'angular2-logger/core';
+import * as dt from 'date-fns';
+import * as _ from 'lodash';
 
-import * as dt from "date-fns";
-
-import * as _ from "lodash";
+import { DataService } from '../data.service';
+import { DateType, GraphItem } from '../models';
+import { Utils } from '../utils';
 
 @Component({
   selector: "app-gantt",
@@ -118,6 +110,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
     gantt.config.drag_links = false;
     gantt.config.readonly = true;
     gantt.config.show_unscheduled = true;
+    gantt.config.static_background = true;
     gantt.config.columns = [
       { name: "text", tree: true, width: "*", resize: true },
       { name: "start_date", align: "left" }
@@ -142,7 +135,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
     this.resize();
   }
 
-  public update() {
+  public update2() {
     gantt.clearAll();
 
     // Create all the tasks, etc
@@ -163,7 +156,6 @@ export class GanttComponent implements OnInit, AfterViewInit {
       data: this.dataset.tasks,
       links: this.dataset.links
     };
-    console.log(JSON.stringify(dataToParse));
 
     gantt.parse(dataToParse);
     // Add the markers
@@ -173,6 +165,40 @@ export class GanttComponent implements OnInit, AfterViewInit {
 
     gantt.render();
   }
+
+  public update() {
+    gantt.clearAll();
+
+    // Create components
+    this.data.cy.nodes().forEach(i => {
+      let n: GraphItem = i._private;
+      let nodeType = this.data.nodeType(n.data.type);
+      let dateType = nodeType.dateType;
+
+      if (nodeType.value == "Sprint") {
+        this.dataset.fromType(n);
+      } else if (dateType == DateType.Marker) {
+        this.dataset.fromType(n);
+      }
+    });
+
+    // Update the chart
+    let dataToParse = {
+      data: this.dataset.tasks,
+      links: this.dataset.links
+    };
+
+    gantt.parse(dataToParse);
+
+    // Add the markers
+    this.dataset.markerDefs.forEach(v => {
+      gantt.addMarker(v);
+    });
+
+    gantt.render();
+  }
+
+  private getSprintsForComponent(componentId) {}
 
   private addTask(eles: any) {
     let n: GraphItem = eles._private;
@@ -449,14 +475,13 @@ export class GanttComponent implements OnInit, AfterViewInit {
     {
       name: "Components",
       id_prefix: "com",
-      levels: ["component", "process", "release"]
+      levels: ["component", "Sprint"]
     },
     {
       name: "Requirements",
       id_prefix: "req",
-      levels: ["requirement", "feature", "release"]
+      levels: ["requirement", "feature", "Sprint"]
     },
-    { name: "Installs", id_prefix: "ins", levels: ["install"] },
     {
       name: "Environments",
       id_prefix: "ins",
@@ -586,54 +611,50 @@ class Dataset {
   fromType(n: GraphItem, parent?) {
     let nodeType = this.data.nodeType(n.data.type);
     let dateType = nodeType.dateType;
+
+    let dtStart: Date = n.data.start_date;
+    if (dtStart && typeof dtStart === "string") {
+      dtStart = new Date(Date.parse(dtStart));
+    }
+
+    let dtEnd: Date = n.data.finish_date;
+    if (dtEnd && typeof dtEnd === "string") {
+      dtEnd = new Date(Date.parse(dtEnd));
+    }
+
+    let dtOne = dtStart ? dtStart : dtEnd;
+
     switch (dateType) {
       case DateType.DateRange:
-        this.task(
-          n.data.id,
-          n.data.label,
-          n.data.start_date,
-          n.data.finish_date,
-          parent
-        );
+        if (
+          !dtStart ||
+          !dtEnd ||
+          isNaN(dtStart.getDay()) ||
+          isNaN(dtEnd.getDay())
+        ) {
+          console.log(
+            "STOP " +
+              n.data.id +
+              " " +
+              n.data.type +
+              " " +
+              n.data.start_date +
+              " to " +
+              n.data.finish_date
+          );
+        } else {
+          this.task(n.data.id, n.data.label, dtStart, dtEnd, parent);
+        }
         break;
       case DateType.None:
         this.project(n.data.id, n.data.label, parent);
         break;
       case DateType.Milestone:
-        this.milestone(n.data.id, n.data.label, n.data.start_date, parent);
+        this.milestone(n.data.id, n.data.label, dtOne, parent);
         break;
       case DateType.Marker:
-        this.marker(n.data.id, n.data.label, n.data.start_date);
+        this.marker(n.data.id, n.data.label, dtOne);
         break;
     }
   }
 }
-
-// id - ( string, number ) the link id.
-// source - ( number ) the id of a task that the dependency will start from.
-// target - ( number ) the id of a task that the dependency will end with.
-// type - (string) the dependency type. The available values are stored in the links object. By default, they are:
-// "0" - 'finish to start'.
-// "1" - 'start_to_start'.
-// "2" - 'finish_to_finish'.
-// "3" - 'start_to_finish'.
-
-/*
-Mandatory properties
-text - ( string ) the task text.
-start_date - ( string ) the date when a task is scheduled to begin.
-duration - ( number ) the task duration.
-id - ( string, number ) the task id.
-Optional properties
-type - (string) the task type. The available values are stored in the types object:
-"task" - a regular task (default value).
-"project" - a task that starts, when its earliest child task starts, and ends, when its latest child ends. The start_date, end_date, duration properties are ignored for such tasks.
-"milestone" - a zero-duration task that is used to mark out important dates of the project. The duration, progress, end_date properties are ignored for such tasks.
-parent - ( string, number ) the id of the parent task. The id of the root task is specified by the root_id config.
-source - ( array ) ids of links that comes out from the task.
-target - ( array ) ids of links that comes into task.
-level - ( number ) the task's level in the tasks hierarchy (zero-based numbering).
-progress - ( number from 0 to 1 ) the task progress.
-open - ( boolean ) specifies whether the task branch will be opened initially (to show child tasks).
-end_date - ( string ) the date when a task is scheduled to be completed. Used as an alternative to the duration property for setting the duration of a task.
-*/

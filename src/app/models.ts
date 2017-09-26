@@ -70,6 +70,12 @@ export class DbConfig {
       dateType: DateType.None
     },
     {
+      label: "Thread",
+      value: "thread",
+      hasDate: true,
+      dateType: DateType.Marker
+    },
+    {
       label: "Technology",
       value: "technology",
       hasDate: false,
@@ -100,10 +106,10 @@ export class DbConfig {
       dateType: DateType.DateRange
     },
     {
-      label: "Install",
-      value: "install",
+      label: "Sprint",
+      value: "Sprint",
       hasDate: true,
-      dateType: DateType.Milestone
+      dateType: DateType.DateRange
     },
     {
       label: "Event",

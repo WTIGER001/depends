@@ -20,13 +20,15 @@
   <h6>Description</h6>
   <div class="mt-2 mb-2">{{item.data.description}}<span *ngIf="!item.data.description" class="text-muted">No Description</span></div>
 
-  <h6 class="text-muted mt-3">Scheduling</h6>
-  <h6>Status</h6>
-  <div class="mt-2 mb-2">{{item.data.status}}<span *ngIf="!item.data.status" class="text-muted">No Scheduing Status</span></div>
-  <h6>Start Date</h6>
-  <div class="mt-2 mb-2">{{item.data.start_date}}<span *ngIf="!item.data.start_date" class="text-muted">No Start Date</span></div>
-  <h6>Finish Date</h6>
-  <div class="mt-2 mb-2">{{item.data.finish_date}}<span *ngIf="!item.data.finish_date" class="text-muted">No Finish Date</span></div>
+  <div *ngIf="isScheduled(item)">
+    <h6 class="text-muted mt-3">Scheduling</h6>
+    <h6>Status</h6>
+    <div class="mt-2 mb-2">{{item.data.status}}<span *ngIf="!item.data.status" class="text-muted">No Scheduing Status</span></div>
+    <h6>Start Date</h6>
+    <div class="mt-2 mb-2">{{item.data.start_date}}<span *ngIf="!item.data.start_date" class="text-muted">No Start Date</span></div>
+    <h6>Finish Date</h6>
+    <div class="mt-2 mb-2">{{item.data.finish_date}}<span *ngIf="!item.data.finish_date" class="text-muted">No Finish Date</span></div>
+  </div>
 
   <h6 class="text-muted mt-3">Links / Edges</h6>
   <div *ngFor="let link of links" class="">
@@ -34,7 +36,7 @@
       <button class="btn btn-sm btn-light"><i class="fa fa-pencil"></i></button>
       <button class="btn btn-sm btn-light"><i class="fa fa-times"></i></button>
     </div> -->
-    <span class="badge badge-secondary">{{link.data.target|type}}</span> {{link.data.target|label}}<span class="text-muted"> v: {{link.data.version}}</span>
+    <span class="badge badge-secondary">{{link|type}}</span> {{link|label}}
   </div>
 
 </div>

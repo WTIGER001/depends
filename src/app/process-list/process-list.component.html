@@ -34,7 +34,7 @@
     <div *ngIf="!large || display=='list'" tabindex="1" (keydown)="key($event)" class="list">
       <div (keydown)="key($event)" *ngFor="let r of rows" class="selectable" [ngClass]="{'selected' : isSelected(r)}" (click)="onListClick(r)"
         (dblclick)="view(r)" (press)="view(r)">
-        {{r.item.data.label}} <span class="text-muted">v: {{r.item.data.version}}</span>
+        {{r.item.data.label}}
       </div>
     </div>
   </div>

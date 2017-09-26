@@ -1,27 +1,12 @@
-import { Injectable } from "@angular/core";
-import { Observable, BehaviorSubject } from "rxjs";
-import {
-  Http,
-  Response,
-  RequestOptionsArgs,
-  RequestOptions,
-  Headers
-} from "@angular/http";
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { Logger } from 'angular2-logger/core';
+import { UUID } from 'angular2-uuid';
+import * as _ from 'lodash';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-import { LocalStorageService } from "angular-2-local-storage";
-import { UUID } from "angular2-uuid";
-
-import {
-  Database,
-  GraphItem,
-  ProcessExtra,
-  DbConfig,
-  NodeType,
-  EdgeType
-} from "./models";
-import * as jzip from "jszip";
-import * as _ from "lodash";
-import { Logger } from "angular2-logger/core";
+import { Database, DbConfig, EdgeType, GraphItem, NodeType } from './models';
 
 @Injectable()
 export class DataService {
@@ -216,6 +201,23 @@ export class DataService {
     return undefined;
   }
 
+  public getEdgesWith(id: string): GraphItem[] {
+    let item = this.cy.getElementById(id);
+    if (item) {
+      let rtn = [];
+      let items = [];
+      items.push(...item.connectedEdges());
+      items.forEach(element => {
+        let nodeEdge = element._private;
+        if (nodeEdge.group == "edges") {
+          rtn.push(nodeEdge);
+        }
+      });
+      return rtn;
+    } else {
+      return [];
+    }
+  }
   public getEdgesFrom(id: string): GraphItem[] {
     let item = this.cy.getElementById(id);
     if (item) {
@@ -233,6 +235,7 @@ export class DataService {
       return [];
     }
   }
+
   public findItem(value: string, field: string = "id"): GraphItem {
     if (field == "id") {
       return this.getItem(value);
@@ -311,12 +314,39 @@ export class DataService {
       let obj = <Database>JSON.parse(r.result);
       let source = file.name.replace(".json", "");
       if (obj.graph) {
+        // Add Nodes
         obj.graph.forEach(item => {
-          // add to the database
-          db.graph.push(item);
+          if (item.group == "nodes") {
+            // add to the database
+            db.graph.push(item);
 
-          // add the node to Cytoscape
-          this.cy.add(item);
+            // add the node to Cytoscape
+            this.cy.add(item);
+          }
+        });
+
+        obj.graph.forEach(item => {
+          if (item.group == "edges") {
+            // Check that nodes exist
+            if (this.validate(item)) {
+              // add to the database
+              db.graph.push(item);
+
+              // add the node to Cytoscape
+              this.cy.add(item);
+            } else {
+              this.logger.warn(
+                "Invalid Edge:" +
+                  item.data.label +
+                  " ( " +
+                  item.data.id +
+                  ") t:" +
+                  item.data.target +
+                  " s:" +
+                  item.data.source
+              );
+            }
+          }
         });
         this.logger.info(
           file.name + " contained " + obj.graph.length + " items"
@@ -381,6 +411,19 @@ export class DataService {
       console.log("BAD " + JSON.stringify(s));
     }
     return "";
+  }
+
+  public validate(item: GraphItem): boolean {
+    if (item.group == "edges") {
+      if (!item.data.target || !this.exists(item.data.target)) {
+        return false;
+      }
+      if (!item.data.source || !this.exists(item.data.source)) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   /**
