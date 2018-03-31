@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { Database, GraphItem } from "../models";
-import { DataService } from "../data.service";
-import { StashService } from "../stash.service";
-import { saveAs } from "file-saver";
-import * as df from "date-fns";
+import { Component, OnInit } from '@angular/core';
+import * as df from 'date-fns';
+import { saveAs } from 'file-saver';
+
+import { DataService } from '../data.service';
+import { Database, GraphItem } from '../models';
+import { StashService } from '../stash.service';
 
 @Component({
   selector: "app-data-manager",
@@ -11,11 +12,30 @@ import * as df from "date-fns";
   styleUrls: ["./data-manager.component.css"]
 })
 export class DataManagerComponent implements OnInit {
+  type = "pie_advanced";
+  view: any[] = [700, 400];
+  histogram: any;
+  histogramEdges: any;
+
+  // options
+  showLegend = true;
+  xAxisLabel = "Country";
+  showYAxisLabel = true;
+  yAxisLabel = "Population";
+
+  colorScheme = {
+    domain: ["#5AA454", "#A10A28", "#C7B42C", "#AAAAAA"]
+  };
+
   database: Database;
   repos = new Array();
   constructor(private dataService: DataService, private stash: StashService) {
     this.dataService.getDb().subscribe(db => {
       this.database = db;
+      this.histogram = DataService.countNodes(this.dataService.cy.elements());
+      this.histogramEdges = DataService.countEdges(
+        this.dataService.cy.elements()
+      );
     });
   }
 
@@ -34,6 +54,10 @@ export class DataManagerComponent implements OnInit {
     let data: string = JSON.stringify(this.database);
     var blob = new Blob([data], { type: "application/json;charset=utf-8" });
     saveAs(blob, "database.json");
+  }
+
+  public onSelect(event) {
+    console.log("Selected");
   }
 
   public readProcessFile(slug: string) {

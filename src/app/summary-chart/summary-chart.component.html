@@ -1,0 +1,21 @@
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="'pie'">
+    <ngx-charts-pie-chart [scheme]="colorScheme" [results]="items" (select)="onSelect($event)" [view]='view' [labels]=true></ngx-charts-pie-chart>
+  </div>
+  <div *ngSwitchCase="'pie_advanced'">
+    <ngx-charts-advanced-pie-chart [scheme]="colorScheme" [results]="items" (select)="onSelect($event)" [view]='view'></ngx-charts-advanced-pie-chart>
+  </div>
+  <div *ngSwitchCase="'pie_grid'">
+    <ngx-charts-pie-grid [scheme]="colorScheme" [results]="items" (select)="onSelect($event)" [view]='view'></ngx-charts-pie-grid>
+  </div>
+  <div *ngSwitchCase="'bar_v'">
+    <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="items" [xAxis]="true" [yAxis]="true" [legend]="false" [showXAxisLabel]="false"
+      [showYAxisLabel]="false" (select)="onSelect($event)" [view]='view'>
+    </ngx-charts-bar-vertical>
+  </div>
+  <div *ngSwitchCase="'bar_h'">
+    <ngx-charts-bar-horizontal [scheme]="colorScheme" [results]="items" [xAxis]="'true'" [yAxis]="'true'" [legend]="'false'"
+      [showXAxisLabel]="'false'" [showYAxisLabel]="'false'" (select)="onSelect($event)" [view]='view'>
+    </ngx-charts-bar-horizontal>
+  </div>
+</div>

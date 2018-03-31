@@ -65,6 +65,28 @@ export class DataService {
     return this.database.getValue().structure.edgeTypes;
   }
 
+  public static countNodes(elements): NameValue<number>[] {
+    let items = _.filter(elements, (item: any) => item.group() == "nodes");
+    return DataService.countAll(items);
+  }
+
+  public static countEdges(elements): NameValue<number>[] {
+    let items = _.filter(elements, (item: any) => item.group() == "edges");
+    return DataService.countAll(items);
+  }
+
+  public static countAll(elements): NameValue<number>[] {
+    let results = _.countBy(elements, (item: any) => item.data("type"));
+    let counts = new Array<NameValue<number>>();
+    Object.keys(results).forEach(key => {
+      counts.push({
+        name: key,
+        value: results[key]
+      });
+    });
+    return counts;
+  }
+
   /**
    * Generate the Graph Representation in Cytoscape
    * @param db Database to use
@@ -496,4 +518,8 @@ class Zipped {
   repos: any[] = new Array();
 }
 
+class NameValue<T> {
+  name: string;
+  value: T;
+}
 class Util {}

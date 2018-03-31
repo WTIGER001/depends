@@ -1,21 +1,37 @@
 <h4>Database Manager</h4>
-
-<div class="card">
-  <div class="card-header">
-    Database
+<div class="sticky-top">
+  <div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons">
+    <label class="btn btn-secondary btn-file"><i class="fa fa-upload" aria-hidden="true"></i> Upload Database<input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".json" multiple></label>
+    <button class="btn btn-secondary" (click)="clearDb()"><i class="fa fa-trash-o" aria-hidden="true"></i> Clear Database</button>
+    <button class="btn btn-secondary" (click)="downloadFile()"><i class="fa fa-download" aria-hidden="true"></i> Download Database</button>
   </div>
-  <div class="card-body">
-    <div class="card-text">
-      <p>The current source of your database is: {{database.source}}</p>
-      <p>Current database contains </p>
-      <ul>
-        <li>{{database.graph.length}} Graph Items</li>
-      </ul>
-      <label class="btn btn-primary btn-file">Upload Database<input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".json" multiple></label>
-      <button class="btn btn-primary" (click)="clearDb()">Clear Database</button>
-      <button class="btn btn-primary" (click)="downloadFile()">Download Database</button>
-      <button class="btn btn-primary" (click)="randomDates()">Random Dates</button>
-      <button class="btn btn-primary" (click)="edgeLabels()">Fix Edge Labels</button>
-    </div>
+
+  <div class="btn-group btn-group-sm mb-1" role="group" data-toggle="buttons">
+    <button class="btn btn-info btn-sm" (click)="type ='pie'" [ngClass]="{'active': type == 'pie'}"><i class="fa fa-pie-chart" aria-hidden="true"></i></button>
+    <button class="btn btn-info btn-sm" (click)="type ='pie_advanced'" [ngClass]="{'active': type == 'pie_advanced'}"><i class="fa fa-pie-chart" aria-hidden="true"></i></button>
+    <button class="btn btn-info btn-sm" (click)="type ='pie_grid'" [ngClass]="{'active': type == 'pie_grid'}"><i class="fa fa-pie-chart" aria-hidden="true"></i></button>
+    <button class="btn btn-info btn-sm" (click)="type ='bar_v'" [ngClass]="{'active': type == 'bar_v'}"><i class="fa fa-bar-chart" aria-hidden="true"></i></button>
+    <button class="btn btn-info btn-sm" (click)="type ='bar_h'" [ngClass]="{'active': type == 'bar_h'}"><i class="fa fa-bar-chart fa-rotate-90" aria-hidden="true"></i></button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <p>The current source of your database is: {{database.source}}</p>
+    <p>Current database contains </p>
+    <ul>
+      <li>{{database.graph.length}} Graph Items</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 chart-container">
+    <p>Nodes </p>
+    <app-summary-chart [type]="type" [items]="histogram" [width]="1500" [height]="400"></app-summary-chart>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 chart-container">
+    <p>Edges </p>
+    <app-summary-chart [type]="type" [items]="histogramEdges" [width]="1500" [height]="400"></app-summary-chart>
   </div>
 </div>
