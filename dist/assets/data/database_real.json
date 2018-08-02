@@ -1,0 +1,1982 @@
+{
+    "graph": [{
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Kafka_Listener",
+            "label": "Kafka Listener",
+            "type": "Process",
+            "component": "Workflows",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Workflows",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "dcos",
+            "label": "dcos",
+            "type": "Technology",
+            "version": ">=1.9.1"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Kafka_Listener",
+            "target": "dcos",
+            "from": "Kafka_Listener",
+            "to": "dcos",
+            "id": "Kafka_Listener_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "docker",
+            "label": "docker",
+            "type": "Technology",
+            "version": ">=1.13"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Kafka_Listener",
+            "target": "docker",
+            "from": "Kafka_Listener",
+            "to": "docker",
+            "id": "Kafka_Listener_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "kafka",
+            "label": "kafka",
+            "type": "Technology",
+            "version": "^1.10"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Kafka_Listener",
+            "target": "kafka",
+            "from": "Kafka_Listener",
+            "to": "kafka",
+            "id": "Kafka_Listener_kafka",
+            "label": "^1.10",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Task_Maker",
+            "label": "Task Maker",
+            "type": "Process",
+            "component": "Workflows",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Workflows",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Task_Maker",
+            "target": "dcos",
+            "from": "Task_Maker",
+            "to": "dcos",
+            "id": "Task_Maker_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Task_Maker",
+            "target": "docker",
+            "from": "Task_Maker",
+            "to": "docker",
+            "id": "Task_Maker_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "jira",
+            "label": "jira",
+            "type": "Technology",
+            "version": "^7.0.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Task_Maker",
+            "target": "jira",
+            "from": "Task_Maker",
+            "to": "jira",
+            "id": "Task_Maker_jira",
+            "label": "^7.0.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Test_Sensors",
+            "label": "Test Sensors",
+            "type": "Process",
+            "component": "Workflows",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Workflows",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Test_Sensors",
+            "target": "dcos",
+            "from": "Test_Sensors",
+            "to": "dcos",
+            "id": "Test_Sensors_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Test_Sensors",
+            "target": "docker",
+            "from": "Test_Sensors",
+            "to": "docker",
+            "id": "Test_Sensors_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Environmentals_Server",
+            "label": "Environmentals Server",
+            "type": "Process",
+            "component": "Environmentals",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Environmentals",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Server",
+            "target": "dcos",
+            "from": "Environmentals_Server",
+            "to": "dcos",
+            "id": "Environmentals_Server_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Server",
+            "target": "kafka",
+            "from": "Environmentals_Server",
+            "to": "kafka",
+            "id": "Environmentals_Server_kafka",
+            "label": ">=1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Server",
+            "target": "docker",
+            "from": "Environmentals_Server",
+            "to": "docker",
+            "id": "Environmentals_Server_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "CBF_HDF5",
+            "label": "CBF HDF5",
+            "type": "Data Type",
+            "version": "^1.0.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Server",
+            "target": "CBF_HDF5",
+            "id": "Environmentals_Server_CBF_HDF5",
+            "from": "Environmentals_Server",
+            "to": "CBF_HDF5",
+            "label": "^1.0.0",
+            "type": "Data Consumed"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Reporter_Service",
+            "label": "Reporter Service",
+            "type": "Process",
+            "component": "Reporter",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Reporter",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Reporter_Service",
+            "target": "dcos",
+            "from": "Reporter_Service",
+            "to": "dcos",
+            "id": "Reporter_Service_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Reporter_Service",
+            "target": "docker",
+            "from": "Reporter_Service",
+            "to": "docker",
+            "id": "Reporter_Service_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "JRuby",
+            "label": "JRuby",
+            "type": "Library",
+            "version": "0.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Reporter_Service",
+            "target": "JRuby",
+            "id": "Reporter_Service_JRuby",
+            "from": "Reporter_Service",
+            "to": "JRuby",
+            "label": "0.0",
+            "type": "Library"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Reporter_Service_POST",
+            "label": "Reporter_Service_POST",
+            "type": "Endpoint",
+            "version": "1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Reporter_Service",
+            "target": "Reporter_Service_POST",
+            "from": "Reporter_Service",
+            "to": "Reporter_Service_POST",
+            "id": "Reporter_Service_Reporter_Service_POST",
+            "label": "1.0",
+            "type": "Endpoint"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baselines_Data_Store",
+            "label": "Baselines Data Store",
+            "type": "Process",
+            "component": "Baselines",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Baselines",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Data_Store",
+            "target": "dcos",
+            "from": "Baselines_Data_Store",
+            "to": "dcos",
+            "id": "Baselines_Data_Store_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Data_Store",
+            "target": "docker",
+            "from": "Baselines_Data_Store",
+            "to": "docker",
+            "id": "Baselines_Data_Store_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "cassandra",
+            "label": "cassandra",
+            "type": "Technology",
+            "version": "^3.0.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Data_Store",
+            "target": "cassandra",
+            "from": "Baselines_Data_Store",
+            "to": "cassandra",
+            "id": "Baselines_Data_Store_cassandra",
+            "label": "^3.0.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baselines_Data_Store_POST",
+            "label": "Baselines_Data_Store_POST",
+            "type": "Endpoint",
+            "version": "1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Data_Store",
+            "target": "Baselines_Data_Store_POST",
+            "from": "Baselines_Data_Store",
+            "to": "Baselines_Data_Store_POST",
+            "id": "Baselines_Data_Store_Baselines_Data_Store_POST",
+            "label": "1.0",
+            "type": "Endpoint"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baselines_Scout",
+            "label": "Baselines Scout",
+            "type": "Process",
+            "component": "Baselines",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Baselines",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Scout",
+            "target": "dcos",
+            "from": "Baselines_Scout",
+            "to": "dcos",
+            "id": "Baselines_Scout_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Scout",
+            "target": "docker",
+            "from": "Baselines_Scout",
+            "to": "docker",
+            "id": "Baselines_Scout_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Angular",
+            "label": "Angular",
+            "type": "Technology",
+            "version": "^4.0.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Scout",
+            "target": "Angular",
+            "from": "Baselines_Scout",
+            "to": "Angular",
+            "id": "Baselines_Scout_Angular",
+            "label": "^4.0.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Scout",
+            "target": "Baselines_Data_Store_POST",
+            "from": "Baselines_Scout",
+            "to": "Baselines_Data_Store_POST",
+            "id": "Baselines_Scout_Baselines_Data_Store_POST",
+            "label": "1.0",
+            "type": "Service Called"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Scout",
+            "target": "Baselines_Data_Store",
+            "from": "Baselines_Scout",
+            "to": "Baselines_Data_Store",
+            "id": "Baselines_Scout_Baselines_Data_Store",
+            "label": "1.0",
+            "type": "Process Dependency"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Kafka",
+            "label": "Kafka",
+            "type": "Technology",
+            "version": "^1.10"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Scout",
+            "target": "Kafka",
+            "from": "Baselines_Scout",
+            "to": "Kafka",
+            "id": "Baselines_Scout_Kafka",
+            "label": "^1.10",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baselines_Redis",
+            "label": "Baselines Redis",
+            "type": "Process",
+            "component": "Baselines",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Baselines",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Redis",
+            "target": "dcos",
+            "from": "Baselines_Redis",
+            "to": "dcos",
+            "id": "Baselines_Redis_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Redis",
+            "target": "docker",
+            "from": "Baselines_Redis",
+            "to": "docker",
+            "id": "Baselines_Redis_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Redis",
+            "label": "Redis",
+            "type": "Technology",
+            "version": "^1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Redis",
+            "target": "Redis",
+            "from": "Baselines_Redis",
+            "to": "Redis",
+            "id": "Baselines_Redis_Redis",
+            "label": "^1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baselines_Preferences",
+            "label": "Baselines Preferences",
+            "type": "Process",
+            "component": "Baselines",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Baselines",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Preferences",
+            "target": "dcos",
+            "from": "Baselines_Preferences",
+            "to": "dcos",
+            "id": "Baselines_Preferences_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Preferences",
+            "target": "docker",
+            "from": "Baselines_Preferences",
+            "to": "docker",
+            "id": "Baselines_Preferences_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "postgis",
+            "label": "postgis",
+            "type": "Technology",
+            "version": "^1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Preferences",
+            "target": "postgis",
+            "from": "Baselines_Preferences",
+            "to": "postgis",
+            "id": "Baselines_Preferences_postgis",
+            "label": "^1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baselines_Marshal",
+            "label": "Baselines Marshal",
+            "type": "Process",
+            "component": "Baselines",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Baselines",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Marshal",
+            "target": "dcos",
+            "from": "Baselines_Marshal",
+            "to": "dcos",
+            "id": "Baselines_Marshal_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Marshal",
+            "target": "docker",
+            "from": "Baselines_Marshal",
+            "to": "docker",
+            "id": "Baselines_Marshal_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Marshal",
+            "target": "kafka",
+            "from": "Baselines_Marshal",
+            "to": "kafka",
+            "id": "Baselines_Marshal_kafka",
+            "label": "^1.10",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baselines_Loader",
+            "label": "Baselines Loader",
+            "type": "Process",
+            "component": "Baselines",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Baselines",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Loader",
+            "target": "dcos",
+            "from": "Baselines_Loader",
+            "to": "dcos",
+            "id": "Baselines_Loader_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Loader",
+            "target": "docker",
+            "from": "Baselines_Loader",
+            "to": "docker",
+            "id": "Baselines_Loader_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "geomesa",
+            "label": "geomesa",
+            "type": "Technology",
+            "version": "^1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Loader",
+            "target": "geomesa",
+            "from": "Baselines_Loader",
+            "to": "geomesa",
+            "id": "Baselines_Loader_geomesa",
+            "label": "^1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Loader",
+            "target": "cassandra",
+            "from": "Baselines_Loader",
+            "to": "cassandra",
+            "id": "Baselines_Loader_cassandra",
+            "label": "^3.0.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baselines_Feature_Extractor",
+            "label": "Baselines Feature Extractor",
+            "type": "Process",
+            "component": "Baselines",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Baselines",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Feature_Extractor",
+            "target": "dcos",
+            "from": "Baselines_Feature_Extractor",
+            "to": "dcos",
+            "id": "Baselines_Feature_Extractor_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Feature_Extractor",
+            "target": "docker",
+            "from": "Baselines_Feature_Extractor",
+            "to": "docker",
+            "id": "Baselines_Feature_Extractor_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baseline_Features",
+            "label": "Baseline Features",
+            "type": "Data Type",
+            "version": "1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "target": "Baselines_Feature_Extractor",
+            "source": "Baseline_Features",
+            "from": "Baseline_Features",
+            "to": "Baselines_Feature_Extractor",
+            "id": "Baselines_Feature_Extractor_Baseline_Features",
+            "label": "1.0",
+            "type": "Data Written"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Baselines_Geoserver",
+            "label": "Baselines Geoserver",
+            "type": "Process",
+            "component": "Baselines",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Baselines",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Geoserver",
+            "target": "dcos",
+            "from": "Baselines_Geoserver",
+            "to": "dcos",
+            "id": "Baselines_Geoserver_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Geoserver",
+            "target": "docker",
+            "from": "Baselines_Geoserver",
+            "to": "docker",
+            "id": "Baselines_Geoserver_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "geoserver",
+            "label": "geoserver",
+            "type": "Technology",
+            "version": "^1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Geoserver",
+            "target": "geoserver",
+            "from": "Baselines_Geoserver",
+            "to": "geoserver",
+            "id": "Baselines_Geoserver_geoserver",
+            "label": "^1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Geoserver",
+            "target": "geomesa",
+            "from": "Baselines_Geoserver",
+            "to": "geomesa",
+            "id": "Baselines_Geoserver_geomesa",
+            "label": "^1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Baselines_Geoserver",
+            "target": "cassandra",
+            "from": "Baselines_Geoserver",
+            "to": "cassandra",
+            "id": "Baselines_Geoserver_cassandra",
+            "label": "^3.0.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Workflows_Server",
+            "label": "Workflows Server",
+            "type": "Process",
+            "component": "Workflows",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Workflows",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Workflows_Server",
+            "target": "dcos",
+            "from": "Workflows_Server",
+            "to": "dcos",
+            "id": "Workflows_Server_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Workflows_Server",
+            "target": "docker",
+            "from": "Workflows_Server",
+            "to": "docker",
+            "id": "Workflows_Server_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Filter_Parameters_API",
+            "label": "Filter Parameters API",
+            "type": "Process",
+            "component": "Workflows",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Workflows",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Filter_Parameters_API",
+            "target": "dcos",
+            "from": "Filter_Parameters_API",
+            "to": "dcos",
+            "id": "Filter_Parameters_API_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Filter_Parameters_API",
+            "target": "docker",
+            "from": "Filter_Parameters_API",
+            "to": "docker",
+            "id": "Filter_Parameters_API_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "events_server",
+            "label": "events_server",
+            "type": "Process",
+            "component": "Events",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Events",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "events_server",
+            "target": "dcos",
+            "from": "events_server",
+            "to": "dcos",
+            "id": "events_server_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "events_server",
+            "target": "kafka",
+            "from": "events_server",
+            "to": "kafka",
+            "id": "events_server_kafka",
+            "label": ">=1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "events_server",
+            "target": "docker",
+            "from": "events_server",
+            "to": "docker",
+            "id": "events_server_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "ONIRXML",
+            "label": "ONIRXML",
+            "type": "Data Type",
+            "version": "1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "target": "events_server",
+            "source": "ONIRXML",
+            "from": "ONIRXML",
+            "to": "events_server",
+            "id": "events_server_ONIRXML",
+            "label": "1.0",
+            "type": "Data Written"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "JODP3",
+            "label": "JODP3",
+            "type": "Data Type",
+            "version": "1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "target": "events_server",
+            "source": "JODP3",
+            "from": "JODP3",
+            "to": "events_server",
+            "id": "events_server_JODP3",
+            "label": "1.0",
+            "type": "Data Written"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "search",
+            "label": "search",
+            "type": "Intent",
+            "version": "0.1"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "events_server",
+            "target": "search",
+            "from": "events_server",
+            "to": "search",
+            "id": "events_server_search",
+            "label": "0.1",
+            "type": "Intent Used"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "analyze",
+            "label": "analyze",
+            "type": "Intent",
+            "version": "0.1"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "target": "events_server",
+            "source": "analyze",
+            "id": "events_server_analyze",
+            "from": "analyze",
+            "to": "events_server",
+            "label": "0.1",
+            "type": "Intent Handled"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "algorithm_invocation_service_post",
+            "label": "algorithm_invocation_service_post",
+            "type": "Service Call",
+            "version": "0.1"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "events_server",
+            "target": "algorithm_invocation_service_post",
+            "from": "events_server",
+            "to": "algorithm_invocation_service_post",
+            "id": "events_server_algorithm_invocation_service_post",
+            "label": "0.1",
+            "type": "Service Called"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "algorithm_invocation_service",
+            "label": "algorithm invocation service",
+            "type": "Process",
+            "version": "0.1"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "events_server",
+            "target": "algorithm_invocation_service",
+            "from": "events_server",
+            "to": "algorithm_invocation_service",
+            "id": "events_server_algorithm_invocation_service",
+            "label": "0.1",
+            "type": "Process Dependency"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "intent_manager_service_post",
+            "label": "intent_manager_service_post",
+            "type": "Service Call",
+            "version": "0.1"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "events_server",
+            "target": "intent_manager_service_post",
+            "from": "events_server",
+            "to": "intent_manager_service_post",
+            "id": "events_server_intent_manager_service_post",
+            "label": "0.1",
+            "type": "Service Called"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "intent_manager_service",
+            "label": "intent manager service",
+            "type": "Process",
+            "version": "0.1"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "events_server",
+            "target": "intent_manager_service",
+            "from": "events_server",
+            "to": "intent_manager_service",
+            "id": "events_server_intent_manager_service",
+            "label": "0.1",
+            "type": "Process Dependency"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "treatements",
+            "label": "treatements",
+            "type": "Algorithm",
+            "version": "0.1"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "events_server",
+            "target": "treatements",
+            "from": "events_server",
+            "to": "treatements",
+            "id": "events_server_treatements",
+            "label": "1.0",
+            "type": "Algorithm Invoked"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Environmentals_Session_Data_Service",
+            "label": "Environmentals Session Data Service",
+            "type": "Process",
+            "component": "Environmentals",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Environmentals",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Session_Data_Service",
+            "target": "dcos",
+            "from": "Environmentals_Session_Data_Service",
+            "to": "dcos",
+            "id": "Environmentals_Session_Data_Service_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Session_Data_Service",
+            "target": "kafka",
+            "from": "Environmentals_Session_Data_Service",
+            "to": "kafka",
+            "id": "Environmentals_Session_Data_Service_kafka",
+            "label": ">=1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Session_Data_Service",
+            "target": "docker",
+            "from": "Environmentals_Session_Data_Service",
+            "to": "docker",
+            "id": "Environmentals_Session_Data_Service_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Session_Data_Service",
+            "target": "CBF_HDF5",
+            "id": "Environmentals_Session_Data_Service_CBF_HDF5",
+            "from": "Environmentals_Session_Data_Service",
+            "to": "CBF_HDF5",
+            "label": "^1.0.0",
+            "type": "Data Consumed"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Environmentals_File_Management_Service",
+            "label": "Environmentals File Management Service",
+            "type": "Process",
+            "component": "Environmentals",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Environmentals",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_File_Management_Service",
+            "target": "dcos",
+            "from": "Environmentals_File_Management_Service",
+            "to": "dcos",
+            "id": "Environmentals_File_Management_Service_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_File_Management_Service",
+            "target": "kafka",
+            "from": "Environmentals_File_Management_Service",
+            "to": "kafka",
+            "id": "Environmentals_File_Management_Service_kafka",
+            "label": ">=1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_File_Management_Service",
+            "target": "docker",
+            "from": "Environmentals_File_Management_Service",
+            "to": "docker",
+            "id": "Environmentals_File_Management_Service_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_File_Management_Service",
+            "target": "CBF_HDF5",
+            "id": "Environmentals_File_Management_Service_CBF_HDF5",
+            "from": "Environmentals_File_Management_Service",
+            "to": "CBF_HDF5",
+            "label": "^1.0.0",
+            "type": "Data Consumed"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Environmentals_Algorithm_Request",
+            "label": "Environmentals Algorithm Request",
+            "type": "Process",
+            "component": "Environmentals",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Environmentals",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Algorithm_Request",
+            "target": "dcos",
+            "from": "Environmentals_Algorithm_Request",
+            "to": "dcos",
+            "id": "Environmentals_Algorithm_Request_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Algorithm_Request",
+            "target": "kafka",
+            "from": "Environmentals_Algorithm_Request",
+            "to": "kafka",
+            "id": "Environmentals_Algorithm_Request_kafka",
+            "label": ">=1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Algorithm_Request",
+            "target": "docker",
+            "from": "Environmentals_Algorithm_Request",
+            "to": "docker",
+            "id": "Environmentals_Algorithm_Request_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Algorithm_Request",
+            "target": "CBF_HDF5",
+            "id": "Environmentals_Algorithm_Request_CBF_HDF5",
+            "from": "Environmentals_Algorithm_Request",
+            "to": "CBF_HDF5",
+            "label": "^1.0.0",
+            "type": "Data Consumed"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Environmentals_Algorithm_Request_POST",
+            "label": "Environmentals_Algorithm_Request_POST",
+            "type": "Endpoint",
+            "version": "1.0"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Environmentals_Algorithm_Request",
+            "target": "Environmentals_Algorithm_Request_POST",
+            "from": "Environmentals_Algorithm_Request",
+            "to": "Environmentals_Algorithm_Request_POST",
+            "id": "Environmentals_Algorithm_Request_Environmentals_Algorithm_Request_POST",
+            "label": "1.0",
+            "type": "Endpoint"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Rasters_File_Workspace",
+            "label": "Rasters File Workspace",
+            "type": "Process",
+            "component": "Rasters",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Rasters",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_File_Workspace",
+            "target": "dcos",
+            "from": "Rasters_File_Workspace",
+            "to": "dcos",
+            "id": "Rasters_File_Workspace_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_File_Workspace",
+            "target": "kafka",
+            "from": "Rasters_File_Workspace",
+            "to": "kafka",
+            "id": "Rasters_File_Workspace_kafka",
+            "label": ">=1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_File_Workspace",
+            "target": "docker",
+            "from": "Rasters_File_Workspace",
+            "to": "docker",
+            "id": "Rasters_File_Workspace_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Rasters_Imagery",
+            "label": "Rasters Imagery",
+            "type": "Process",
+            "component": "Rasters",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Rasters",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_Imagery",
+            "target": "dcos",
+            "from": "Rasters_Imagery",
+            "to": "dcos",
+            "id": "Rasters_Imagery_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_Imagery",
+            "target": "kafka",
+            "from": "Rasters_Imagery",
+            "to": "kafka",
+            "id": "Rasters_Imagery_kafka",
+            "label": ">=1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_Imagery",
+            "target": "docker",
+            "from": "Rasters_Imagery",
+            "to": "docker",
+            "id": "Rasters_Imagery_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Rasters_Algorithm_Request",
+            "label": "Rasters Algorithm Request",
+            "type": "Process",
+            "component": "Rasters",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Rasters",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_Algorithm_Request",
+            "target": "dcos",
+            "from": "Rasters_Algorithm_Request",
+            "to": "dcos",
+            "id": "Rasters_Algorithm_Request_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_Algorithm_Request",
+            "target": "kafka",
+            "from": "Rasters_Algorithm_Request",
+            "to": "kafka",
+            "id": "Rasters_Algorithm_Request_kafka",
+            "label": ">=1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_Algorithm_Request",
+            "target": "docker",
+            "from": "Rasters_Algorithm_Request",
+            "to": "docker",
+            "id": "Rasters_Algorithm_Request_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }, {
+        "group": "nodes",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "id": "Rasters_AOI_Baseline",
+            "label": "Rasters AOI Baseline",
+            "type": "Process",
+            "component": "Rasters",
+            "version": "1.0",
+            "extra": {
+                "resources": {
+                    "cpu": 1,
+                    "ram": 1024,
+                    "disk": 0,
+                    "gpu": 0,
+                    "instances": 1,
+                    "dfs_storage": 0,
+                    "archive_storage": 0
+                },
+                "component_name": "Rasters",
+                "docker_base": "java",
+                "executor_name": "marathon"
+            }
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_AOI_Baseline",
+            "target": "dcos",
+            "from": "Rasters_AOI_Baseline",
+            "to": "dcos",
+            "id": "Rasters_AOI_Baseline_dcos",
+            "label": ">=1.9.1",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_AOI_Baseline",
+            "target": "kafka",
+            "from": "Rasters_AOI_Baseline",
+            "to": "kafka",
+            "id": "Rasters_AOI_Baseline_kafka",
+            "label": ">=1.0",
+            "type": "Technology"
+        }
+    }, {
+        "group": "edges",
+        "classes": "",
+        "data": {
+            "status": "Complete",
+            "source": "Rasters_AOI_Baseline",
+            "target": "docker",
+            "from": "Rasters_AOI_Baseline",
+            "to": "docker",
+            "id": "Rasters_AOI_Baseline_docker",
+            "label": ">=1.13",
+            "type": "Technology"
+        }
+    }]
+}
