@@ -10,7 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { CalendarModule } from 'angular-calendar';
-import { Logger } from 'angular2-logger/core';
 import { SplitPaneModule } from 'ng2-split-pane/lib/ng2-split-pane';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
 import { TagInputModule } from 'ngx-chips';
@@ -102,16 +101,11 @@ const appRoutes: Routes = [
     NgxTimelineModule,
     NgxChartsModule
   ],
-  providers: [DataService, StashService, Logger],
+  providers: [DataService, StashService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private logger: Logger) {
-    if (isDevMode()) {
-      console.info(
-        "To see debug logs enter: 'logger.level = logger.Level.DEBUG;' in your browser console"
-      );
-    }
-    this.logger.level = environment.logger.level;
+  constructor() {
+
   }
 }

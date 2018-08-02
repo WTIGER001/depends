@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { Logger } from 'angular2-logger/core';
 import * as dt from 'date-fns';
 import * as _ from 'lodash';
 
@@ -25,7 +24,6 @@ export class GanttComponent implements OnInit, AfterViewInit {
   dataset: Dataset;
 
   constructor(
-    private logger: Logger,
     private data: DataService,
     private router: Router,
     private localStorage: LocalStorageService
@@ -50,14 +48,14 @@ export class GanttComponent implements OnInit, AfterViewInit {
     this.resize();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   private getPath(eles: any, s: Scheme): any {
     var dfs = this.data.cy.elements().dfs({
       // The element to start from
       roots: eles,
       // Function figure out if we are taking the right path
-      visit: function(v, e, u, i, depth) {
+      visit: function (v, e, u, i, depth) {
         console.log("visit " + v.id());
 
         // The desired node type is
@@ -198,7 +196,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
     gantt.render();
   }
 
-  private getSprintsForComponent(componentId) {}
+  private getSprintsForComponent(componentId) { }
 
   private addTask(eles: any) {
     let n: GraphItem = eles._private;
@@ -323,7 +321,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
     }
   }
 
-  weekScaleTemplate = function(date) {
+  weekScaleTemplate = function (date) {
     var dateToStr = gantt.date.date_to_str("%d %M");
     var endDate = gantt.date.add(gantt.date.add(date, 1, "week"), -1, "day");
     return dateToStr(date) + " - " + dateToStr(endDate);
@@ -349,7 +347,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
         {
           unit: "week",
           step: 1,
-          template: function(date) {
+          template: function (date) {
             var dateToStr = gantt.date.date_to_str("%d %M");
             var endDate = gantt.date.add(
               gantt.date.add(date, 1, "week"),
@@ -379,7 +377,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
         {
           unit: "month",
           step: 3,
-          template: function(date) {
+          template: function (date) {
             var dateToStr = gantt.date.date_to_str("%M");
             var endDate = gantt.date.add(
               gantt.date.add(date, 3, "month"),
@@ -401,7 +399,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
         {
           unit: "year",
           step: 5,
-          template: function(date) {
+          template: function (date) {
             var dateToStr = gantt.date.date_to_str("%Y");
             var endDate = gantt.date.add(
               gantt.date.add(date, 5, "year"),
@@ -418,7 +416,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
       unit: "year",
       step: 5,
       scale_unit: "year",
-      template: function(date) {
+      template: function (date) {
         var dateToStr = gantt.date.date_to_str("%Y");
         var endDate = gantt.date.add(
           gantt.date.add(date, 5, "year"),
@@ -431,7 +429,7 @@ export class GanttComponent implements OnInit, AfterViewInit {
         {
           unit: "year",
           step: 50,
-          template: function(date) {
+          template: function (date) {
             var dateToStr = gantt.date.date_to_str("%Y");
             var endDate = gantt.date.add(
               gantt.date.add(date, 50, "year"),
@@ -518,7 +516,7 @@ class Dataset {
     return all;
   }
 
-  constructor(private data: DataService) {}
+  constructor(private data: DataService) { }
 
   project(id, text, parent?) {
     if (!this.taskDefs.has(id)) {
@@ -634,13 +632,13 @@ class Dataset {
         ) {
           console.log(
             "STOP " +
-              n.data.id +
-              " " +
-              n.data.type +
-              " " +
-              n.data.start_date +
-              " to " +
-              n.data.finish_date
+            n.data.id +
+            " " +
+            n.data.type +
+            " " +
+            n.data.start_date +
+            " to " +
+            n.data.finish_date
           );
         } else {
           this.task(n.data.id, n.data.label, dtStart, dtEnd, parent);

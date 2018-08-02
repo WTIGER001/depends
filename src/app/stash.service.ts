@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs'
+import { mergeMap, map, tap, first, concatMap, catchError } from "rxjs/operators";
 import { Http, Response, RequestOptionsArgs, RequestOptions, Headers } from '@angular/http'
 import { Database } from './models'
 
@@ -15,8 +16,8 @@ export class StashService {
   stash_project = "PIR"
 
   constructor(private http: Http) {
-    
-   }
+
+  }
 
   public getProcessesFile(repoName: String) {
     // https://bitbucket.di2e.net/rest/api/1.0/projects/PIR/repos/target-manager/browse/process.json
@@ -31,14 +32,15 @@ export class StashService {
       headers: myHeaders
     };
 
-    return this.http.request(path, requestOptions)
-      .map((response: Response) => {
+    return this.http.request(path, requestOptions).pipe(
+      map((response: Response) => {
         if (response.status === 204) {
           return undefined;
         } else {
           return response.json();
         }
-      });
+      }
+      ))
   }
   public getRepos() {
     // "https://cors-anywhere.herokuapp.com/" +
@@ -67,14 +69,16 @@ export class StashService {
       search: queryParameters
     };
 
-    return this.http.get(path, requestOptions)
-      .map((response: Response) => {
+    return this.http.get(path, requestOptions).pipe(
+      map((response: Response) => {
         if (response.status === 204) {
           return undefined;
         } else {
           return response.json();
         }
-      }).catch(StashService.handleError);
+      }),
+      catchError(StashService.handleError)
+    )
   }
 
   static handleError(error: Response) {

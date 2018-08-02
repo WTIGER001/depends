@@ -1,15 +1,11 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgbDateStruct, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap'
 import { DataService } from '../data.service';
 import { GraphItem, Database } from '../models';
-import { Observable } from 'rxjs/Observable';
 import { UUID } from 'angular2-uuid';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
 import * as _ from 'lodash'
+import { Observable } from 'rxjs';
 const holder = []
 
 @Component({
@@ -52,7 +48,7 @@ export class EditorEdgeComponent implements OnInit {
 
   public updateid() {
     if (!this.original) {
-    this.node.data.id = DataService.valid(this.node.data.label.toLowerCase())
+      this.node.data.id = DataService.valid(this.node.data.label.toLowerCase())
     }
   }
 

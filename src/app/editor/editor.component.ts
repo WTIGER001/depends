@@ -6,12 +6,8 @@ import {
 } from "@ng-bootstrap/ng-bootstrap";
 import { GraphItem, Database, NodeType, EdgeType, DbConfig } from "../models";
 import { DataService } from "../data.service";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 import { UUID } from "angular2-uuid";
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/debounceTime";
-import "rxjs/add/operator/distinctUntilChanged";
-import "rxjs/add/operator/switchMap";
 import * as _ from "lodash";
 
 const types = [
@@ -67,7 +63,7 @@ export class EditorComponent implements OnInit {
     holder[0] = this.db;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   public updateid(event) {
     if (!this.original) {
@@ -90,10 +86,10 @@ export class EditorComponent implements OnInit {
     links.forEach(item => {
       console.log(
         "ITEM " +
-          item.group +
-          " " +
-          item.data.target +
-          JSON.stringify(item.data)
+        item.group +
+        " " +
+        item.data.target +
+        JSON.stringify(item.data)
       );
     });
 
@@ -189,8 +185,8 @@ export class EditorComponent implements OnInit {
           term.length < 2
             ? []
             : types.filter(
-                v => v.toLowerCase().indexOf(term.toLowerCase()) > -1
-              )
+              v => v.toLowerCase().indexOf(term.toLowerCase()) > -1
+            )
       );
   }
 
@@ -264,10 +260,10 @@ export class MyNgbDateParserFormatter extends NgbDateParserFormatter {
   format(date: NgbDateStruct): string {
     return date
       ? `${isNumber(date.month) ? padNumber(date.month) : ""}-${isNumber(
-          date.day
-        )
-          ? padNumber(date.day)
-          : ""}-${date.year}`
+        date.day
+      )
+        ? padNumber(date.day)
+        : ""}-${date.year}`
       : "";
   }
 }

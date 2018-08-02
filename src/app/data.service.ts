@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { Logger } from 'angular2-logger/core';
 import { UUID } from 'angular2-uuid';
 import * as _ from 'lodash';
-import { BehaviorSubject, Observable } from 'rxjs';
-
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Database, DbConfig, EdgeType, GraphItem, NodeType } from './models';
 
 @Injectable()
@@ -16,19 +14,18 @@ export class DataService {
   public cy: any;
   constructor(
     private localStorageService: LocalStorageService,
-    private http: Http,
-    private logger: Logger
+    private http: Http
   ) {
     // Init Cytoscape engine
 
     this.cyo = new BehaviorSubject<any>(this.cy);
 
-    logger.info("Reading from Local Storage");
+    console.info("Reading from Local Storage");
 
     let dbString = this.localStorageService.get<string>("database");
     var db: Database;
     if (dbString) {
-      // logger.info("Read " + dbString);
+      // console.info("Read " + dbString);
       db = JSON.parse(dbString);
       db.source = "Local Storage";
       db.structure = new DbConfig();
@@ -41,12 +38,13 @@ export class DataService {
     }
     this.database = new BehaviorSubject(db); //Signals that we are ready
     this.deconflict(db);
+
   }
 
   private loadFromLocalStorage(dbString): Observable<Database> {
     let db = JSON.parse(dbString);
     db.source = "Local Storage";
-    return Observable.of(db);
+    return of(db);
   }
 
   public nodeType(value: string) {
@@ -92,7 +90,7 @@ export class DataService {
    * @param db Database to use
    */
   private generateCy(db: Database = this.database.getValue()) {
-    this.logger.info("Generating CY Elements");
+    console.info("Generating CY Elements");
 
     this.cy = cytoscape({
       headless: true,
@@ -102,13 +100,13 @@ export class DataService {
     // if (db.graph) {
     // Add the nodes
     db.graph.forEach((i: GraphItem) => {
-      this.logger.debug("Adding " + i.data.id);
+      console.debug("Adding " + i.data.id);
       this.cy.add(i);
     });
     // }
 
     this.cyo.next(this.cy);
-    this.logger.info("Complete CY " + this.cy.elements().length);
+    console.info("Complete CY " + this.cy.elements().length);
   }
 
   public getDb(): Observable<Database> {
@@ -176,11 +174,11 @@ export class DataService {
       "database",
       JSON.stringify(this.database.getValue())
     );
-    this.logger.info("Wrote updated database to local storage");
+    console.info("Wrote updated database to local storage");
   }
 
   public remove(id: string) {
-    this.logger.info("Removing item with id " + id);
+    console.info("Removing item with id " + id);
     this.cy.remove("#" + id);
     _.remove(this.database.getValue().graph, item => item.data.id == id);
     this.save();
@@ -305,7 +303,7 @@ export class DataService {
   }
 
   public clearDb() {
-    this.logger.warn("Clearing Database");
+    console.warn("Clearing Database");
 
     this.localStorageService.remove("database");
     if (this.cy) {
@@ -316,7 +314,7 @@ export class DataService {
   }
 
   public addFiles(files: FileList, callback: () => void) {
-    this.logger.info("Adding  " + files.length + " new database files");
+    console.info("Adding  " + files.length + " new database files");
 
     for (let i = 0; i < files.length; i++) {
       this.addFile(files[i], callback);
@@ -326,13 +324,13 @@ export class DataService {
   }
 
   public addFile(file: File, callback: () => void) {
-    this.logger.info("Adding new Database file " + file.name);
+    console.info("Adding new Database file " + file.name);
 
     let local = this.localStorageService;
     let db = this.database.getValue();
     let r = new FileReader();
     r.onload = e => {
-      this.logger.debug(r.result);
+      console.debug(r.result);
       let obj = <Database>JSON.parse(r.result);
       let source = file.name.replace(".json", "");
       if (obj.graph) {
@@ -357,20 +355,20 @@ export class DataService {
               // add the node to Cytoscape
               this.cy.add(item);
             } else {
-              this.logger.warn(
+              console.warn(
                 "Invalid Edge:" +
-                  item.data.label +
-                  " ( " +
-                  item.data.id +
-                  ") t:" +
-                  item.data.target +
-                  " s:" +
-                  item.data.source
+                item.data.label +
+                " ( " +
+                item.data.id +
+                ") t:" +
+                item.data.target +
+                " s:" +
+                item.data.source
               );
             }
           }
         });
-        this.logger.info(
+        console.info(
           file.name + " contained " + obj.graph.length + " items"
         );
       }
@@ -385,7 +383,7 @@ export class DataService {
    * Loads the default database
    */
   public loadDefaultData() {
-    this.logger.info("Reading Default Database");
+    console.info("Reading Default Database");
     this.http.get("assets/data/database.json").subscribe(res => {
       let db = <Database>res.json();
 
@@ -408,12 +406,12 @@ export class DataService {
       db.structure = new DbConfig();
       this.generateCy(db);
 
-      this.logger.info("DB2");
+      console.info("DB2");
 
       this.database.next(db);
       // this.database = new BehaviorSubject(db) //Signals that we are ready
 
-      this.logger.info("DECONFLICT");
+      console.info("DECONFLICT");
       this.deconflict(db);
     });
   }
@@ -522,4 +520,4 @@ class NameValue<T> {
   name: string;
   value: T;
 }
-class Util {}
+class Util { }

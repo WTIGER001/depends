@@ -1,9 +1,5 @@
 export class Database {
   public source: string = "None";
-  // public processes: Process[] = new Array()
-  // public dataTypes: DataType[] = new Array()
-  // public networks: Network[] = new Array()
-  // public technologies: Technology[] = new Array()
   public graph: GraphItem[] = new Array();
   public structure = new DbConfig();
 }
